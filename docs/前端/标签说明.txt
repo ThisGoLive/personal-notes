@@ -1,0 +1,19 @@
+﻿<input type="hidden" name="field＿name" value="value"> 
+map.keySet();
+
+CSS中的display和visibility 
+     在平时的开发过程中，总是会遇到一些文字在特定的场景下显示或者隐藏来达到我们想要的效果，css中display和visibility语法，他们都可以隐藏和显示html元素。看起来貌似一样，但是他们还是有一定的区别的。 
+    首先先来看一下display和visibility的属性 
+    display属性设置元素的显示方式，对应脚本特性为display，可选值为none、block和inline，各值的说明如下： 
+    none 隐藏元素，不保留元素显示时的空间。 
+    block块方式显示元素。 
+    inline 以内嵌方式显示元素。 
+    visibility属性设置是否显示元素，对应的脚本特性为visibility，可选值为inherit、hidden和visible，各值的说明如下： 
+    inherit 继承父元素的visibility属性设置。 
+    hidden 隐藏元素，但保留其所占空间。 
+    visible 显示元素(默认值)。 
+    使用的时候的说明：
+    display:none;时隐藏该html元素，确切的说，是在浏览器中消除该元素，不占屏幕的空间。若其下有其他元素，就会上移到该空间区域。 
+    dispaly:block;显示已经隐藏的html元素，如果别的元素占有了该空间时，他将下移，空间重新别原来的元素占有。 
+     visibility:hidden;隐藏该元素，真正的隐藏，但他还占有那块空间。 
+     visibility:visible;让元素显示. 
