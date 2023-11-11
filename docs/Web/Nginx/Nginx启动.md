@@ -14,3 +14,6 @@ sudo systemctl stop nginx
 nvim /etc/nginx/nginx.conf
 
 # Windows
+
+
+https://www.jianshu.com/p/568decfd343b
