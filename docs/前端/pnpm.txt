@@ -1,7 +1,0 @@
-https://pnpm.io/zh/feature-comparison
-使用
-https://www.bilibili.com/video/BV1e84y1B7s3
-
-1. pnpm init
-2. 创建 pnpm-workspace.yaml 定义各个模块
-

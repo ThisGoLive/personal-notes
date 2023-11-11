@@ -1,16 +1,16 @@
 # 1 NodeJS 介绍
 
-Node.js 是一个基于Chrome JavaScript 运行时建立的一个平台。
+Node.js 是一个基于 Chrome JavaScript 运行时建立的一个平台。
 
-Node.js是一个事件驱动I/O服务端JavaScript环境，基于Google的V8引擎，V8引擎执行Javascript的速度非常快，性能非常好。
+Node.js 是一个事件驱动 I/O 服务端 JavaScript 环境，基于 Google 的 V8 引擎，V8 引擎执行 Javascript 的速度非常快，性能非常好。
 
-即 执行 JS 脚本的高性能平台。通过NodeJS 的 实现，可以搭建 JS 脚本基础的 服务端。
+即 执行 JS 脚本的高性能平台。通过 NodeJS 的 实现，可以搭建 JS 脚本基础的 服务端。
 
-## 1.1 安装 
+## 1.1 安装
 
 略
 
-nvm(Node Version Manager) ，nvm是 Nodejs 版本管理器，它让我们方便的对切换Nodejs 版本。
+nvm(Node Version Manager) ，nvm 是 Nodejs 版本管理器，它让我们方便的对切换 Nodejs 版本。
 
 nvm 介绍：[使用 nvm 管理不同版本的 node 与 npm](https://www.runoob.com/w3cnote/nvm-manager-node-versions.html)
 
@@ -20,16 +20,15 @@ nvm 介绍：[使用 nvm 管理不同版本的 node 与 npm](https://www.runoob.
 
 # 2 NPM 命令
 
-NPM是随同NodeJS一起安装的包管理工具，能解决NodeJS代码部署上的很多问题，常见的使用场景有以下几种：
+NPM 是随同 NodeJS 一起安装的包管理工具，能解决 NodeJS 代码部署上的很多问题，常见的使用场景有以下几种：
 
-- 允许用户从NPM服务器下载别人编写的第三方包到本地使用。
-- 允许用户从NPM服务器下载并安装别人编写的命令行程序到本地使用。
-- 允许用户将自己编写的包或命令行程序上传到NPM服务器供别人使用。
+- 允许用户从 NPM 服务器下载别人编写的第三方包到本地使用。
+- 允许用户从 NPM 服务器下载并安装别人编写的命令行程序到本地使用。
+- 允许用户将自己编写的包或命令行程序上传到 NPM 服务器供别人使用。
 
-由于新版的nodejs已经集成了npm，所以之前npm也一并安装好了。同样可以通过输入 **"npm -v"** 来测试是否成功安装。命令如下，出现版本提示
+由于新版的 nodejs 已经集成了 npm，所以之前 npm 也一并安装好了。同样可以通过输入 **"npm -v"** 来测试是否成功安装。命令如下，出现版本提示
 
 ## 2.1 设置代理
-
 
 ```shell
 npm config set registry=http://registry.npm.taobao.org
@@ -39,8 +38,8 @@ npm config set registry=http://registry.npm.taobao.org
 
 ```shell
 npm install -g nrm  # -g 即 global 全局
-nrm test # 测试  各个代理 
-nrm run 代理名称 
+nrm test # 测试  各个代理
+nrm run 代理名称
 ```
 
 还可以 使用 cnpm
@@ -58,8 +57,8 @@ cnpm install npm -g
 ```shell
 # 安装
 npm install xxx -g
-# 卸载 
-npm uninstall xxx -g 
+# 卸载
+npm uninstall xxx -g
 ```
 
 使用 非常类似 Linux 中的包管理器。其实 也就是包管理器。
@@ -84,11 +83,11 @@ cnpm install -g @vue-cli # 安装
 vue create 项目名称
 ```
 
-3.0启动npm run serve
+3.0 启动 npm run serve
 
-2.0启动npm run dev
+2.0 启动 npm run dev
 
-3.x 需要自己手动去写一些配置文件，比如跟src 同级的vue.config.js(主要是做些打包输出路径的配置及下载的一些plugins 的配置 和 是否开启eslint保存检测  ) 而这个 vue.config.js 打包的时候是必须要有的 ,不然后台发布到线上会或由于路径问题找不到一些文件
+3.x 需要自己手动去写一些配置文件，比如跟 src 同级的 vue.config.js(主要是做些打包输出路径的配置及下载的一些 plugins 的配置 和 是否开启 eslint 保存检测 ) 而这个 vue.config.js 打包的时候是必须要有的 ,不然后台发布到线上会或由于路径问题找不到一些文件
 
 ### 2.3.1 vue cli 3 搭建 elementUI 项目
 
@@ -102,19 +101,23 @@ npm install node-sass@latest
 npm install --save element-ui
 ```
 
-也可以 使用 `vue ui`  界面搭建， 不过貌似 不能通过 IE11 打开
+也可以 使用 `vue ui` 界面搭建， 不过貌似 不能通过 IE11 打开
 
 `vue-cli-plugin-element`
 
 ![image-20200310225459815](./assets/image-20200310225459815.png)
 
-`vue ui` 中 依赖可以看到差什么dependencies 
+`vue ui` 中 依赖可以看到差什么 dependencies
 
-[为什么node-sass总是安装失败？](https://segmentfault.com/a/1190000020993365)
+[为什么 node-sass 总是安装失败？](https://segmentfault.com/a/1190000020993365)
 
 Cannot find module 'true-case-path'
 
-## 更新依赖
+## 2.3.2 npm 安装 bootstrap
+
+https://www.shuijingwanwq.com/2017/11/06/2063/
+
+## 2.3.3 更新依赖
 
 更新前检查 - npm outdated
 
@@ -122,6 +125,18 @@ Cannot find module 'true-case-path'
 
 检查可更新列表 - ncu
 
-直接更新到package.json - ncu -u
+直接更新到 package.json - ncu -u
 
 npm install
+
+# 3 PNPM
+
+https://pnpm.io/zh/feature-comparison
+使用
+https://www.bilibili.com/video/BV1e84y1B7s3
+
+1. pnpm init
+2. 创建 pnpm-workspace.yaml 定义各个模块
+
+基本使用同 npm，甚至代理都可以通用。
+只是拓展了一些功能，如 pnpm monorepo
