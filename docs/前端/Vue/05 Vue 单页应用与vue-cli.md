@@ -1,29 +1,29 @@
-# 05 µ¥Ò³Ó¦ÓÃÓëvue-cli
+# 05 å•é¡µåº”ç”¨ä¸vue-cli
 
-## 5.1 µ¥Ò³Ó¦ÓÃ
+## 5.1 å•é¡µåº”ç”¨
 
-Ò»¸öÒ³ÃæÉÏ£¬¸ü»»²»Í¬µÄ×é¼ş£¬´ïµ½¸÷¸ö¹¦ÄÜ
+ä¸€ä¸ªé¡µé¢ä¸Šï¼Œæ›´æ¢ä¸åŒçš„ç»„ä»¶ï¼Œè¾¾åˆ°å„ä¸ªåŠŸèƒ½
 
-ÓÅµã£º
+ä¼˜ç‚¹ï¼š
 
-+ ²Ù×÷ÌåÑéÁ÷³©  ²»»áÌø×ª
-+ ÍêÈ«µÄÇ°¶Ë×é¼ş»¯
++ æ“ä½œä½“éªŒæµç•…  ä¸ä¼šè·³è½¬
++ å®Œå…¨çš„å‰ç«¯ç»„ä»¶åŒ–
 
-È±µã£º
+ç¼ºç‚¹ï¼š
 
-+ Ê×´Î¼ÓÔØ´óÁ¿×ÊÔ´
-+ ¶ÔËÑË÷ÒıÇæ²»ÓÑºÃ
-+ ¿ª·¢ÄÑ¶È¸ß
++ é¦–æ¬¡åŠ è½½å¤§é‡èµ„æº
++ å¯¹æœç´¢å¼•æ“ä¸å‹å¥½
++ å¼€å‘éš¾åº¦é«˜
 
-## 5.2 Â·ÓÉ
+## 5.2 è·¯ç”±
 
-¸ÅÄî£ºÓë¶ÔÓ¦²Ù×÷À´Æ¥Åäµ½¶ÔÓ¦µÄ¹¦ÄÜÏÔÊ¾¡£
+æ¦‚å¿µï¼šä¸å¯¹åº”æ“ä½œæ¥åŒ¹é…åˆ°å¯¹åº”çš„åŠŸèƒ½æ˜¾ç¤ºã€‚
 
-Ãªµã£º `#ID`  À´ÔÚÒ³ÃæÉÏÌø×ªµ½Ö¸¶¨Î»ÖÃ
+é”šç‚¹ï¼š `#ID`  æ¥åœ¨é¡µé¢ä¸Šè·³è½¬åˆ°æŒ‡å®šä½ç½®
 
-¶ÔÓÚ´ó¶àÊıµ¥Ò³ÃæÓ¦ÓÃ£¬¶¼ÍÆ¼öÊ¹ÓÃ¹Ù·½Ö§³ÖµÄ [vue-router ¿â](https://github.com/vuejs/vue-router)¡£¸ü¶àÏ¸½Ú¿ÉÒÔÒÆ²½ [vue-router ÎÄµµ](https://router.vuejs.org/)¡£
+å¯¹äºå¤§å¤šæ•°å•é¡µé¢åº”ç”¨ï¼Œéƒ½æ¨èä½¿ç”¨å®˜æ–¹æ”¯æŒçš„ [vue-router åº“](https://github.com/vuejs/vue-router)ã€‚æ›´å¤šç»†èŠ‚å¯ä»¥ç§»æ­¥ [vue-router æ–‡æ¡£](https://router.vuejs.org/)ã€‚
 
-vue router Ê¹ÓÃ£º`#/xx`
+vue router ä½¿ç”¨ï¼š`#/xx`
 
 ```html
 <scropt src="importvue"></scropt>
@@ -31,22 +31,22 @@ vue router Ê¹ÓÃ£º`#/xx`
 <body>
     <div id="app">
         <ul>
-            <li><a href="#/login">µÇÂ½</a></li>
-            <li><a href="#/reg">×¢²á</a></li>
-            <!-- router·â×°µÄ×é¼ş -->
-            <li><router-link to="/reg">×¢²á</router-link></li>
-            <li><router-link to="/login">µÇÂ½</router-link></li>
+            <li><a href="#/login">ç™»é™†</a></li>
+            <li><a href="#/reg">æ³¨å†Œ</a></li>
+            <!-- routerå°è£…çš„ç»„ä»¶ -->
+            <li><router-link to="/reg">æ³¨å†Œ</router-link></li>
+            <li><router-link to="/login">ç™»é™†</router-link></li>
         </ul>
-        <!-- ±ØĞëÊÇ¸ÃÃû×ÖµÄ×é¼şÃû³Æ -->
+        <!-- å¿…é¡»æ˜¯è¯¥åå­—çš„ç»„ä»¶åç§° -->
         <router-view></router-view>
     </div>
 </body>
 <script>
-    // »ñÈ¡Â·ÓÉ¶ÔÏó
+    // è·å–è·¯ç”±å¯¹è±¡
     var router = new VueRouter({
-        // ×Ô¶¨ÒåÂ·ÓÉ¹æÔò ¿ÉÒÔ¶à¸ö
-        routes£º[
-            {path:'/login', component:{templat:"<s>µÇÂ½</s>"}},            {path:'/reg', component:{templat:"<s>×¢²á</s>"}}
+        // è‡ªå®šä¹‰è·¯ç”±è§„åˆ™ å¯ä»¥å¤šä¸ª
+        routesï¼š[
+            {path:'/login', component:{templat:"<s>ç™»é™†</s>"}},            {path:'/reg', component:{templat:"<s>æ³¨å†Œ</s>"}}
         ]
     })
     var vue = new Vue({
@@ -56,9 +56,9 @@ vue router Ê¹ÓÃ£º`#/xx`
 </script>
 ```
 
-router-link ÔÚµã»÷Ê±»áÌí¼ÓÒ»Ğ©ÀàĞÍ£¬´Ó¶ø ¿ÉÒÔÉèÖÃ¸ÃÀàĞÍµÄÑùÊ½
+router-link åœ¨ç‚¹å‡»æ—¶ä¼šæ·»åŠ ä¸€äº›ç±»å‹ï¼Œä»è€Œ å¯ä»¥è®¾ç½®è¯¥ç±»å‹çš„æ ·å¼
 
-### 5.2.1 ¶¯Ì¬Â·ÓÉÆ¥Åä
+### 5.2.1 åŠ¨æ€è·¯ç”±åŒ¹é…
 
 ```html
 <scropt src="importvue"></scropt>
@@ -67,18 +67,18 @@ router-link ÔÚµã»÷Ê±»áÌí¼ÓÒ»Ğ©ÀàĞÍ£¬´Ó¶ø ¿ÉÒÔÉèÖÃ¸ÃÀàĞÍµÄÑùÊ½
     <div id="app">
         <ul>
             <li>
-                <router-link to="/user/9">µÇÂ½</router-link>
+                <router-link to="/user/9">ç™»é™†</router-link>
             </li>
         </ul>
-        <!-- ±ØĞëÊÇ¸ÃÃû×ÖµÄ×é¼şÃû³Æ -->
+        <!-- å¿…é¡»æ˜¯è¯¥åå­—çš„ç»„ä»¶åç§° -->
         <router-view></router-view>
     </div>
 </body>
 <script>
-    // »ñÈ¡Â·ÓÉ¶ÔÏó
+    // è·å–è·¯ç”±å¯¹è±¡
     var router = new VueRouter({
-        // :id ½ÓÊÜÊı¾İ
-        routes£º[
+        // :id æ¥å—æ•°æ®
+        routesï¼š[
             {path:'/user/:id', 
                 component:{
                     templat:"<s>{{$route.params.id}}</s>"
@@ -99,7 +99,7 @@ router-link ÔÚµã»÷Ê±»áÌí¼ÓÒ»Ğ©ÀàĞÍ£¬´Ó¶ø ¿ÉÒÔÉèÖÃ¸ÃÀàĞÍµÄÑùÊ½
 npm install -g @vue/cli @vue/cli-init
 ```
 
-## 5.4 ´î½¨ Óë es6Ä£¿é»¯
+## 5.4 æ­å»º ä¸ es6æ¨¡å—åŒ–
 
 ```shell
 vue creat myapp
@@ -107,30 +107,30 @@ vue creat myapp
 vue ui
 ```
 
-es6Ä£¿é»¯ Ä¬ÈÏÊ¹ÓÃÁË js µÄÑÏ¸ñÄ£Ê½¡£
+es6æ¨¡å—åŒ– é»˜è®¤ä½¿ç”¨äº† js çš„ä¸¥æ ¼æ¨¡å¼ã€‚
 
-ÒıÈë£º import xxx from ppp
+å¼•å…¥ï¼š import xxx from ppp
 
-Èç¹ûpppÓĞÂ·¾¶ ,´ÓÂ·¾¶ÖĞÕÒ£¬Ã»ÓĞµÄ»° ´Ó node_modules ÖĞÕÒ¡£
+å¦‚æœpppæœ‰è·¯å¾„ ,ä»è·¯å¾„ä¸­æ‰¾ï¼Œæ²¡æœ‰çš„è¯ ä» node_modules ä¸­æ‰¾ã€‚
 
-**Ò³Ãæ´¦ÀíÂß¼­**
+**é¡µé¢å¤„ç†é€»è¾‘**
 
 ```js
 // Vue
 import Vue from 'vue'
 import i18n from './i18n'
 import App from './App'
-// ²Ëµ¥ºÍÂ·ÓÉÉèÖÃ
+// èœå•å’Œè·¯ç”±è®¾ç½®
 import router from './router'
 
 
 new Vue({
-  // es6 Óï·¨£¬ÊôĞÔÃûÓëÖµµÄÒıÓÃÏàÍ¬Ê±£¬Ö±½ÓĞ´
+  // es6 è¯­æ³•ï¼Œå±æ€§åä¸å€¼çš„å¼•ç”¨ç›¸åŒæ—¶ï¼Œç›´æ¥å†™
   router,
   i18n,
-  // äÖÈ¾
+  // æ¸²æŸ“
   render: h => h(App),
-  // ¹³×Ó
+  // é’©å­
   created () {
 
   },
@@ -153,8 +153,8 @@ new Vue({
 <script>
 
 import util from '@/libs/util'
-// es6 ÖĞµ¼³öexport default
-// .vue ½áÎ²µÄÎÄ¼şÖĞ£¬ templeteµ¥¶ÀÄÃ³ö£¬ÆäËûµÄ¶¼ÊÇ ÔÚ¶ÔÏóÖĞ
+// es6 ä¸­å¯¼å‡ºexport default
+// .vue ç»“å°¾çš„æ–‡ä»¶ä¸­ï¼Œ templeteå•ç‹¬æ‹¿å‡ºï¼Œå…¶ä»–çš„éƒ½æ˜¯ åœ¨å¯¹è±¡ä¸­
 export default {
   name: 'app',
   watch: {
@@ -177,10 +177,10 @@ export default {
 </style>
 ```
 
-1. index.html ×Ô¶¯ÒıÈë main.js Ö´ĞĞ
+1. index.html è‡ªåŠ¨å¼•å…¥ main.js æ‰§è¡Œ
 
-2. main.js Ê¹ÓÃ **es6Ä£¿é»¯**ÒıÈëÁËĞí¶à£¬ÆäÖĞ ¾ÍÍ¨¹ıÒıÈë Vue Ä£¿é£¬´´½¨ new Vue, `.$mount('#app')` °ó¶¨¡£
+2. main.js ä½¿ç”¨ **es6æ¨¡å—åŒ–**å¼•å…¥äº†è®¸å¤šï¼Œå…¶ä¸­ å°±é€šè¿‡å¼•å…¥ Vue æ¨¡å—ï¼Œåˆ›å»º new Vue, `.$mount('#app')` ç»‘å®šã€‚
 
-3. Vue Ñ¡ÏîÖĞµÄ `render` º¯ÊıÈô´æÔÚ£¬Ôò Vue ¹¹Ôìº¯Êı²»»á´Ó `template` Ñ¡Ïî»òÍ¨¹ı `el`Ñ¡ÏîÖ¸¶¨µÄ¹ÒÔØÔªËØÖĞÌáÈ¡³öµÄ HTML Ä£°å±àÒëäÖÈ¾º¯Êı¡£
+3. Vue é€‰é¡¹ä¸­çš„ `render` å‡½æ•°è‹¥å­˜åœ¨ï¼Œåˆ™ Vue æ„é€ å‡½æ•°ä¸ä¼šä» `template` é€‰é¡¹æˆ–é€šè¿‡ `el`é€‰é¡¹æŒ‡å®šçš„æŒ‚è½½å…ƒç´ ä¸­æå–å‡ºçš„ HTML æ¨¡æ¿ç¼–è¯‘æ¸²æŸ“å‡½æ•°ã€‚
 
 5.5 

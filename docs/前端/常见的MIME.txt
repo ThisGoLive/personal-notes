@@ -1,14 +1,14 @@
-³£¼ûµÄMIMEÀàĞÍ
+å¸¸è§çš„MIMEç±»å‹
 
-³¬ÎÄ±¾±ê¼ÇÓïÑÔÎÄ±¾ .htm,.html text/html 
-ÆÕÍ¨ÎÄ±¾ .txt text/plain 
-RTFÎÄ±¾ .rtf application/rtf 
-GIFÍ¼ĞÎ .gif image/gif 
-JPEGÍ¼ĞÎ .ipeg,.jpg image/jpeg 
-auÉùÒôÎÄ¼ş .au audio/basic 
-MIDIÒôÀÖÎÄ¼ş mid,.midi audio/midi,audio/x-midi 
-RealAudioÒôÀÖÎÄ¼ş .ra, .ram audio/x-pn-realaudio 
-MPEGÎÄ¼ş .mpg,.mpeg video/mpeg 
-AVIÎÄ¼ş .avi video/x-msvideo 
-GZIPÎÄ¼ş .gz application/x-gzip 
-TARÎÄ¼ş .tar application/x-tar 
+è¶…æ–‡æœ¬æ ‡è®°è¯­è¨€æ–‡æœ¬ .htm,.html text/html 
+æ™®é€šæ–‡æœ¬ .txt text/plain 
+RTFæ–‡æœ¬ .rtf application/rtf 
+GIFå›¾å½¢ .gif image/gif 
+JPEGå›¾å½¢ .ipeg,.jpg image/jpeg 
+auå£°éŸ³æ–‡ä»¶ .au audio/basic 
+MIDIéŸ³ä¹æ–‡ä»¶ mid,.midi audio/midi,audio/x-midi 
+RealAudioéŸ³ä¹æ–‡ä»¶ .ra, .ram audio/x-pn-realaudio 
+MPEGæ–‡ä»¶ .mpg,.mpeg video/mpeg 
+AVIæ–‡ä»¶ .avi video/x-msvideo 
+GZIPæ–‡ä»¶ .gz application/x-gzip 
+TARæ–‡ä»¶ .tar application/x-tar 
