@@ -2,6 +2,8 @@
 
 vuex 的新版本，vue 全局的数据存储管理
 
+[Pinia 使用](https://zhuanlan.zhihu.com/p/619297883)
+
 # 1 state 使用
 
 声明
@@ -12,7 +14,7 @@ import { defineStore } from "pinia";
 export const useAuthStore = defineStore({
   id: "data",
   state: (): AuthState => ({
-    values： "123"
+    values: "123"
   }),
 })
 ```
@@ -30,7 +32,7 @@ export default {
         ...mapStores(userDataStore)
         ...mapState(userDataStore, ["values"])
         ...mapState(userDataStore, {
-            val： "values"
+            val: "values"
         })
         ...mapWritablestate(userDataStore, ["values"])
     }
