@@ -13,7 +13,7 @@ export default defineConfig({
       { text: 'Java', link: '/Java/',},
       { text: 'Examples', link: '/markdown-examples' }
     ],
-
+    // 主页的 标签
     sidebar: [
       {
         text: 'Examples',
