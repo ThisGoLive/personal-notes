@@ -8,7 +8,7 @@ dist-ssr
 report.html
 
 yarn.lock
-pnpm-lock.json
+pnpm-lock.*
 npm-debug.log*
 .pnpm-error.log*
 .pnpm-debug.log
