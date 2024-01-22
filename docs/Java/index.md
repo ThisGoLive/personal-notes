@@ -30,3 +30,24 @@
 + [其他](Other.md)
 
 
+
+# 测试 自动生成 Runtime API Examples
+
+<script setup>
+import { useData } from 'vitepress'
+
+const { theme } = useData()
+const sidebar = 'sidebar'
+const root_path = '/Java/'
+</script>
+
+## Results
+
+
+<pre>{{ theme[sidebar][root_path] }}</pre>
+
+<ul>
+    <li v-for = " (item, index) in theme[sidebar][root_path]">
+        <a :href=item.link>{{item.text}}</a>
+    </li>
+</ul>

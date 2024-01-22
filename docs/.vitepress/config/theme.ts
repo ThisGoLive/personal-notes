@@ -6,6 +6,8 @@ import sidebar from "./sidebar";
 const themeConfig: DefaultTheme.Config = {
 //   algolia,
   siteTitle: "笔记主页",
+  // 隐藏
+  // siteTitle: false,
   // 页角
   footer: {
     message:
@@ -16,7 +18,10 @@ const themeConfig: DefaultTheme.Config = {
   lastUpdatedText: "📑 最后更新",
   nav,
   sidebar,
-  // siteTitle: false,
+  // 开启搜索烂尾
+//   search: {
+//     provider: 'local'
+//   }
   
 };
 
