@@ -1,13 +1,16 @@
-####  C23、解释器模式（Interpreter） ####
+#### C23、解释器模式（Interpreter） ####
+
 解释器模式是我们暂时的最后一讲，一般主要应用在OOP开发中的编译器的开发中，所以适用面比较窄。
 ![](./img4/c23.jpg)
 Context类是一个上下文环境类，Plus和Minus分别是用来计算的实现，代码如下：
 
-[java] view plaincopy
+```java
 public interface Expression {
 public int interpret(Context context);
 }
-[java] view plaincopy
+```
+
+```java
 public class Plus implements Expression {
 
 @Override  
@@ -16,7 +19,9 @@ public int interpret(Context context) {
 }  
 
 }
-[java] view plaincopy
+```
+
+```java
 public class Minus implements Expression {
 
 @Override  
@@ -25,7 +30,9 @@ public int interpret(Context context) {
 }  
 
 }
-[java] view plaincopy
+```
+
+```java
 public class Context {
 
 private int num1;  
@@ -50,7 +57,9 @@ public void setNum2(int num2) {
 }  
 
 }
-[java] view plaincopy
+```
+
+```java
 public class Test {
 
 public static void main(String[] args) {  
@@ -62,10 +71,13 @@ public static void main(String[] args) {
 }  
 
 }
+```
+
 最后输出正确的结果：3。
 
 基本就这样，解释器模式用来做各种各样的解释器，如正则表达式等的解释器等等！
 
+```java
 public class DecoratorTest {  
 
     public static void main(String[] args) {  
@@ -74,7 +86,7 @@ public class DecoratorTest {
         obj.method();  
     }  
 }  
-
+```
 
 输出：
 

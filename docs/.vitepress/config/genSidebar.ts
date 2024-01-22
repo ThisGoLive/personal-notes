@@ -1,6 +1,5 @@
-import path from 'node:path'
-import fs from 'node:fs'
-
+import path from 'path'
+import fs from 'fs'
 // 根目录
 const DIR_PATH = path.resolve()
 // 过滤白名单

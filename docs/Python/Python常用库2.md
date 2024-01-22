@@ -566,7 +566,7 @@ spacy -一种用于Python和用Cython工业强度的自然语言处理库。
 
 Stanza -Stanford NLP Group的官方Python库，支持60多种语言。
 
-## 中国人
+### 中文
 
 funNLP-中国NLP的工具和数据集的集合。
 
