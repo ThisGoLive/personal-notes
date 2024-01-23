@@ -8,10 +8,10 @@ hero:
   tagline: 个人开发笔记
   actions:
     - theme: brand
-      text: Markdown Examples
+      text: 文档编写例子
       link: /markdown-examples
-    - theme: alt
-      text: API Examples
+    - theme: brand
+      text: 运行时API例子
       link: /api-examples
     - theme: alt
       text: 23种设计模式

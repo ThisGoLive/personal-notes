@@ -1,16 +1,28 @@
-## Spring Security
-+ [00 Spring Security 基本使用](00%20Spring%20Security%20基本使用.md)
-+ [01 Spring Security 概念](01%20Spring%20Security%20概念.md)
-+ [02 Spring Security 环境搭建](02%20Spring%20Security%20环境搭建.md)
-+ [03 Spring Security 用户信息](03%20Spring%20Security%20用户信息.md)
-+ [04 Spring Security 密码](04%20Spring%20Security%20密码.md)
-+ [05 Spring Security Boot配置](05%20Spring%20Security%20Boot配置.md)
-+ [06 Spring Security Uri Ant 风格](06%20Spring%20Security%20Uri%20Ant%20风格.md)
-+ [07 Spring Security 自定义配置类入口](07%20Spring%20Security%20自定义配置类入口.md)
-+ [08 Spring Security 自定义登录](08%20Spring%20Security%20自定义登录.md)
-+ [09 Spring Security 内置Filter](09%20Spring%20Security%20内置Filter.md)
-+ [10 Spring Security 自定义登出](10%20Spring%20Security%20自定义登出.md)
-+ [11 Spring Security 异常处理](11%20Spring%20Security%20异常处理.md)
-+ [12 Spring Security 使用 JWT 认证访问接口](12%20Spring%20Security%20使用%20JWT%20认证访问接口.md)
-+ [13 OAuth2](13%20OAuth2.md)
-+ [14 OAuth2 授权码模式流程](14%20OAuth2%20授权码模式流程.md)
+
+# 自动生成目录
+
+<script setup>
+import { useData } from 'vitepress'
+
+const { theme } = useData()
+const sidebar = 'sidebar'
+const root_path = '/Java/Spring/SpringSecurity/'
+
+function filter(items) {
+    if (items.length < 2) {
+        return false
+    }
+    return items.filter(item => item.path.startsWith(root_path)).length > 1
+}
+</script>
+
+<ul>
+    <li v-for = " (item, index) in theme[sidebar][root_path]">
+        <a :href=item.link>{{item.text}}</a>
+        <ol>
+            <li v-if=filter(item.items) v-for = "(item2, index) in item.items">
+                <a :href=item2.path>{{item2.text}}</a>
+            </li>
+        </ol>
+    </li>
+</ul>

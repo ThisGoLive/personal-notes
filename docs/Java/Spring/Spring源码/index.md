@@ -1,15 +1,27 @@
-## Spring 源码
-+ [1-2 Spring 容器的基本实现 XML文档 读取](01-02Spring容器的基本实现XML文档读取.md)
-+ [3 Spring 默认标签的解析](03Spring默认标签的解析.md)
-+ [4 Spring 自定义标签的解析](04Spring自定义标签的解析.md)
-+ [5 bean的加载](05bean的加载.md)
-+ [6 容器功能的扩展](06容器功能的扩展.md)
-+ [7 AOP 面向切面编程](07AOP面向切面编程.md)
-+ [8 数据库链接 JDBC](08数据库链接JDBC.md)
-+ [9 整合 MyBatis](09整合MyBatis.md)
-+ [10 事务](10事务.md)
-+ [11 SpringMVC](11SpringMVC.md)
-+ [12 远程服务](12远程服务.md)
-+ [13 Spring 消息](13Spring消息.md)
-+ [RequestBody原理](https://www.jianshu.com/p/c1b8315c5a03)
-+ [020 Spring 源码](020Spring源码.md)
+## 自动生成目录
+
+<script setup>
+import { useData } from 'vitepress'
+
+const { theme } = useData()
+const sidebar = 'sidebar'
+const root_path = '/Java/Spring/Spring源码/'
+
+function filter(items) {
+    if (items.length < 2) {
+        return false
+    }
+    return items.filter(item => item.path.startsWith(root_path)).length > 1
+}
+</script>
+
+<ul>
+    <li v-for = " (item, index) in theme[sidebar][root_path]">
+        <a :href=item.link>{{item.text}}</a>
+        <ol>
+            <li v-if=filter(item.items) v-for = "(item2, index) in item.items">
+                <a :href=item2.path>{{item2.text}}</a>
+            </li>
+        </ol>
+    </li>
+</ul>

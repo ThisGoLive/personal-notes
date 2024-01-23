@@ -22,6 +22,9 @@ const themeConfig: DefaultTheme.Config = {
     level: [2,6],
     label: '本篇导航'
   },
+  socialLinks: [
+    { icon: "github", link: 'https://vitepress.dev/zh/' }
+  ],
   // 开启搜索烂尾
 //   search: {
 //     provider: 'local'

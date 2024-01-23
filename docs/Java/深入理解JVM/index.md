@@ -1,4 +1,3 @@
-
 # 自动生成目录
 
 <script setup>
@@ -6,7 +5,7 @@ import { useData } from 'vitepress'
 
 const { theme } = useData()
 const sidebar = 'sidebar'
-const root_path = '/Java/Spring/Spring常见问题/'
+const root_path = '/Java/深入理解JVM/'
 
 function filter(items) {
     if (items.length < 2) {

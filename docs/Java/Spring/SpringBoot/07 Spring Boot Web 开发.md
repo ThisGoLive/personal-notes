@@ -53,7 +53,7 @@ Spring Boot 提供 spring-boot-starter-web 为 Web开发给予支持，提供了
             <span th:text="${item.name}"></span>
             <span th:text="${item.age}"></span>
         </li>
-    </ul>
+    </ol>
 </div>
 <hr/>
 <span class="panel-title">thy 的 数据判断</span>
