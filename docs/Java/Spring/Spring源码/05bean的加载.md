@@ -2117,13 +2117,11 @@ public class BeanPostProessor implements BeanPostProcessor {
 
 	@Override
 	public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -2168,8 +2166,6 @@ public class InitBean implements InitializingBean {
 
 	@Override
 	public void afterPropertiesSet() throws Exception {
-		// TODO Auto-generated method stub
-
 	}
 
 }

@@ -147,11 +147,9 @@ Query注解中 value属性 可以直接书写sql 语句  需要配合nativeQuery
 
 ```java
 public Page<UserBean> findUserBeanByParams(Map<String, Object> params, Pageable pageable) {
-	// TODO Auto-generated method stub
 	return userRepository.findAll(new Specification<UserBean>() {
 		@Override
 		public Predicate toPredicate(Root<UserBean> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
-			// TODO Auto-generated method stub
 			//创建一个 断言集合，Predicate叫做断言， 断定…… (实际上，这里的断言，大家就认为是：添加条件)
 			List<Predicate> predicates = new ArrayList<Predicate>();
 			//我们自己的条件代码，写在这里

@@ -68,8 +68,7 @@ public class AppTest {
 	    
 	    @Override
 	    public void creatEntity(FacEentity ent) {
-		// TODO Auto-generated method stub
-		System.out.println("触发该事件！");
+			System.out.println("触发该事件！");
 	    }
 	});
 	myh.doing();

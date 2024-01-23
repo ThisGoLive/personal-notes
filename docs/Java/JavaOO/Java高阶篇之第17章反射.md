@@ -18,10 +18,8 @@
 		private int a ;
 		public String b;
 		public Test0() {
-			// TODO Auto-generated constructor stub
 		}
 		public Test0(int a) {
-			// TODO Auto-generated constructor stub
 		}
 		public void setA(int a) {
 			this.a = a;

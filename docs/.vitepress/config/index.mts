@@ -5,7 +5,7 @@ import themeConfig from "./theme";
 export default defineConfig({
   title: "个人笔记库",
   description: "个人笔记库",
-  ignoreDeadLinks: true, // TODO: remove this line when all links are fixed
+  ignoreDeadLinks: true, 
   lang: "zh-CN",
   lastUpdated: true,
   markdown: {
