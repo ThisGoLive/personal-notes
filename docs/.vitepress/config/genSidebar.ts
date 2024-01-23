@@ -40,12 +40,14 @@ export const builderSidebarItem = (rootPath: string, directoryName: string, fath
             valArray.push({
                 text: itemName,
                 link: fatherDirectoryName + "/" + directoryName + "/" + itemName + '/index.md',
+                path: fatherDirectoryName + "/" + directoryName + "/" + itemName + '/',
             })
         } else{
             // 文件
             valArray.push({
                 text: itemName,
                 link: fatherDirectoryName + "/" + directoryName + "/" + itemName,
+                path: fatherDirectoryName + "/" + directoryName + "/" + itemName.substring(0, itemName.lastIndexOf(".")),
             })
         }
     }

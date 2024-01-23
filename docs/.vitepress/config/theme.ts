@@ -5,7 +5,7 @@ import sidebar from "./sidebar";
 
 const themeConfig: DefaultTheme.Config = {
 //   algolia,
-  siteTitle: "笔记主页",
+  siteTitle: "笔记主页Home",
   // 隐藏
   // siteTitle: false,
   // 页角
