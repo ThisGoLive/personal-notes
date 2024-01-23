@@ -5,7 +5,7 @@ import sidebar from "./sidebar";
 
 const themeConfig: DefaultTheme.Config = {
 //   algolia,
-  siteTitle: "笔记主页",
+  siteTitle: "笔记主页Home",
   // 隐藏
   // siteTitle: false,
   // 页角
@@ -18,6 +18,10 @@ const themeConfig: DefaultTheme.Config = {
   lastUpdatedText: "📑 最后更新",
   nav,
   sidebar,
+  outline: {
+    level: [2,6],
+    label: '本篇导航'
+  },
   // 开启搜索烂尾
 //   search: {
 //     provider: 'local'
