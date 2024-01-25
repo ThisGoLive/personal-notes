@@ -1,21 +1,25 @@
+# IndexWriterConfig 索引写入配置
+
+2023年3月26日
+
 # 参考资料
 
-[构造IndexWriter对象（一）](https://www.amazingkoala.com.cn/Lucene/Index/)
+[构造IndexWriter对象（一）](https://amazingkoala.com.cn/Lucene/Index/2019/1111/%E6%9E%84%E9%80%A0IndexWriter%E5%AF%B9%E8%B1%A1%EF%BC%88%E4%B8%80%EF%BC%89/)
 
-[构造IndexWriter对象（二）](https://www.amazingkoala.com.cn/Lucene/Index/)
+[构造IndexWriter对象（二）](https://amazingkoala.com.cn/Lucene/Index/2019/1114/%E6%9E%84%E9%80%A0IndexWriter%E5%AF%B9%E8%B1%A1%EF%BC%88%E4%BA%8C%EF%BC%89/)
 
-# IndexWriterConfig 索引写入配置
+## 1 IndexWriterConfig 索引写入配置概念
 
 - 不可变配置（unmodifiable configuration）：
   - 在实例化IndexWriter对象后，这些配置不可更改，即使更改了，也不会生效，因为仅在IndexWriter的构造函数中应用一次这些配置
 - 可变配置（modifiable configuration）：
   - 在实例化IndexWriter对象后，这些配置可以随时更改
 
-## 1 不可变配置
+## 2 不可变配置
 
 不可变配置包含的内容有：OpenMode、IndexDeletionPolicy、IndexCommit、Similarity、MergeScheduler、Codec、DocumentsWriterPerThreadPool、ReaderPooling、FlushPolicy、RAMPerThreadHardLimitMB、InfoStream、IndexSort、SoftDeletesField
 
-### OpenMode 打开模式
+### 2.1 OpenMode 打开模式
 
 OpenMode描述了在IndexWriter的初始化阶段，如何处理索引目录中的已有的索引文件，这里称之为旧的索引，OpenMode一共定义了三种模式，即：
 
@@ -27,11 +31,11 @@ CREATE、APPEND、CREATE_OR_APPEND。
 
 `默认值 CREATE_OR_APPEND`
 
-### IndexDeletionPolicy 索引删除策略
+### 2.2 IndexDeletionPolicy 索引删除策略
 
 当一个新的提交生成后，如何处理上一个提交
 
-### IndexCommit 索引提交
+### 2.3 IndexCommit 索引提交
 
 IndexWriter 执行 commit 后，这次提交所有段（segment）的信息用 indexCommit 描述。
 
@@ -39,71 +43,71 @@ IndexWriter 执行 commit 后，这次提交所有段（segment）的信息用 i
 
 `默认值为空`
 
-### Similarity 相似
+### 2.4 Similarity 相似
 
 Similarity描述了Lucene打分的组成部分。何使用BM25算法实现对文档的打分
 
-### MergeScheduler 合并调度器
+### 2.5 MergeScheduler 合并调度器
 
 用来定义如何执行一个或多个段的合并，比如并发执行多个段的合并任务时的执行先后顺序，磁盘IO限制。
 
 `默认 ConcurrentMergeScheduler`
 
-### Codec 编解码器
+### 2.6 Codec 编解码器
 
 索引文件的数据结构，即描述了每一种索引文件需要记录哪些信息，以及如何存储这些信息，
 
 `默认 Lucene70Codec`
 
-### DocumentsWriterPerThreadPool
+### 2.7 DocumentsWriterPerThreadPool
 
 逻辑上的线程池。每当IndexWriter要添加文档，会从DocumentsWriterPerThreadPool中获得一个ThreadState去执行，故在多线程（持有相同的IndexWriter对象引用）执行添加文档操作时，每个线程都会获得一个ThreadState对象
 
-### ReaderPooling
+### 2.8 ReaderPooling
 
 布尔值，用来描述是否允许共用（pool）SegmentReader。
 
 `默认值为true`
 
-### FlushPolicy 推送策略
+### 2.9 FlushPolicy 推送策略
 
 自动flush策略，因为flush分为自动flush跟主动flush。
 
 `只有一个实现 FlushByRamOrCountsPolicy`
 
-### RAMPerThreadHardLimitMB
+### 2.10 RAMPerThreadHardLimitMB
 
 MaxBufferedDocs、RAMBufferSizeMB
 
-### InfoStream
+### 2.11 InfoStream
 
 对Lucene进行调试时实现debug输出信息，在业务中打印debug信息会降低Lucene的性能，故在业务中使用默认值就行，即不输出debug信息。
 
 9.5 还有PrintStream。`config.setInfoStream(System.out);` 即可打印。
 
-### IndexSort
+### 2.12 IndexSort
 
 索引阶段如何对segment内的文档进行排序
 
 `默认 null`
 
-### SoftDeletesField
+### 2.13 SoftDeletesField
 
 SoftDeletesField用来定义哪些域为软删除的域
 
 `默认 null`
 
-## 2 可变配置
+## 3 可变配置
 
 变配置包含的内容有：MergePolicy、MaxBufferedDocs、RAMBufferSizeMB、MergedSegmentWarmer、UseCompoundFile、CommitOnClose、CheckPendingFlushUpdate。
 
-### MergePolicy 段的合并策略
+### 3.1 MergePolicy 段的合并策略
 
 如何从索引目录中找到满足合并要求的段集合
 
 `默认 TieredMergePolicy`
 
-### MaxBufferedDocs、RAMBufferSizeMB
+### 3.2 MaxBufferedDocs、RAMBufferSizeMB
 
 RAMBufferSizeMB：描述了索引信息被写入到`磁盘前暂时缓存在内存中允许的最大使用内存值`
 
@@ -131,7 +135,7 @@ MaxBufferedDocs：描述了索引信息被写入到`磁盘前暂时缓存在内�
 | MaxBufferedDocs         | 是     | 索引数量                   | 每个     | -1  |
 | RAMBufferSizeMB         | 是     | 索引内存占用量                | 全部     | 16M |
 
-### MergedSegmentWarmer
+### 3.3 MergedSegmentWarmer
 
 预热合并后的新段，
 
@@ -139,19 +143,19 @@ MaxBufferedDocs：描述了索引信息被写入到`磁盘前暂时缓存在内�
 
 默认值 null
 
-### UseCompoundFile
+### 3.4 UseCompoundFile
 
 布尔值，通过flush、commit的操作生成索引使用的数据结构都是`复合索引文件`，即索引文件`.cfs、.cfe`
 
 `默认为true`
 
-### CommitOnClose
+### 3.5 CommitOnClose
 
 影响IndexWriter.close()的执行逻辑，如果设置为true，那么会先应用（apply）所有的更改，即执行[commit](https://www.amazingkoala.com.cn/Lucene/Index/2019/0906/91.html)操作，否则上一次commit操作后的所有更改都不会保存，直接退出。
 
 `默认为true`
 
-### CheckPendingFlushUpdate
+### 3.6 CheckPendingFlushUpdate
 
 检查挂起刷新更新
 

@@ -1,6 +1,8 @@
-# 参考资料
+2023年3月26日
 
-[构造IndexWriter对象（七）](https://www.amazingkoala.com.cn/Lucene/Index/)
+## 参考资料
+
+[构造IndexWriter对象（七）](https://amazingkoala.com.cn/Lucene/Index/2019/1202/%E6%9E%84%E9%80%A0IndexWriter%E5%AF%B9%E8%B1%A1%EF%BC%88%E4%B8%83%EF%BC%89/)
 
 [构造IndexWriter对象（八）](https://www.amazingkoala.com.cn/Lucene/Index/)
 
@@ -8,7 +10,7 @@
 
 [构造IndexWriter对象（十）](https://www.amazingkoala.com.cn/Lucene/Index/)
 
-# 流程图
+## 流程图
 
 IndexWriter indexWriter = new IndexWriter(fsDirectory, config);
 
@@ -16,7 +18,7 @@ IndexWriter indexWriter = new IndexWriter(fsDirectory, config);
 
 紧接 [04 IndexWriter 构造流程1](./04 IndexWriter 构造流程1.md) 中流程。
 
-# 9 生成对象IndexFileDeleter
+## 9 生成对象IndexFileDeleter
 
 IndexFileDeleter用来追踪SegmentInfos是否还"活着（live）
 
@@ -55,19 +57,19 @@ SegmentInfos对象是索引文件segments_N和索引文件.si在内存中的表�
       }
 ```
 
-## 9.1 SegmentInfos 段明细
+### 9.1 SegmentInfos 段明细
 
 构造 IndexFileDeleter最重要的一个对象就是SegmentInfos。
 
 由 IndexCommit生成 或者 旧索引文件生成。
 
-## 9.2 能获取 segment_N 的文件名
+### 9.2 能获取 segment_N 的文件名
 
 前面大致已经清楚，能获取 到 segmnet_N 说明是修改。
 
 > SegmentInfos.getSegmentsFileName()
 
-## 9.3 索引目录中是否还有未处理的索引文件
+### 9.3 索引目录中是否还有未处理的索引文件
 
 ```java
     if (currentSegmentsFile != null) {
@@ -137,7 +139,7 @@ SegmentInfos对象是索引文件segments_N和索引文件.si在内存中的表�
 > 
 > 比如使用了索引删除策略NoDeletionPolicy，那么每次提交都会保留，又比如使用了默认的索引删除策略KeepOnlyLastCommitDeletionPolicy，那么只会保留最后一次提交。
 
-## 9.4 不能获取 segment_N 或者 未处理的索引文件 以及被 RefCount 标记
+### 9.4 不能获取 segment_N 或者 未处理的索引文件 以及被 RefCount 标记
 
 异常判断 ： 
 
@@ -147,7 +149,7 @@ currentCommitPoint 没有被设置 但是本地 segmentInfos的 currentSegmentsF
 
 如果 获取到了，重新执行 currentCommitPoint RefCount 相关操作。
 
-## 9.5 能否获取 StandarDiectoryReader 标准目录 checkpoint
+### 9.5 能否获取 StandarDiectoryReader 标准目录 checkpoint
 
 获取到的情况
 
@@ -161,7 +163,7 @@ if (isReaderInit) {
 
 ![image-20230403215758543](assets/image-20230403215758543.png)
 
-### 9.5.1 增加计数
+#### 9.5.1 增加计数
 
 ```java
 // Incref the files:
@@ -183,7 +185,7 @@ void incRef(SegmentInfos segmentInfos, boolean isCommit) throws IOException {
 
 在后面的流程中，可能会执行索引文件的删除，如果某些索引文件被SegmentInfos引用，那么这些索引文件不应该被删除，防止被删除的方法就是增加SegmentInfos对应的索引文件的计数引用。
 
-### 9.5.2 isCommit 为 True的处理逻辑
+#### 9.5.2 isCommit 为 True的处理逻辑
 
 执行 commit 操作时，也会调用这里  checkpoint，故 参数为 true。
 
@@ -205,7 +207,7 @@ if (isCommit) {
 2. 添加到集合 policy
 3. 执行索引删除策略
 
-### 9.5.3 isCommit 为 Flase的处理逻辑
+#### 9.5.3 isCommit 为 Flase的处理逻辑
 
 lastFiles是一个IndexFileDeleter类的成员变量，它用来存放上次执行checkPoint的SegmentInfos中对应的索引文件
 
@@ -237,7 +239,7 @@ lastFiles.addAll(segmentInfos.files(false));
 
 如果 新增了 段，就会调用 9.5.1 ，如果删除了段 就会调用 9.5.3 中相关逻辑
 
-### 9.5.4 为什么要通过checkPoint来实现索引文件的删除
+#### 9.5.4 为什么要通过checkPoint来实现索引文件的删除
 
 Lucene通过IndexWriter对象中的**成员变量SegmentInfos**来描述当前IndexWriter对应的索引信息，索引信息的变化通过SegmentInfos对象来反应。
 
@@ -261,13 +263,13 @@ SegmentInfos 一些属性 version、counter、generation、segments，其中 seg
 
 对应 目录下 某一个 段的 索引文件名称集合（SegmentInfo） 的集合
 
-### 9.5.5 为什么获得StandardDirectoryReader后，需要增加segmentInfos对应的索引文件的计数
+#### 9.5.5 为什么获得StandardDirectoryReader后，需要增加segmentInfos对应的索引文件的计数
 
 传入的SegmentInfos可能有NRT更改在最近的提交中还不可见，所以我们必须保护它的文件不被删除:
 
 即在一次 获得了一个NRT的Reader 后，通过该reader获得一个IndexCommit。segment_N 是不可见的。N 对应的 其他所有文件 有被删除的可能。所以才保护
 
-## 9.6 commits 排序
+### 9.6 commits 排序
 
 例如 9.5.2 中添加 后
 
@@ -285,7 +287,7 @@ CollectionUtil.timSort(commits);
 
 那么就无法正确的处理 了，所以需要按照从旧到新的提交顺序来排序。
 
-## 9.7 更新SegmentInfos的metaData
+### 9.7 更新SegmentInfos的metaData
 
 ```java
 // refCounts only includes "normal" filenames (does not include write.lock)
@@ -315,7 +317,7 @@ CollectionUtil.timSort(commits);
 
 但是 9.5 中执行没有？
 
-## 9.8 删除计数为0的索引文件
+### 9.8 删除计数为0的索引文件
 
 deleteFiles(toDelete);
 
@@ -326,13 +328,13 @@ segments_N对应的索引文件，那么此时索引目录中还剩下两种类�
 - “不优雅”的索引文件：这些文件的计数肯定为0
 - 通过NRT生成的索引文件：这些索引文件是有效的索引信息，不能被删除，这也是解释为什么我们需要执行图17中用蓝色标注的流程点，在这两个流程点中，通过NRT生成的索引文件会被增加计数，故不会被删除
 
-## 9.9 执行索引删除策略
+### 9.9 执行索引删除策略
 
 policy.onInit(commits);
 
 前一个 indexWriter 执行Close后，
 
-## 9.10 执行检查点
+### 9.10 执行检查点
 
 > Always protect the incoming segmentInfos since  sometime it may not be the most recent commit
 > 
