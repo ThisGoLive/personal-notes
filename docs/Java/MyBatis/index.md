@@ -1,11 +1,10 @@
-
 ## 自动生成导航
 <script setup>
 import { useData } from 'vitepress'
 
 const { theme } = useData()
 const sidebar = 'sidebar'
-const root_path = '/Golang/'
+const root_path = '/Java/MyBatis/'
 </script>
 
 <ul>

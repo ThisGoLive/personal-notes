@@ -119,3 +119,10 @@ sudo docker run --detach \
 搭建好，需要设置账号密码
 
 但对于个人来说，太耗费性能，启动后约用 2.4 G内存。
+
+## git 删除历史文件
+
+```shell
+git filter-repo --path-glob pnpm-lock.yaml --invert-paths --force
+git push --all --force
+```

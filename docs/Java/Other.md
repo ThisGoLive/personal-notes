@@ -99,35 +99,94 @@ zookeeper 相关问题
 https://www.sohu.com/a/343766701_120097842  教派
 
 ## 使用脚本表达式
-private final ScriptEngineManager scriptEngineManager = new ScriptEngineManager();
-{
-    String ex = "a + b + o.get()";
-    scriptEngineManager.getEngineFactories().forEach(item -> {
-        System.out.println("-------------------------------------");
-        String engineName = item.getEngineName();
-        String languageName = item.getLanguageName();
-        System.out.println("EngineName:" + engineName);
-        System.out.println("languageName:" + languageName);
-        String name = engineName + "--" + languageName;
-        Cost cost = CostUtil.startNanosecondCost(name);
-        ScriptEngine scriptEngine = item.getScriptEngine();
-        ScriptContext context = scriptEngine.getContext();
-        context.setAttribute("a", 1, ScriptContext.ENGINE_SCOPE);
-        context.setAttribute("b", 1, ScriptContext.ENGINE_SCOPE);
-        context.setAttribute("o", this, ScriptContext.ENGINE_SCOPE);
-        Object eval;
-        try {
-            eval = scriptEngine.eval(ex);
-            System.out.println(eval.getClass() + "---" + eval);
-        } catch (ScriptException e) {
-            e.printStackTrace();
-        }
-        long stop = cost.stop();
-        DecimalFormat format = new DecimalFormat("#,####");
-        System.out.println(name + ":" + format.format(stop));
-    });
-}
 
+```java
+// spring 分词
+String temp = "123412 $34 4$5 67$ 562$ 3%44";
+long l = System.nanoTime();
+StringTokenizer tokenizer = new StringTokenizer(temp, " ");
+while (tokenizer.hasMoreTokens()) {
+    System.out.println(tokenizer.nextToken());
+}
+long l2 = System.nanoTime();
+String[] t = temp.split(" ");
+for (String s : t) {
+    System.out.println(s);
+}
+long l3 = System.nanoTime();
+System.out.println(l2 - l);
+System.out.println(l3 - l2);
+
+// 数字格式化
+DecimalFormat format = new DecimalFormat("#,####");
+format.format(l2)
+
+// int转二进制
+Integer.toBinaryString(a)
+
+// 二进制 八进制 16进制
+int x1 = 0b1_0000;
+System.out.println(x1);
+int x = 01_0000;
+System.out.println(x);
+int x2 = 0x1_0000;
+System.out.println(x2);
+
+// jexl spel
+StopWatch stopWatch = new StopWatch();
+stopWatch.start();
+// spel
+ExpressionParser parser = new SpelExpressionParser();
+EvaluationContext contextSp = new StandardEvaluationContext();
+contextSp.setVariable("money", 10000);
+String expressionStr2 = "#money > 5000";
+Object helloWorld =  parser.parseExpression(expressionStr2)
+        .getValue(contextSp);
+stopWatch.stop();
+System.out.println(stopWatch.prettyPrint());
+System.out.println(helloWorld);
+
+stopWatch.start();
+// jexl
+JexlEngine engine = new Engine();
+JexlContext context = new MapContext();
+context.set("money", "10000");
+String expressionStr = "money > 5000";
+Object evaluate = engine.createExpression(expressionStr)
+        .evaluate(context);
+stopWatch.stop();
+System.out.println(stopWatch.prettyPrint());
+System.out.println(evaluate);
+
+//  JSF-223 jexl groovy NashornJs 
+ScriptEngineManager scriptEngineManager = new ScriptEngineManager();
+String ex = "a + b + o.get()";
+scriptEngineManager.getEngineFactories().forEach(item -> {
+    System.out.println("-------------------------------------");
+    String engineName = item.getEngineName();
+    String languageName = item.getLanguageName();
+    System.out.println("EngineName:" + engineName);
+    System.out.println("languageName:" + languageName);
+    String name = engineName + "--" + languageName;
+    Cost cost = CostUtil.startNanosecondCost(name);
+    ScriptEngine scriptEngine = item.getScriptEngine();
+    ScriptContext context = scriptEngine.getContext();
+    context.setAttribute("a", 1, ScriptContext.ENGINE_SCOPE);
+    context.setAttribute("b", 1, ScriptContext.ENGINE_SCOPE);
+    context.setAttribute("o", this, ScriptContext.ENGINE_SCOPE);
+    Object eval;
+    try {
+        eval = scriptEngine.eval(ex);
+        System.out.println(eval.getClass() + "---" + eval);
+    } catch (ScriptException e) {
+        e.printStackTrace();
+    }
+    long stop = cost.stop();
+    DecimalFormat format = new DecimalFormat("#,####");
+    System.out.println(name + ":" + format.format(stop));
+});
+
+```
 脚本设计
 https://my.oschina.net/crossoverjie/blog/5566734
 
