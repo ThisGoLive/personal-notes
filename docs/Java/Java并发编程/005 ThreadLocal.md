@@ -19,8 +19,17 @@ ThreadLocal 内部 维护一个  ThreadLocalMap ，key ThreadLocal 的 弱引用
 
 这个Map 在初始化的时候，会被设置给线程中，所以一个线程只能设置一个ThreadLocal 
 
-ThreadLocal 的内存泄露：当 线程结束后，但是线程没有被回收时，线程内部的map 还存在，ThreadLocal引用被设置为空，如果 Map 中的Key强引用指向ThreadLocal，那么就永远没法被回收，所以使用 弱引用。
+ThreadLocal 的内存泄露：当 线程结束后，但是线程没有被回收时，线程内部的map 还存在，ThreadLocal引用被设置为空，如果 Map 中的Key强引用指向ThreadLocal，那么就永远没法被回收，所以使用 弱引用。但是 这时 key 被回收了，value 没有被清空，就会导致 value 一直在 map 中。
 
 value 就会出现这个问题，所以 ThreadLocal#remove
 
 https://mp.weixin.qq.com/s/3mZS7Mrnk6ugjgltfxgdlQ
+
+```java
+public class Thread implements Runnable {
+    // 线程内部有个 Map, key 为 ThreadLocal, key 为 弱引用
+    ThreadLocal.ThreadLocalMap threadLocals = null;
+}
+```
+ThreadLocal value 导致泄漏
+https://blog.csdn.net/m0_70962382/article/details/133991403
