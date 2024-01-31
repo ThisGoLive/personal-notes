@@ -21,3 +21,6 @@ Untitled.ipynb 文件
   - notebook_dir 对应的路径下
 
 用于 ipython 的笔记记录。
+
+
+[详解Python文件： .py、.ipynb、.pyi、.pyc、​.pyd ！](https://mp.weixin.qq.com/s/jOJwH7TFXmGMUiCkI4hbMg)

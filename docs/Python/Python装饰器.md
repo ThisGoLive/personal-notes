@@ -1,0 +1,1 @@
+[理解Python装饰器的3个案例](https://mp.weixin.qq.com/s/27nqdO-UJxaa5zhsMFyi6Q)

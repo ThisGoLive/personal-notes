@@ -5,7 +5,7 @@ import { useData } from 'vitepress'
 
 const { theme } = useData()
 const sidebar = 'sidebar'
-const root_path = '/Golang/'
+const root_path = '/Golang/web/'
 
 function filter(items) {
     if (items.length < 2) {
