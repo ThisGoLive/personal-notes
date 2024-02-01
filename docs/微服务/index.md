@@ -1,6 +1,27 @@
-+ [017 缓存](./017%20缓存.md)
-+ [024 TCPIP](./024%20TCPIP.md)
-+ [025 RPC](./025%20RPC.md)
-+ [026 秒杀服务的大致方向点](./026%20秒杀服务的大致方向点.md)
-+ [027 zookeeper](./027%20zookeeper.md)
-+ [微服务的演化](./微服务的演化.md)
+## 自动生成目录
+
+<script setup>
+import { useData } from 'vitepress'
+
+const { theme } = useData()
+const sidebar = 'sidebar'
+const root_path = '/微服务/'
+
+function filter(items) {
+    if (items.length < 2) {
+        return false
+    }
+    return items.filter(item => item.path.startsWith(root_path)).length > 1
+}
+</script>
+
+<ul>
+    <li v-for = " (item, index) in theme[sidebar][root_path]">
+        <a :href=item.link>{{item.text}}</a>
+        <ol>
+            <li v-if=filter(item.items) v-for = "(item2, index) in item.items">
+                <a :href=item2.path>{{item2.text}}</a>
+            </li>
+        </ol>
+    </li>
+</ul>
