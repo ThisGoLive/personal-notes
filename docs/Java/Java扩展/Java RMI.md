@@ -1,24 +1,24 @@
-[����](https://www.cnblogs.com/xt0810/p/3640167.html)
+[远程方法调用](https://www.cnblogs.com/xt0810/p/3640167.html)
 
-�����룺Զ�̵Ĺ����ӿ� ���� �̳�Remote��ǽӿ�
 
-��������ˣ�
+
+服务端
 
 ```java
 public class Entry {
      public static void main(String []args) throws AlreadyBoundException, RemoteException{
          UserManagerImp userManager = new UserManagerImp();
          UserManagerInterface userManagerI =(UserManagerInterface)UnicastRemoteObject.exportObject(userManager,0);
-        // ����Զ�̽ӿڷ������õ� �˿�
+        // ???????????????�? ???
         Registry registry = LocateRegistry.createRegistry(2004);
-        // �˿ڽ�ֵ
+        // ?????
         registry.rebind("userManager", userManagerI);
          
         }
  }
 ```
 
-�ͻ���ȡֵ��
+客户端
 
 ```java
 public static void main(String []args){
