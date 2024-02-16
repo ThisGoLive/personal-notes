@@ -31,5 +31,6 @@ public class Thread implements Runnable {
     ThreadLocal.ThreadLocalMap threadLocals = null;
 }
 ```
+
 ThreadLocal value 导致泄漏
 https://blog.csdn.net/m0_70962382/article/details/133991403

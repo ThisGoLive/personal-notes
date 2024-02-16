@@ -2,7 +2,7 @@
 
 [16.04](https://blog.csdn.net/liuqingsongmsdn2014/article/details/76089871/)
 
-### 18.04  采用netplan作为网络配置管理 
+### 18.04  采用netplan作为网络配置管理
 
 1. 打开配置文件
 
@@ -35,13 +35,8 @@ sudo vi /etc/resolv.conf
 # nameserver 114.114.114.114
 ```
 
-
-
 ```shell
-
 sudo dhclient -r # 释放IP
 
 sudo dhclient # 重新获取IP
-
 ```
-

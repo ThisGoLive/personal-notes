@@ -19,5 +19,3 @@ echo startkde >~/.xsession
 
 xfce
 echo xfce4-session >~/.xsession
-
- 

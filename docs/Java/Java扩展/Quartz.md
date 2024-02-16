@@ -46,37 +46,37 @@ startTime和endTime指定的Trigger会被触发的时间区间。在这个区间
 比如SimpleTrigger的MisFire策略有：
 
 - MISFIRE_INSTRUCTION_IGNORE_MISFIRE_POLICY
-
+  
   这个不是忽略已经错失的触发的意思，而是说忽略MisFire策略。它会在资源合适的时候，重新触发所有的MisFire任务，并且不会影响现有的调度时间。
-
+  
   比如，SimpleTrigger每15秒执行一次，而中间有5分钟时间它都MisFire了，一共错失了20个，5分钟后，假设资源充足了，并且任务允许并发，它会被一次性触发。
-
+  
   这个属性是所有Trigger都适用。
 
 - MISFIRE_INSTRUCTION_FIRE_NOW
-
+  
   忽略已经MisFire的任务，并且立即执行调度。这通常只适用于只执行一次的任务。
 
 - MISFIRE_INSTRUCTION_RESCHEDULE_NOW_WITH_EXISTING_REPEAT_COUNT
-
+  
   将startTime设置当前时间，立即重新调度任务，包括的MisFire的
 
 - MISFIRE_INSTRUCTION_RESCHEDULE_NOW_WITH_REMAINING_REPEAT_COUNT
-
+  
   类似MISFIRE_INSTRUCTION_RESCHEDULE_NOW_WITH_EXISTING_REPEAT_COUNT，区别在于会忽略已经MisFire的任务
 
 - MISFIRE_INSTRUCTION_RESCHEDULE_NEXT_WITH_EXISTING_COUNT
-
+  
   在下一次调度时间点，重新开始调度任务，包括的MisFire的
 
 - MISFIRE_INSTRUCTION_RESCHEDULE_NEXT_WITH_REMAINING_COUNT
-
+  
   类似于MISFIRE_INSTRUCTION_RESCHEDULE_NEXT_WITH_EXISTING_COUNT，区别在于会忽略已经MisFire的任务。
 
 - MISFIRE_INSTRUCTION_SMART_POLICY
-
+  
   所有的Trigger的MisFire默认值都是这个，大致意思是“把处理逻辑交给聪明的Quartz去决定”。基本策略是，
-
+  
   1. 如果是只执行一次的调度，使用MISFIRE_INSTRUCTION_FIRE_NOW
   2. 如果是无限次的调度(repeatCount是无限的)，使用MISFIRE_INSTRUCTION_RESCHEDULE_NEXT_WITH_REMAINING_COUNT
   3. 否则，使用MISFIRE_INSTRUCTION_RESCHEDULE_NOW_WITH_EXISTING_REPEAT_COUNT

@@ -13,5 +13,3 @@ sdk use xxx version
 # Default
 sdk default xxx
 ```
-
-

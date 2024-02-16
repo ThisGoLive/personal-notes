@@ -20,14 +20,14 @@ https://shumeipai.nxez.com/2017/09/13/raspberry-pi-network-configuration-before-
 country=CN
 ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
 update_config=1
- 
+
 network={
 ssid="WiFi-A"
 psk="12345678"
 key_mgmt=WPA-PSK
 priority=1
 }
- 
+
 network={
 ssid="WiFi-B"
 psk="12345678"
@@ -152,4 +152,3 @@ sudo dpkg --force-all -P libseccomp2
 # 安装新 https://packages.debian.org/sid/armhf/libseccomp2/download
 sudo dpkg -i  xxx
 ```
-

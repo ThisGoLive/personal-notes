@@ -46,3 +46,6 @@ https://www.jianshu.com/p/71bc0c8295ed
 
 ## C++代码与Python无缝集成
 https://github.com/pybind/pybind11
+
+## Python 调用JS的四种方式
+https://www.cnblogs.com/QYGQH/p/16827424.html

@@ -1,7 +1,5 @@
 参考资料：好好学Java https://mp.weixin.qq.com/s/Dd_7yUh3lq3TqE2cjsYXvw
 
- 
-
 JDK8新特性里提供了3个时间类：LocalDate、LocalTime、LocalDateTime
 
 在项目开发中，已经需要对Date类型进行格式，否则可读性很差，格式化Date类型要使用SimpleDateFormat，但SimpleDateFormat是现成不安全的。
@@ -45,7 +43,6 @@ private StringBuffer format(Date date, StringBuffer toAppendTo, FieldDelegate de
     }
 ```
 
-
 　　calendar是共享变量，并且这个共享变量没有做线程安全控制。当多个线程同时使用相同的SimpleDateFormat对象【如用static修饰的SimpleDateFormat】调用format方法时，多个线程会同时调用calendar.setTime方法，可能一个线程刚设置好time值 另外的一个线程马上把设置的time值给修改了导致返回的格式化时间可能是错误的。
 
 　　在多并发情况下使用SimpleDateFormat需格外注意  SimpleDateFormat除了format是线程不安全以外，parse方法也是线程不安全的。parse方法实际调用alb.establish(calendar).getTime()方法来解析，alb.establish(calendar)方法里主要完成了
@@ -87,8 +84,6 @@ DayOfWeek dayOfWeek = localDate.getDayOfWeek();   //结果：TUESDAY
 int dayOfWeek1 = localDate.get(ChronoField.DAY_OF_WEEK); //结果：2
 ```
 
- 
-
 **2.2 LocalTime**
 
 　　LocalTime是时间处理类，具体API如下：
@@ -109,8 +104,6 @@ int second = localTime.getSecond();   // 结果：10
 int second1 = localTime.get(ChronoField.SECOND_OF_MINUTE); // 结果：10
 ```
 
- 
-
 **2.3 LocalDateTime**
 
 　　LocalDateTime可以设置年月日时分秒，相当于LocalDate + LocalTime
@@ -129,7 +122,6 @@ LocalDate localDate2 = localDateTime.toLocalDate();
 LocalTime localTime2 = localDateTime.toLocalTime();
 ```
 
-
 **2.4 Instant**
 
 ```java
@@ -142,8 +134,6 @@ long currentMilli = instant.toEpochMilli();
 ```
 
 　　如果只是为了获取秒数或者毫秒数，使用System.currentTimeMillis()来得更为方便
-
- 
 
 **2.5 修改LocalDate、LocalTime、LocalDateTime、Instant**
 

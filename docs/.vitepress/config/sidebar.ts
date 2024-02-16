@@ -44,8 +44,6 @@ const sidebarConfig:DefaultTheme.Sidebar = builderSidebarMulti('/docs/', '', [],
     // '/微服务/': builderSidebar('微服务'),
     // '/MessageQueue/': builderSidebar('MessageQueue'),
     // '/extend/': builderSidebar('extend'),
-    
-    
 // }
 
 export default sidebarConfig;

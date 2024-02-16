@@ -140,3 +140,7 @@ https://www.bilibili.com/video/BV1e84y1B7s3
 
 基本使用同 npm，甚至代理都可以通用。
 只是拓展了一些功能，如 pnpm monorepo
+
+## nodejs 运行时
+
+https://www.cnblogs.com/moiom/p/16975320.html

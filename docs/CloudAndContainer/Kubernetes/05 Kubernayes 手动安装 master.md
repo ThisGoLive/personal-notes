@@ -272,7 +272,6 @@ vim token.csv
 ```tex
 # d5c5d767b64db39db132b433e9c45fbc,kubelet-bootstrap,10001,"system:node-bootstrapper"
 142e7e57f9e70125a2d7e00acb315956,kubelet-bootstrap,10001,"system:node-bootstrapper"
-
 ```
 
 ## **安装kube-apiserver**
@@ -526,13 +525,12 @@ kubectl conf
 --requestheader-group-headers=X-Remote-Group 
 --requestheader-allowed-names=front-proxy-client 
 --requestheader-extra-headers-prefix=X-Remote-Extra-
-
 ```
 
 > 到这里貌似卡住了，很清楚就是 kubectl 的配置问题，请求 一直访问 8080，kube-apiservice 的端口是6443，但是 我找遍了 官网文档与issu 都 没发现 配置模板 以及讨论这个问题的。今天以及弄了一天这个，而且二进制安装 多属于 运维方面，或者毕竟熟悉的。
->
+> 
 > 收获：1. samba netibios 更加清楚 2. etcd hosts  不能用 域名 3. master 结构清楚了
->
+> 
 > 所以 ：以后我 打算还是 使用 kubeadm 进安装吧，我的时间也不是很多 来折腾这些，搭建了 k8s 后 还要 深入 istio，之前搭建的 k8s 怎么我删了嘛！！！
 
 ## 补充 kubectl 配置
@@ -573,4 +571,3 @@ controller-manager   Healthy   ok
 cp kubectl.kubeconfig /etc/kubernetes/admin.conf
 cp kubectl.kubeconfig ~/.kube/config
 ```
-

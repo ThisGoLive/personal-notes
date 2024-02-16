@@ -10,4 +10,3 @@ apk update
 使用alpine构建基础镜像：
 
 https://blog.csdn.net/weixin_44374482/article/details/90094414
-

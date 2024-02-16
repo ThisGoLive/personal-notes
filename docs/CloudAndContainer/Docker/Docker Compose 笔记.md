@@ -50,6 +50,7 @@ docker network disconnect --force bridge contation_name
 ```
 
 docker network inspect netWorkName
+
 ## 使用 build
 
 ```yaml
@@ -61,7 +62,6 @@ services:
             # build 构建的 iamge tag
             image: node1:latest
 ```
-
 
 ```yaml
 version: '3.2'

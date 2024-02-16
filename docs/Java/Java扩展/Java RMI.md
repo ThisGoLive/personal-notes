@@ -1,7 +1,5 @@
 [远程方法调用](https://www.cnblogs.com/xt0810/p/3640167.html)
 
-
-
 服务端
 
 ```java
@@ -13,7 +11,7 @@ public class Entry {
         Registry registry = LocateRegistry.createRegistry(2004);
         // ?????
         registry.rebind("userManager", userManagerI);
-         
+
         }
  }
 ```
@@ -22,7 +20,7 @@ public class Entry {
 
 ```java
 public static void main(String []args){
-         
+
          try {
              Registry registry = LocateRegistry.getRegistry("localhost",2004);
              UserManagerInterface userManager = (UserManagerInterface)registry.lookup("userManager");
@@ -34,4 +32,3 @@ public static void main(String []args){
          }         
 }
 ```
-

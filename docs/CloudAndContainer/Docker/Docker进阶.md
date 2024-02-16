@@ -40,7 +40,7 @@ sudo pip install -U docker-compose
 
 ```shell
 # 容器执行
-curl -L	https://github.com/docker/compose/releases/download/1. 8.0/run.sh > /usr/local/bin/docker-compose 
+curl -L    https://github.com/docker/compose/releases/download/1. 8.0/run.sh > /usr/local/bin/docker-compose 
 chmod -x /usr/local/bin/docker-compose
 ```
 
@@ -73,7 +73,6 @@ def hello():
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0",debug=True)
-
 ```
 
 Dockrefile
@@ -96,10 +95,9 @@ services:
         build: .
         ports:
             - "5000:5000"
-            
+
     redis:
         image: "redis:alpine"
-        
 ```
 
 ` Version in "./docker-compose.yml" is invalid. You might be seeing this error because you're using the wrong Compose file version. Either specify a supported version (e.g "2.2" or "3.3") and place your service definitions under the `services` key, or omit the `version` key and place your service definitions at the root of the file to use version 1.
@@ -138,8 +136,6 @@ docker-compose build
 # 如果直接使用 docker-compose up 也会走这一步，
 # 并且会创建 test_web 与相关 服务容器
 ```
-
-
 
 #### **子命令 config**
 
@@ -316,14 +312,10 @@ services:
         build: .
         ports:
             - "5000:5000"
-            
+
     redis:
         image: "redis:alpine"
 ```
-
-
-
-
 
 ## 2.2 Machine
 

@@ -7,7 +7,6 @@ netstat -tunlp | grep
 
 which docker
 whereis docker # 查看命令的路径
-
 ```
 
 ### 启动
@@ -60,4 +59,3 @@ sudo systemctl enable ssh.service # 关闭 start 启动
 
 sudo ps -e |grep ssh # 查看 ssh是否开启 有输出
 ```
-

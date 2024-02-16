@@ -1,13 +1,13 @@
 2018/3/6 星期二 下午 13:49:01
 
-# Spring MVC 框架 #
+# Spring MVC 框架
 
 表现层的轻量级框架，是spring在mvc的一个子产品。大体有两种模式：
 一、MVC  ，二、服务到工作者
 
 EzsyUi  echarts
 
-## 流程 ####
+## 流程
 
 核心架构的具体流程步骤如下：
 ![springMVC1](img/springMVC1.png)
@@ -20,7 +20,7 @@ EzsyUi  echarts
 6. View——>渲染，View会根据传进来的Model模型数据进行渲染，此处的Model实际是一个Map数据结构，因此很容易支持其他视图技术；
 7. 返回控制权给DispatcherServlet，由DispatcherServlet返回响应给用户，到此一个流程结束。
 
-#### 关于get和post提交 中文乱码 ####
+#### 关于get和post提交 中文乱码
 
 web.xml设置  并导入过滤器EncodingFilter
 
@@ -34,24 +34,24 @@ web.xml设置  并导入过滤器EncodingFilter
     <param-value>utf-8</param-value>
    </init-param>
   </filter>
- 
+
   <filter-mapping>
    <filter-name>encodingFilter</filter-name>
    <url-pattern>/*</url-pattern>
   </filter-mapping>
 ```
 
-## xml配置 ##
+## xml配置
 
 配置  了解
 
-## 注解配置 ##
+## 注解配置
 
 由于配置文档的方式太多的配置，3.0后就加入了注解，并只是用注解了。
 
 RequestMapping   和 controller
 
-#### 配置文件 ####
+#### 配置文件
 
 ```xml
  <!-- 开启自动扫描 -->
@@ -60,10 +60,10 @@ RequestMapping   和 controller
    <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
    <!-- <context:exclude-filter type="annotation" expression=""/> -->
   </context:component-scan>   
-  
+
   <!-- 开启springmvc注解支持 -->
   <mvc:annotation-driven/>
-  
+
   <!-- 视图解析器 -->
   <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
    <property name="suffix" value=".jsp"></property>
@@ -72,7 +72,7 @@ RequestMapping   和 controller
   </bean>
 ```
 
-### A Controller页面控制器 的 **参数** ###
+### A Controller页面控制器 的 **参数**
 
 + 405  提交方式不被支持
 + 400 参数不匹配
@@ -140,38 +140,39 @@ RequestMapping   和 controller
 
 #### 八、restful风格获取数据    以后将
 
-### B。。。页面控制器 **返回类型** ###
+### B。。。页面控制器 **返回类型**
 
-#### ModelAndView ####
+#### ModelAndView
 
 没有设跳转值时  还是以请求路径作为跳转
 
-#### void ####
+#### void
 
 将请求路径(/xx/yy.jsp)作为 跳转页面
 
-#### String ####
+#### String
 
 反回的字符串 就是  跳转的路径   为空  就同上
 
 支持重定向（return "forward：/xx/yy  "）  和   请求派发(redirect:/xx/yy)
 
-#### map ####
+#### map
 
 还是把请求路径作为跳转页面   往map设值  还是同往Request里设值。
 
-## 表单提交项在springMVC中类型转换 ##
+## 表单提交项在springMVC中类型转换
 
-### 自动转换的数据类型 ###
-#### 1.基本数据类型 ####
+### 自动转换的数据类型
+
+#### 1.基本数据类型
 
 包装数据类型、基础数据和数组   会自动完成数据类型的转换
 
-#### 2.简单对象数据类型 ####
+#### 2.简单对象数据类型
 
 把基本数据类型 的封装 的对象  自动默认装 进对象   ，并且名字一样
 
-#### 3.List ####
+#### 3.List
 
 必须绑定在bean对象 上  。    必须是  
 
@@ -183,10 +184,10 @@ List li =  New  ArrayList<bean2>（）
 
  name="li[n]bean2的属性"  
 若List为String 或者包装类泛型：
- 
+
  name="li[2]"
 
-#### 4.Set ####
+#### 4.Set
 
 基本同List 但要规定个数     Set set = New HashSet();
 
@@ -196,14 +197,15 @@ List li =  New  ArrayList<bean2>（）
 
  name="set[n]bean2的属性"
 
-#### 5.Map ####
+#### 5.Map
 
 还是要绑定到java对象上去。  Map map = new HashMap（）；  没有数量限制  
 
 表单项 必须是 ：
 
  name="map[键]bean2的属性"
-#### 6. 复合数据类型  （对象中还有对象） ####
+
+#### 6. 复合数据类型  （对象中还有对象）
 
 表单项 必须是 ：
 
@@ -226,27 +228,29 @@ List li =  New  ArrayList<bean2>（）
 ```
 
 + 属性编辑器（传统方式）：只是针对当前类有效
-
+  
   @InitBinder  //针对该方法所在类才有效
   protected void 方法名随意（WebDataBinder binder）{
    binder.registerCustomEditor(Data.class,
    new CustomDataEditor(new SimleDataFormat（"yyyy-MM-dd"）,true))
-   
+  
    binder.registerCustomEditor(Data.class,
    new Text())
- 
+  
   }
-+ 类型转换器（大家都能用）
 
++ 类型转换器（大家都能用）
+  
   class 类名 implements Convert<String , Data>{
   
    public Data 实现的方法 (String tet){
     改变格式的代码；
     return data；
    }
- 
+  
   }
-###   ###
+  
+  ### 
 
 Spring—mvc xml 配置
 
@@ -257,13 +261,13 @@ Spring—mvc xml 配置
    <set>
     <bean class="org.framestudy.springmvc02.converter.GolbalUtilDateConverter"></bean>
    </set>
-  
+
   </property>
- 
+
  </bean>
 ```
 
-## 文件上传 ##
+## 文件上传
 
 同理  需要配置  commons-io   和 commons-fileupload 包
 
@@ -271,10 +275,11 @@ enctype="u"
 
  @RequestParam  必须写
 
-#### 文件上传解析器 ####
+#### 文件上传解析器
 
- <!-- 文件上传解析器  必须为此id -->
-  <bean id="multipartResolver"  class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+<!-- 文件上传解析器  必须为此id -->
+
+<bean id="multipartResolver"  class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
    <!-- 单次文件大小限制  byte -1就没有限制  10*1024*1024 代表10M  -->
    <property name="maxUploadSize" value="10*1024*1024"></property>
    <!-- 单次的单个文件大小   maxInMenorySize：每次读取时 只读取多少字节     -->
@@ -284,10 +289,10 @@ enctype="u"
    <!-- uploadTempDir  表示上传时，的临时文件存放目录，默认采用web容器  的 内存    可以自己修改 -->
   </bean>
 
-#### **单文件上传** ####
+#### **单文件上传**
 
 对应的页面控制器 ：
- 
+
  class File {
   @RequestMapping(value="/yy",method={RequestMethod.POST})
   public String upload(@RequestParam("file01") CommonsMultipartFile file){
@@ -310,8 +315,8 @@ enctype="u"
 
 #### 多文件上传
 
-	public String upload( @RequestParam("file") CommonsMultipartFile/MultipartFile[] file){
-   
+    public String upload( @RequestParam("file") CommonsMultipartFile/MultipartFile[] file){
+
    String dir = "D://files";
    String path = ""; 
    try{
@@ -325,7 +330,7 @@ enctype="u"
     }
   }
 
-## 拦截器 ##
+## 拦截器
 
 + 类似过滤器
 + 请求来时可以 走时也可以  
@@ -336,11 +341,11 @@ enctype="u"
 + 拦截器在应用程序内部完成工作  过滤器是在容器中完成的
 + 可以依赖注入   所以在spring中  优先拦截器
 
-### 定义拦截器 ###
+### 定义拦截器
 
 1.实现接口 (HandlerInterceptor)  2.继承
 
-#### 定义拦截器链 ####
+#### 定义拦截器链
 
 spring -mvc xml
 
@@ -354,11 +359,11 @@ spring -mvc xml
  </mvc:Interceptors>
 ```
 
-## 验证 ##
+## 验证
 
 数据格式验证   数据内容验证（一定与后台相关）
 
-#### 格式验证 ####
+#### 格式验证
 
 一般是前端 做 ，但在传输过程中 数据肯能会不安全
 
@@ -366,9 +371,9 @@ spring 的 验证 是 Hibernate 的验证体系
 
 需要做验证的控制器中 方法参数必须为对象   前加注解@  加固定参数参数 BindingResult br 代表验证返回的结果对象
 
-## spirng 的工具类们 ##
+## spirng 的工具类们
 
-### Jackson ###
+### Jackson
 
 整合进了spring 在页面控制器中  不需要再写输出流  
 
@@ -388,7 +393,7 @@ spring 的 验证 是 Hibernate 的验证体系
 
 注意： RequestBody会导致“**延迟加载**    **失败**”     解决  ：1.需要不参与序列化的属性上方使用注解 @JsonIgone  忽略该属性   （不灵活 ） 2. 写过滤器  使用Jackson的核心类，手动完成序列化并且添加对应的 **属性过滤器**
 
-#### 属性过滤器 ####
+#### 属性过滤器
 
 ```java
  class *bean1 { private *Bean2 b}
@@ -411,7 +416,7 @@ spring 的 验证 是 Hibernate 的验证体系
  $.toJSON()  直接将json对象转为javaBean 传递 
 ```
 
-## 国际化 语言 ##
+## 国际化 语言
 
 #### 配置语言资源解析器
 

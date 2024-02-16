@@ -38,8 +38,6 @@ deb [http://mirrors.ustc.edu.cn/debian/](https://links.jianshu.com/go?to=http%3A
 
 **友情提示**：尽管debian testing依然稳定，但是系统从稳定版升级到测试版后，有些软件的依赖会发生变化，可能会导致一些软件无法使用，当然了，这些还是可以解决的，只是有点麻烦，如果不担心这一条，就大胆地升级吧，我是不怕的，你呢?
 
-
-
 作者：王贼臣
 链接：https://www.jianshu.com/p/38708aeb1252
 来源：简书

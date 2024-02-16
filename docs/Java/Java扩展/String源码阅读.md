@@ -1,6 +1,6 @@
 [[TOC]]
 
-# 继承 
+# 继承
 
 无
 
@@ -20,22 +20,18 @@
 
 看它是否和当前类的serialVersionUID 一致，如果一致就说明序列化的类的版本和当前类的版本是相同的，这个时候可以成功反序列化，否则就说明当前类
 
-和序列化的类相比发生了某些变换，比如成员变量的数量，类型可能发生了改变，这个时候就会抛异常，反序列化失败。	
+和序列化的类相比发生了某些变换，比如成员变量的数量，类型可能发生了改变，这个时候就会抛异常，反序列化失败。    
 
 #### serialPersistentFields
 
 是长度为0的ObjectStreamField数组。
 
-​	一般会用一个ObjectStreamField数组来声明一个类中的串行化字段 。
-
-
+​    一般会用一个ObjectStreamField数组来声明一个类中的串行化字段 。
 
  **串行化和并行化**
 
 ​     **串行化**也叫做序列化,就是把存在于内存的对象数据转化成可以保存成硬盘文件的形式去存储;
      **并行化**也叫反序列化,就是把序列化后的硬盘文件加载到内存,重新变成对象数据.
-
-
 
 就是对
 
@@ -50,23 +46,24 @@
 
 #### String():
 
-​	就是创建的 字符串“”的值 赋值给this.value
+​    就是创建的 字符串“”的值 赋值给this.value
 
 #### String(String va);
 
-​	va的值 赋值给this.value。并且 hash值也一起赋值了。
+​    va的值 赋值给this.value。并且 hash值也一起赋值了。
 
 #### String(char[] va);
 
-​	调用的 Array.copyOf 将va 复制给 this.value。
+​    调用的 Array.copyOf 将va 复制给 this.value。
 
 #### String(char value[], int offset, int count)
 
-​	基本同上 Arrays.copyOfRange 。开始下标 offset 与 长度 count。不过事先判断。
+​    基本同上 Arrays.copyOfRange 。开始下标 offset 与 长度 count。不过事先判断。
 
 #### String(int[] codePoints, int offset, int count)；
 
-​	通过Character类中静态方法，移位符号，判断codePoints的每一项，是否是**Unicode编码**，即小于65536，或者小于1114112. 再转换为一位或者两位char赋值给value。
+​    通过Character类中静态方法，移位符号，判断codePoints的每一项，是否是**Unicode编码**，即小于65536，或者小于1114112. 再转换为一位或者两位char赋值给value。
+
 ```
 <<      :     左移运算符，num << 1,相当于num乘以2
 
@@ -74,7 +71,8 @@
 
 >>>    :     无符号右移，忽略符号位，空位都以0补齐
 ```
-​	
+
+​    
 
 #### String(byte ascii[], int hibyte, int offset, int count)；
 
@@ -86,7 +84,7 @@
 
 还是byte转char ,charsetName为编码集。默认ISO-8859-1
 
-####  public String(byte bytes[], int offset, int length, Charset charset)
+#### public String(byte bytes[], int offset, int length, Charset charset)
 
 基本同上。Charset 类判断字符集
 
@@ -116,7 +114,7 @@
 
 看不懂，貌似又和Unicode 编码集有关
 
-####  byte[] getBytes(String charsetName)
+#### byte[] getBytes(String charsetName)
 
 得到对应字符集的 字节数组
 
@@ -134,7 +132,7 @@ contentEquals(CharSequence cs)   nonSyncContentEquals(AbstractStringBuilder sb)
 
 比较两个字符串 相当
 
-#### compareTo(String anotherString) 
+#### compareTo(String anotherString)
 
 比较器 升序 Comparator`<String>` CASE_INSENSITIVE_ORDER 静态 自带 比较器
 
@@ -158,7 +156,7 @@ this 与 suffix 从后往前 比较 是否包含
 
 ch unicon码值 在fromIndex 位开始 算 。第几位出现
 
-#### lastIndexOf(int ch, int fromIndex) 
+#### lastIndexOf(int ch, int fromIndex)
 
 同理 最后一个出现 的下标
 
@@ -186,30 +184,28 @@ ch unicon码值 在fromIndex 位开始 算 。第几位出现
 
 正则 判断
 
-#### split(String regex, int limit) 
+#### split(String regex, int limit)
 
 正则 拆分
 
-#### toLowerCase(Locale locale) toUpperCase() 
+#### toLowerCase(Locale locale) toUpperCase()
 
 把字母变为小写。
 
 ```java
  scan: {
-     
+
      break scan;
  }
 ```
 
 跳出多重循环 
 
-
-
 #### trim()
 
 去掉空格
 
-#### valueOf系列 
+#### valueOf系列
 
 基本类 都是转换成 包装类 toString
 
@@ -221,4 +217,3 @@ native 是说底层 接口 实现的。Java 7 开始。主要就是，堆中有�
 System.out.println("123" == new String("123"));//false
 System.out.println("123" == new String("123").intern());//true
 ```
-

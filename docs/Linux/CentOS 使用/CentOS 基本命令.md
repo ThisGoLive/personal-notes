@@ -24,7 +24,6 @@ sudo vim  /etc/sysconfig/network-scripts/ifcfg-ens33
 ![1562337083550](assets/1562337083550.png)
 
 ```shell
-
 # cd /etc/sysconfig/network-scripts
 
 TYPE=Ethernet
@@ -55,10 +54,7 @@ ONBOOT=yes
 systemctl restart network.service
 # service network restart
 Restarting network (via systemctl):                 
-
 ```
-
-
 
 ![1562336823731](assets/1562336823731.png)
 
@@ -67,4 +63,3 @@ Restarting network (via systemctl):
 ```shell
 service network restart
 ```
-

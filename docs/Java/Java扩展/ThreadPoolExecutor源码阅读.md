@@ -5,25 +5,26 @@
 ## 创建
 
      * @param corePoolSize
-     * 		线程池维护线程的最少数量
+     *         线程池维护线程的最少数量
      * @param maximumPoolSize
-     * 		线程池维护线程的最大数量
+     *         线程池维护线程的最大数量
      * @param keepAliveTime
-     * 		 线程池维护线程所允许的空闲时间
+     *          线程池维护线程所允许的空闲时间
      * @param unit
-     * 		线程池维护线程所允许的空闲时间的单位
+     *         线程池维护线程所允许的空闲时间的单位
      * @param  new ArrayBlockingQueue<Runnable>(workQueueNum)
-     * 		线程池所使用的缓冲任务队列
+     *         线程池所使用的缓冲任务队列
      * @param threadFactory
-     * 		线程工厂,为空时，调用默认工厂
+     *         线程工厂,为空时，调用默认工厂
      * @param rejectedExecutionHandler 
-     * 		线程拒绝策略，为空时，调用默认handler
+     *         线程拒绝策略，为空时，调用默认handler
+
 ## 使用
 
 ![线程池执行流程图.jpg](assets/163349e503061169.jpg) 
 
      * 线程池理解：<br>
-     * 第一步：	<br>
+     * 第一步：    <br>
      * 线程池开始的步骤，及线程池对象调用execute(Runable)或者submit(Runable)时，<br>
      * 会先，判断是否达到最小维护数量。没有即创建Runable线程对象，到最小线程池中。<br>
      * 知道满足要求，开始执行第二步。<br>
@@ -82,4 +83,3 @@
             reject(command);
     }
 ```
-

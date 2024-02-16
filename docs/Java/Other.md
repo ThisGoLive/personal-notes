@@ -1,5 +1,5 @@
-
 ## 资源
+
 Java 8 中的 Streams API 详解
 https://www.ibm.com/developerworks/cn/java/j-lo-java8streamapi/
 
@@ -83,7 +83,6 @@ https://baijiahao.baidu.com/s?id=1703317782540595879&wfr=spider&for=pc
 
 https://murmele.github.io/Gittyup/ 全平台 gitui
 
-
 https://www.jianshu.com/p/b9f3f6a16911 netty
 https://blog.csdn.net/lmdsoft/article/details/105618052
 https://www.sohu.com/a/272879207_463994
@@ -94,7 +93,6 @@ https://zhuanlan.zhihu.com/p/504962687 NIO
 spring boot  启动流程  https://zhuanlan.zhihu.com/p/402183883
 netty  相关问题
 zookeeper 相关问题
-
 
 https://www.sohu.com/a/343766701_120097842  教派
 
@@ -185,8 +183,8 @@ scriptEngineManager.getEngineFactories().forEach(item -> {
     DecimalFormat format = new DecimalFormat("#,####");
     System.out.println(name + ":" + format.format(stop));
 });
-
 ```
+
 脚本设计
 https://my.oschina.net/crossoverjie/blog/5566734
 

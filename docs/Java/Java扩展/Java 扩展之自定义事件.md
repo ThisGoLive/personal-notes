@@ -15,11 +15,11 @@ event source 事物
 ```java
 public class FacEentity extends EventObject {
     private static final long serialVersionUID = 3104857515436522399L;
-    
-    
+
+
     public FacEentity(Object arg0) {
-	super(arg0);
-	
+    super(arg0);
+
     }
 }
 ```
@@ -39,21 +39,21 @@ public interface CreateBeanListenter extends EventListener {
 public class POJO {
 
     private Vector<CreateBeanListenter> repository = new Vector<CreateBeanListenter>();  
-    
+
     public void addListenter(CreateBeanListenter cbl) {
-	repository.addElement(cbl);
+    repository.addElement(cbl);
     }
     public void romoveListener(CreateBeanListenter cbl){ 
         repository.remove(cbl); 
     } 
     public void doing() {
-	System.out.println("这个POJO在doing");
-	Enumeration<CreateBeanListenter> ele = repository.elements();
-	for (CreateBeanListenter createBeanListenter : repository) {
-	    System.out.println("触发事件");
-	    createBeanListenter.creatEntity(new FacEentity(this));
-	}
-	
+    System.out.println("这个POJO在doing");
+    Enumeration<CreateBeanListenter> ele = repository.elements();
+    for (CreateBeanListenter createBeanListenter : repository) {
+        System.out.println("触发事件");
+        createBeanListenter.creatEntity(new FacEentity(this));
+    }
+
     }
 }
 ```
@@ -63,17 +63,15 @@ public class POJO {
 ```java
 public class AppTest {
     public static void main(String[] args) {
-	POJO myh = new POJO();
-	myh.addListenter(new CreateBeanListenter() {
-	    
-	    @Override
-	    public void creatEntity(FacEentity ent) {
-			System.out.println("触发该事件！");
-	    }
-	});
-	myh.doing();
+    POJO myh = new POJO();
+    myh.addListenter(new CreateBeanListenter() {
+
+        @Override
+        public void creatEntity(FacEentity ent) {
+            System.out.println("触发该事件！");
+        }
+    });
+    myh.doing();
     }
 }
-
 ```
-

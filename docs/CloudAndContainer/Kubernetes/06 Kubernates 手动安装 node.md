@@ -19,11 +19,11 @@ sudo mkdir /etc/kubernetes/{ssl,bin} -p
 
 sudo cp kubernetes/node/bin/kubelet ./kubernetes/node/bin/kube-proxy /etc/kubernetes/bin
 cd /etc/kubernetes
-
 ```
 
 ### 准备kubelet配置文件
-```shell 
+
+```shell
 sudo vim kubelet
 #n01
 KUBELET_ARGS="--logtostderr=false \

@@ -6,7 +6,7 @@
 
 ls find cp 不支持正则 所有要用 通配符
 
-#### 通配符 ： * ？ [] 
+#### 通配符 ： * ？ []
 
 完全匹配
 
@@ -18,7 +18,7 @@ ls find cp 不支持正则 所有要用 通配符
 
 []：括号中的一个字符
 
-#### 正则表达式 
+#### 正则表达式
 
 包含匹配
 
@@ -37,6 +37,7 @@ awk
 aed
 
 ### 11.2.1 Shell编程-字符截取命令-cut命令
+
 提取一列 （） 文本 间隙 为 制表符（\t）
 
 ![](img/11-2m1.png)
@@ -136,12 +137,12 @@ sd sdf sdf" | sed -n '2p'
 
 ```shell
 if [ 条件判断 ]；then
-	运行语句
+    运行语句
 fi
 或者
 if [ 条件判断 ]
-	then
-		运行
+    then
+        运行
 fi
 ```
 
@@ -149,10 +150,10 @@ fi
 
 ```shell
 if [ 条件判断 ]
-	then
-		运行
-	else
-		运行
+    then
+        运行
+    else
+        运行
 fi
 ```
 
@@ -160,30 +161,28 @@ fi
 
 ```shell
 if [ 条件判断 ]
-	then
-		运行
-	elif [ 条件 ]
-		运行
-	else
-		运行
+    then
+        运行
+    elif [ 条件 ]
+        运行
+    else
+        运行
 fi
 ```
-
-
 
 ### 11.5.2 Shell编程-流程控制-case语句
 
 ```shell
 case $变量名 in
-	“值1”）
-		运行
-		;;//不往下执行
-	“值2”）
-		运行
-		;;
-	*）
-		都不行 就执行这个
-		;;
+    “值1”）
+        运行
+        ;;//不往下执行
+    “值2”）
+        运行
+        ;;
+    *）
+        都不行 就执行这个
+        ;;
 easc
 ```
 
@@ -193,18 +192,18 @@ easc
 
 ```shell
 for 变量 in 值1 值2 值3 值4 # 有多少值 空格区分 执行多少次 每次赋值给变量
-	do
-		运行
-	done
+    do
+        运行
+    done
 ```
 
 ```shell
 cd /tmp/guoli
 ls *.tar.gz > ls.log # 不知道执行次数
 for i in $(cat ls.log)
-	do
-		tar -zxf $i &>/dev/null
-	done
+    do
+        tar -zxf $i &>/dev/null
+    done
 rm -rf /tmp/guoli/ls.log
 ```
 
@@ -212,17 +211,17 @@ rm -rf /tmp/guoli/ls.log
 
 ```shell
 for (( 初始值;循环控制条件;变量变换))
-	do
-		运行
-	done
+    do
+        运行
+    done
 ```
 
 ```shell
 s=0
 for(( i=1;i<=100;i=i+1))
-	do
-		s=$(( $s+$i ))
-	done
+    do
+        s=$(( $s+$i ))
+    done
 ```
 
 ### 11.5.4 Shell编程-流程控制-while循环与until循环
@@ -231,9 +230,9 @@ for(( i=1;i<=100;i=i+1))
 
 ```shell
 while [ 条件判断 ]
-	do
-		运行
-	done
+    do
+        运行
+    done
 ```
 
 #### until循环

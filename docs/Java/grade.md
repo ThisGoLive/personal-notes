@@ -2,8 +2,6 @@
 
 # 一、基础篇
 
-  
-
 ## JVM
 
 #### JVM内存结构
@@ -36,13 +34,9 @@ classLoader、类加载过程、双亲委派（破坏双亲委派）、模块化
 
 jps, jstack, jmap、jstat, jconsole, jinfo, jhat, javap, btrace、TProfiler
 
-  
-
 编译与反编译
 
 javac 、javap 、jad 、CRF
-
-  
 
 ## Java基础知识
 
@@ -164,8 +158,6 @@ junit、mock、mockito、内存数据库（h2）
 
 Java中语法糖原理、解语法糖
 
-  
-
 ## Java并发编程
 
 #### 什么是线程，与进程的区别
@@ -220,8 +212,6 @@ synchronized和lock之间关系
 
 # 二、 进阶篇
 
-  
-
 ## Java底层知识
 
 #### 字节码、class文件格式
@@ -233,8 +223,6 @@ synchronized和lock之间关系
 #### 位运算
 
 用位运算实现加、减、乘、除、取余
-
-  
 
 ## 设计模式
 
@@ -251,8 +239,6 @@ synchronized和lock之间关系
 #### 不用synchronized和lock，实现线程安全的单例模式
 
 #### nio和reactor设计模式
-
-  
 
 ## 网络编程
 
@@ -284,8 +270,6 @@ cookie被禁用，如何实现session
 
 #### 反向代理
 
-  
-
 ## 框架知识
 
 #### Servlet线程安全问题
@@ -310,8 +294,6 @@ Spring Boot的starter原理，自己实现一个starter
 
 #### Spring Security
 
-  
-
 ## 应用服务器
 
 #### JBoss
@@ -322,8 +304,6 @@ Spring Boot的starter原理，自己实现一个starter
 
 #### Weblogic
 
-  
-
 ## 工具
 
 #### git & svn
@@ -333,8 +313,6 @@ Spring Boot的starter原理，自己实现一个starter
 ![img](data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==)
 
 # 三、 高级篇
-
-  
 
 ## 新技术
 
@@ -356,13 +334,9 @@ Jigsaw、Jshell、Reactive Streams
 
 #### Spring Boot 2.0
 
-  
-
 ## 性能优化
 
 使用单例、使用Future模式、使用线程池、选择就绪、减少上下文切换、减少锁粒度、数据压缩、结果缓存
-
-  
 
 ## 线上问题分析
 
@@ -396,8 +370,6 @@ HeapOutOfMemory、  Young OutOfMemory、MethodArea OutOfMemory、ConstantPool  O
 
 如何判断是否存在内存泄露
 
-  
-
 ## 编译原理知识
 
 #### 编译与反编译
@@ -407,8 +379,6 @@ HeapOutOfMemory、  Young OutOfMemory、MethodArea OutOfMemory、ConstantPool  O
 #### Java的反编译工具
 
 #### 词法分析，语法分析（LL算法，递归下降算法，LR算法），语义分析，运行时环境，中间代码，代码生成，代码优化
-
-  
 
 ## 操作系统知识
 
@@ -421,8 +391,6 @@ HeapOutOfMemory、  Young OutOfMemory、MethodArea OutOfMemory、ConstantPool  O
 #### 分段和分页
 
 #### 虚拟内存与主存
-
-  
 
 ## 数据库知识
 
@@ -458,8 +426,6 @@ redis、memcached
 
 #### 性能调优
 
-  
-
 ## 数据结构与算法知识
 
 #### 简单的数据结构
@@ -473,8 +439,6 @@ redis、memcached
 #### 排序算法
 
 各种排序算法和时间复杂度 深度优先和广度优先搜索 全排列、贪心算法、KMP算法、hash算法、海量数据处理
-
-  
 
 ## 大数据知识
 
@@ -497,8 +461,6 @@ HDFS、MapReduce
 #### 分布式日志收集flume，kafka，logstash
 
 #### 数据挖掘，mahout
-
-  
 
 ## 网络安全知识
 
@@ -532,8 +494,6 @@ memcached为什么可以导致DDos攻击、什么是反射型DDoS
 
 # 四、架构篇
 
-  
-
 ## 分布式
 
 数据一致性、服务治理、服务降级
@@ -558,8 +518,6 @@ mfs、fastdfs
 
 缓存一致性、缓存命中率、缓存冗余
 
-  
-
 ## 微服务
 
 SOA、康威定律
@@ -572,8 +530,6 @@ SOA、康威定律
 
 #### Spring Cloud
 
-  
-
 ## 高并发
 
 #### 分库分表
@@ -583,8 +539,6 @@ SOA、康威定律
 #### 消息队列
 
 ActiveMQ
-
-  
 
 ## 监控
 
@@ -602,19 +556,13 @@ CPU、内存、磁盘I/O、网络I/O等
 
 #### Dapper
 
-  
-
 ## 负载均衡
 
 tomcat负载均衡、Nginx负载均衡
 
-  
-
 DNS
 
 DNS原理、DNS的设计
-
-  
 
 CDN
 
@@ -624,25 +572,17 @@ CDN
 
 # 五、 扩展篇
 
-  
-
 ## 云计算
 
 IaaS、SaaS、PaaS、虚拟化技术、openstack、Serverlsess
-
-  
 
 ## 搜索引擎
 
 Solr、Lucene、Nutch、Elasticsearch
 
-  
-
 ## 权限管理
 
 Shiro
-
-  
 
 ## 区块链
 
@@ -656,8 +596,6 @@ Shiro
 
 #### 超级账本
 
-  
-
 人工智能
 
 数学基础、机器学习、人工神经网络、深度学习、应用场景。
@@ -665,8 +603,6 @@ Shiro
 #### 常用框架
 
 TensorFlow、DeepLearning4J
-
-  
 
 ## 其他语言
 

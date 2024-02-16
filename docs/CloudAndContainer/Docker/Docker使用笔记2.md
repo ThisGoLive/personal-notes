@@ -19,18 +19,15 @@ sudo systemctl restart docker
                 "https://registry.docker-cn.com"
         ]
 }
-
 ```
 
 ## 常用命令
 
 ```shell
 docker container stop
-docker	container	rm 禁止状态的容器名称
-docker	container	prune # 删除全部禁止状态的容器
+docker    container    rm 禁止状态的容器名称
+docker    container    prune # 删除全部禁止状态的容器
 ```
-
-
 
 ## 遇到的错误
 
@@ -53,7 +50,7 @@ sudo service docker start
 
 ### 无法运行
 
->Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?.
+> Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?.
 
 怀疑是我 删除了 docker.pid 导致的。后面重装docker 也没有解决问题。
 
@@ -64,20 +61,20 @@ sudo service docker start
 容器启动后，使用
 
 ```shell
-	docker	export contID > 名称
+    docker    export contID > 名称
 ```
 
 导入
 
 ```shell
-cat	ubuntu.tar	|	docker	import	-	test/ubuntu:v1.0
+cat    ubuntu.tar    |    docker    import    -    test/ubuntu:v1.0
 ```
 
 ## 容器间互联
 
 ```shell
 docker network所有子命令如下：
- 
+
 docker network create
 docker network connect
 docker network ls
@@ -85,7 +82,7 @@ docker network rm
 docker network disconnect
 docker network inspect
 
-docker	network	create	-d	bridge	my-net # 构建容器 间的网络
+docker    network    create    -d    bridge    my-net # 构建容器 间的网络
 ```
 
 # 开启docker-ce 2375端口
@@ -95,20 +92,20 @@ docker	network	create	-d	bridge	my-net # 构建容器 间的网络
 ### ubuntu
 
 1. 临时开启 ，通过dockerd启动docker 
-
+   
    ```bash
     sudo dockerd -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock &
    ```
 
 2. 永久配置 可能有问题
-
+   
    ```bash
    vim /lib/systemd/system/docker.service
    # ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:2375 -H -fd:// --containerd=/run/containerd/containerd.sock
    ```
-
+   
    centos
-
+   
    /usr/lib/systemd/system/docker.service 
 
 ```shell
@@ -127,13 +124,10 @@ https://www.jianshu.com/p/c32c9f24b941
 "storage-driver": "vfs"
 ```
 
-
-
 ```bash
 sudo systemctl restrt systemd-logind
 [root@localhost ~]# docker ps -a 
 Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
-
 ```
 
 https://www.freesion.com/article/3515711389/

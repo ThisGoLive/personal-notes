@@ -1,19 +1,21 @@
 ## 01 ts基本类型
+
 1. number
-    + 整数
-    + 小数
-    + 0b
-    + 0o
-    + 0x
-    + NaN
+   + 整数
+   + 小数
+   + 0b
+   + 0o
+   + 0x
+   + NaN
 2. string
 3. boolean
 4. undefined  null,基本相同 需要设置 strict:false
 5. void 函数返回值
 6. unknown any, unknown 不能设置属性和方法
-    + 区别 any 类型的数据可以设置属性. unknown 不能
+   + 区别 any 类型的数据可以设置属性. unknown 不能
 
 ## 02 联合类型与断言
+
 ### 联合类型
 
 不同类型绑定到一个对象上
@@ -61,7 +63,6 @@ let list7:string[][] = [[], []]
 ## 04 接口
 
 ```typescript
-
 interface IUser {
     name: string
     name2?: string
@@ -73,7 +74,7 @@ interface IUser {
 let user: IUser & IUser2 = {
     name: "xxx",
     func1: function(param: string) {
-    
+
     }
 }
 
@@ -97,7 +98,6 @@ type func = (name :string, num :number) => void
 let func1 ：func = function(name:string, num:number) {}
 
 // 同名别名 报错
-
 ```
 
 ## 06 函数类型
@@ -106,7 +106,6 @@ let func1 ：func = function(name:string, num:number) {}
 2. 默认值
 
 ```typescript
-
 // 默认值
 function func1(num:number = 10) ： void  {}
 
@@ -152,20 +151,19 @@ function getUserName<V extends keyof User>(user:User, key: V) : User<V> {
     return user[key];
 }
 // keyof 相当于 将 该类型分解得到属性名称,  type name = 'user' | ...
-
 ```
 
 ## 09 内置类型
 
 1. ES 中的对象
-    1. new Date()
-    2. new RegExp("")  /.*?*/
+   1. new Date()
+   2. new RegExp("")  /.*?*/
 2. DOM BOM
-    1. HTMLElementTagNameMap
-    2. document.querySelector()
+   1. HTMLElementTagNameMap
+   2. document.querySelector()
 3. Promise
-    1. then
-    2. error
+   1. then
+   2. error
 
 ## 10 tsconfig.json
 
@@ -224,7 +222,6 @@ function getUserName<V extends keyof User>(user:User, key: V) : User<V> {
   "exclude" : {
   }
 }
-
 ```
 
 ## 11 xx.d.ts
@@ -246,6 +243,7 @@ MethodDecorator 方法装饰器
 参数装饰器
 
 开启配置
+
 ```json
   /* 其他选项 */
   "experimentalDecorators": true, // 启⽤装饰器
@@ -287,5 +285,4 @@ const methodApp = (str:string):MethodDecorator => {
         // decriptor.value
     }
 }
-
 ```

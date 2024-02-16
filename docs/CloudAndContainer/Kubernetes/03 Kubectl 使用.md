@@ -26,7 +26,7 @@ kubectl log
 # 将本地端口 转发到 Pod
 kubectl port-forward
 
-# 为	Kubernetes	API	server	启动代理服务器
+# 为    Kubernetes    API    server    启动代理服务器
 proxy
 
 # 在集群中使用指定镜像启动容器
@@ -44,7 +44,7 @@ config
 # 显示集群信息
 cluster-info
 
-# 以	"组/版本"	的格式输出服务端支持的	API	版本
+# 以    "组/版本"    的格式输出服务端支持的    API    版本
 api-versions
 
 # 输出服务端和客户端的版本信息
@@ -52,6 +52,4 @@ version
 
 #显示各个命令的帮助信息
 help
-
 ```
-

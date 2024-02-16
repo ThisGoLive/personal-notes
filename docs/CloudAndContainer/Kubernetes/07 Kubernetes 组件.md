@@ -29,14 +29,12 @@ Master组件可以在集群中任何节点上运行。但是为了简单起见�
 - 端点（Endpoints）控制器：填充Endpoints对象（即连接Services＆Pods）。
 
 - Service Account
-
-  和Token控制器：为新的
-
-  Namespace
-
-   创建默认帐户访问API Token。
-
   
+  和Token控制器：为新的
+  
+  Namespace
+  
+   创建默认帐户访问API Token。
 
 ### cloud-controller-manager
 
@@ -53,8 +51,6 @@ cloud-controller-manager 具体功能：
 - Service控制器
 
 - 卷（Volume）控制器
-
-  
 
 ### kube-scheduler
 

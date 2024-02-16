@@ -7,7 +7,6 @@ spotify 、fabric8
 [dockerfile-maven-version](https://hub.fastgit.org/spotify/dockerfile-maven)
 
 ```xml
-
 <plugin>
   <groupId>com.spotify</groupId>
   <artifactId>docker-maven-plugin</artifactId>

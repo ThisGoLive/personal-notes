@@ -55,11 +55,14 @@ export const builderSidebarItem = (rootPath: string, directoryName: string, fath
 }
 
 
-//  '/Java/': builderSidebar('Java'), SidebarMulti
 /**
- * rootPath / /docs/
+ * 自动生成侧边栏
+ * @param rootPath 文档所在的的根目录 / 或者 /docs/
+ * @param directoryName 需要生成目录的文件名称 根目录为空 文件夹即文件名
+ * @param fatherItemList 上级文件或文件夹所生成的数据
+ * @param num 文件夹的层数，用于获取图标
  */
-export const builderSidebarMulti = (rootPath: string, directoryName: string, fatherItemList: any[], num : number) : Object[] => {
+export const builderSidebarMulti = function (rootPath: string, directoryName: string, fatherItemList: any[], num : number) : Object[] {
     let nowPathStr  = rootPath + directoryName
     const dirPath = path.join(DIR_PATH, nowPathStr)
     
@@ -82,6 +85,7 @@ export const builderSidebarMulti = (rootPath: string, directoryName: string, fat
             val[directoryName + "/" + fileName + "/"] = itemList
 
             let detail = builderSidebarMulti(rootPath, directoryName + "/" + fileName, itemList, nowNum)
+            // 于将所有可枚举属性的值从一个或多个源对象复制到目标对象
             val = Object.assign(val, detail)
         }
     }
@@ -89,9 +93,15 @@ export const builderSidebarMulti = (rootPath: string, directoryName: string, fat
 }
 
 
-// =================================== 可折叠的侧边栏组  不需要文件夹下的 index.md ===========================
-// SidebarItem
-export const builderSidebarItem2 = (rootPath: string, directoryName: string, fatherDirectoryName: string) : Object[] => {
+// ==============================================================
+/**
+ * 可折叠的侧边栏组  不需要文件夹下的 index.md SidebarItem
+ * @param rootPath 文档所在的的根目录 / 或者 /docs/
+ * @param directoryName 需要生成目录的文件名称 根目录为空 文件夹即文件名
+ * @param fatherDirectoryName 父文件夹名称
+ * @returns 
+ */
+export const builderSidebarItem2 = function (rootPath: string, directoryName: string, fatherDirectoryName: string) : Object[] {
     // 获取pathname
     let nowPathStr  = rootPath + fatherDirectoryName + "/" + directoryName
     const dirPath = path.join(DIR_PATH, nowPathStr)

@@ -1,4 +1,5 @@
-#  Java自定义注解和运行时靠反射获取注解  #
+# Java自定义注解和运行时靠反射获取注解
+
  java自定义注解
 [[../Java扩展/java 注解的原理|java 注解的原理]]
 Java注解是附加在代码中的一些元信息，用于一些工具在编译、运行时进行解析和使用，起到说明、配置的功能。
@@ -21,7 +22,7 @@ Java注解是附加在代码中的一些元信息，用于一些工具在编译�
 @Target({ElementType.FIELD,ElementType.METHOD})//定义注解的作用目标**作用范围字段、枚举的常量/方法  
 @Documented//说明该注解将被包含在javadoc中  
 public @interface FieldMeta {  
-  
+
     /** 
      * 是否为序列号 
      * @return 
@@ -55,26 +56,24 @@ public @interface FieldMeta {
 }  
 ```
 
-
-
 实体类：
 [java] view plain copy
 
 ```java
 public class Anno {  
-  
+
     @FieldMeta(id=true,name="序列号",order=1)  
     private int id;  
     @FieldMeta(name="姓名",order=3)  
     private String name;  
     @FieldMeta(name="年龄",order=2)  
     private int age;  
-      
+
     @FieldMeta(description="描述",order=4)  
     public String desc(){  
         return "java反射获取annotation的测试";  
     }  
-      
+
     public int getId() {  
         return id;  
     }  
@@ -93,19 +92,18 @@ public class Anno {
     public void setAge(int age) {  
         this.age = age;  
     }  
-      
+
 }  
 ```
-
 
 获取到注解的帮助类：
 [java] view plain copy
 
 ```java
 public class SortableField {  
-  
+
     public SortableField(){}  
-      
+
     public SortableField(FieldMeta meta, Field field) {  
         super();  
         this.meta = meta;  
@@ -123,7 +121,7 @@ public class SortableField {
     private Field field;  
     private String name;  
     private Class<?> type;  
-      
+
     public FieldMeta getMeta() {  
         return meta;  
     }  
@@ -142,11 +140,11 @@ public class SortableField {
     public void setName(String name) {  
         this.name = name;  
     }  
-  
+
     public Class<?> getType() {  
         return type;  
     }  
-  
+
     public void setType(Class<?> type) {  
         this.type = type;  
     }  
@@ -154,19 +152,18 @@ public class SortableField {
 }  
 ```
 
-
 运行时获取注解，首先创建一个基类：
 [java] view plain copy
 
 ```java
 public class Parent<T> {  
-  
+
     private Class<T> entity;  
-  
+
     public Parent() {  
         init();  
     }  
-  
+
     @SuppressWarnings("unchecked")  
     public List<SortableField> init(){  
         List<SortableField> list = new ArrayList<SortableField>();  
@@ -178,9 +175,9 @@ public class Parent<T> {
         entity = (Class<T>)((ParameterizedType)this.getClass().getGenericSuperclass())  
                 .getActualTypeArguments()[0];  
 //      FieldMeta filed = entity.getAnnotation(FieldMeta.class);  
-          
+
         if(this.entity!=null){  
-              
+
             /**返回类中所有字段，包括公共、保护、默认（包）访问和私有字段，但不包括继承的字段 
              * entity.getFields();只返回对象所表示的类或接口的所有可访问公共字段 
              * 在class中getDeclared**()方法返回的都是所有访问权限的字段、方法等； 
@@ -196,10 +193,10 @@ public class Parent<T> {
                     list.add(sf);  
                 }  
             }  
-              
+
             //返回对象所表示的类或接口的所有可访问公共方法  
             Method[] methods = entity.getMethods();  
-              
+
             for(Method m:methods){  
                 FieldMeta meta = m.getAnnotation(FieldMeta.class);  
                 if(meta!=null){  
@@ -215,28 +212,30 @@ public class Parent<T> {
                     return s1.getMeta().order()-s2.getMeta().order();  
 //                  return s1.getName().compareTo(s2.getName());//也可以用compare来比较  
                 }  
-                  
+
             });  
         }  
         return list;  
-          
+
     }  
 }  
 ```
 
 创建子类继承基类：
 [java] view plain copy
+
 ```java
     public class Child extends Parent<Anno>{  
-      
+
     }  
 ```
 
 测试类：
 [java] view plain copy
+
 ```java
     public class TestAnnotation {  
-      
+
         @SuppressWarnings({ "unchecked", "rawtypes" })  
         public static void main(String[] args) {  
             Parent c = new Child();  
@@ -248,8 +247,8 @@ public class Parent<T> {
             }  
         }  
     }  
-
 ```
+
 转：
 
 1、Annotation的工作原理：
@@ -275,6 +274,7 @@ public @interface Override
 Override是一个Marker annotation，用于标识的Annotation，Annotation名称本身表示了要给工具程序的信息。
 
 下面是一个使用@Override注解的例子：
+
 ```java
 class A {
     private String id;
@@ -287,6 +287,7 @@ class A {
     }
 }
 ```
+
 ## 3、@Deprecated注解：
 
 java.lang
@@ -302,6 +303,7 @@ public @interface Deprecated
 Deprecated是一个Marker annotation。
 
 下面是一个使用@Deprecated注解的例子：
+
 ```java
 class A {
     private String id;
@@ -318,6 +320,7 @@ class A {
     }
 }
 ```
+
 ## 4、@SuppressWarnings注解：
 
 java.lang
@@ -345,6 +348,7 @@ public static void main(String[] args) {
 使用@interface自定义注解时，自动继承了java.lang.annotation.Annotation接口，由编译程序自动完成其他细节。在定义注解时，不能继承其他的注解或接口。
 
 自定义最简单的注解：
+
 ```java
 public @interface MyAnnotation {
 
@@ -352,15 +356,17 @@ public @interface MyAnnotation {
 ```
 
 使用自定义注解：
+
 ```java
 public class AnnotationTest2 {
 
-	@MyAnnotation
-	public void execute(){
-    	System.out.println("method");
-	}
+    @MyAnnotation
+    public void execute(){
+        System.out.println("method");
+    }
 }
 ```
+
 5.1、添加变量：
 
 ```java
@@ -368,7 +374,9 @@ public @interface MyAnnotation {
     String value1();
 }
 ```
+
 使用自定义注解：
+
 ```java
 public class AnnotationTest2 {
 
@@ -378,6 +386,7 @@ public class AnnotationTest2 {
     }
 }
 ```
+
 当注解中使用的属性名为value时，对其赋值时可以不指定属性的名称而直接写上属性值接口；除了value意外的变量名都需要使用name=value的方式赋值。
 5.2、添加默认值：
 
@@ -387,6 +396,7 @@ public @interface MyAnnotation {
     String value1() default "abc";
 }
 ```
+
 5.3、多变量使用枚举：
 
 ```java
@@ -399,7 +409,9 @@ enum MyEnum{
     Sunny,Rainy
 }
 ```
+
 使用自定义注解：
+
 ```java
 public class AnnotationTest2 {
 
@@ -409,14 +421,18 @@ public class AnnotationTest2 {
     }
 }
 ```
+
 5.4、数组变量：
+
 ```java
 public @interface MyAnnotation {
 
     String[] value1() default "abc";
 }
 ```
+
 使用自定义注解：
+
 ```java
 public class AnnotationTest2 {
 
@@ -426,6 +442,7 @@ public class AnnotationTest2 {
     }
 }
 ```
+
 ## 6、设置注解的作用范围：
 
 @Documented
@@ -452,6 +469,7 @@ SOURCE
 
 属于CLASS保留策略的注解有@SuppressWarnings，该注解信息不会存储于.class文件。
 6.1、在自定义注解中的使用例子：
+
 ```java
 @Retention(RetentionPolicy.CLASS)
 public @interface MyAnnotation {
@@ -537,10 +555,10 @@ Annotation[] getDeclaredAnnotations()
 
 1.5
 
-
 下面是使用反射读取RUNTIME保留策略的Annotation信息的例子：
 
 自定义注解：
+
 ```java
 @Retention(RetentionPolicy.RUNTIME)
 public @interface MyAnnotation {
@@ -550,6 +568,7 @@ public @interface MyAnnotation {
 ```
 
 使用自定义注解：
+
 ```java
 public class AnnotationTest2 {
 
@@ -560,7 +579,9 @@ public class AnnotationTest2 {
     }
 }
 ```
+
 读取注解中的信息：
+
 ```java
 public static void main(String[] args) throws SecurityException, NoSuchMethodException, IllegalArgumentException, IllegalAccessException, InvocationTargetException {
     AnnotationTest2 annotationTest2 = new AnnotationTest2();
@@ -585,6 +606,7 @@ public static void main(String[] args) throws SecurityException, NoSuchMethodExc
     }
 }
 ```
+
 ## 8、限定注解的使用：
 
 限定注解使用@Target。
@@ -609,12 +631,14 @@ public @interface Target
     }
 
 这是一个编译时错误，它表明一个 ElementType 常量在 Target 注释中出现了不只一次。例如，以下元注释是非法的：
+
 ```java
 @Target({ElementType.FIELD, ElementType.METHOD, ElementType.FIELD})
     public @interface Bogus {
         ...
     }
 ```
+
 `public enum ElementType extends Enum<ElementType>`
 
 程序元素类型。此枚举类型的常量提供了 Java 程序中声明的元素的简单分类。
@@ -638,8 +662,8 @@ PARAMETER
 TYPE
 类、接口（包括注释类型）或枚举声明
 
-
 注解的使用限定的例子：
+
 ```java
 @Target(ElementType.METHOD)
 public @interface MyAnnotation {
@@ -647,21 +671,23 @@ public @interface MyAnnotation {
     String[] value1() default "abc";
 }
 ```
+
 ## 9、在帮助文档中加入注解：
 
 要想在制作JavaDoc文件的同时将注解信息加入到API文件中，可以使用java.lang.annotation.Documented。
 
 在自定义注解中声明构建注解文档：
+
 ```java
 @Documented
 public @interface MyAnnotation {
 
     String[] value1() default "abc";
 }
-
 ```
 
 使用自定义注解：
+
 ```java
 public class AnnotationTest2 {
 
@@ -671,8 +697,11 @@ public class AnnotationTest2 {
     }
 }
 ```
+
 ## 10、在注解中使用继承：
 
 默认情况下注解并不会被继承到子类中，可以在自定义注解时加上java.lang.annotation.Inherited注解声明使用继承。
+
 ```java
 @Documented>此元注释仅促成从超类继承注释；对已实现接口的注释无效。
+```

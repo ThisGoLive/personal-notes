@@ -4,8 +4,8 @@
 
 [教程](https://kuboard.cn/learning/)
 
-目前，Kubernetes	支持在多种环境下使用，包括本地主机（Fedora）、云服务 （Google	GAE、AWS	等）。
-你可以使用以下几种方式部署	Kubernetes：
+目前，Kubernetes    支持在多种环境下使用，包括本地主机（Fedora）、云服务 （Google    GAE、AWS    等）。
+你可以使用以下几种方式部署    Kubernetes：
 
 1. kubeadm 
 2. docker-desktop 
@@ -56,7 +56,7 @@ sudo free -m
 
 kubernetes 的客户端
 
-###  安装kubeadm，kubelet和kubectl
+### 安装kubeadm，kubelet和kubectl
 
 https://juejin.cn/post/7032845652606320653
 
@@ -73,6 +73,7 @@ sudo apt-get update
 ```
 
 镜像 https://www.jianshu.com/p/d42ef0eff63f
+
 ```shell
 # 查看版本
 apt-cache madison  kubeadm kubelet kubectl
@@ -104,7 +105,7 @@ kubeadm init --config=kubeadm-config.yaml
 ### 修改内核的运行参数
 
 ```shell
-cat	<<EOF | sudo tee /etc/sysctl.d/99-kubernetes-cri.conf
+cat    <<EOF | sudo tee /etc/sysctl.d/99-kubernetes-cri.conf
 net.bridge.bridge-nf-call-iptables = 1 
 net.ipv4.ip_forward = 1 
 net.bridge.bridge-nf-call-ip6tables = 1 
@@ -125,7 +126,6 @@ ExecStartPre=-modprobe ip_vs_sh
 
 
 sudo systemctl daemon-reload
-
 ```
 
 ### master
@@ -145,14 +145,12 @@ export KUBECONFIG=/etc/kubernetes/admin.conf
 source /etc/profile
 ```
 
-### node 
+### node
 
 ```shell
 sudo kubeadm join 192.168.100.103:6443 --token 976mnk.zjvxfv8qjmxb3bvd \
     --discovery-token-ca-cert-hash sha256:595f81629ccec7b18128857dfc60ed8cdd9938f0a74963592da7ea5c07236d4b
 ```
-
-
 
 ```shell
 # 1.查看当前的token列表
@@ -204,7 +202,7 @@ etcd 是所有状态的存储数据库
 
 将 /etc/kubernetes/admin.conf 复制到 ~/.kube/config
 
-```shell	
+```shell
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
@@ -224,11 +222,8 @@ kubectl get all -A
 kubectl get node -o yaml | grep CIDR
 ```
 
-
-
 ```shell
 kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/v0.11.0/Documentation/kube-flannel.yml
-
 ```
 
 ### 默认 Master 不能运行pod
@@ -238,7 +233,7 @@ kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/v0.11.0/Docume
 ```shell
 kubectl taint nodes --all node-role.kubernetes.io/master-
 # 恢复 限制
-kubectl	taint nodes NODE_NAME node-role.kubernetes.io/master=true:NoSchedule
+kubectl    taint nodes NODE_NAME node-role.kubernetes.io/master=true:NoSchedule
 ```
 
 ## Docker Desktop 启用 Kubernetes
@@ -320,11 +315,8 @@ kubeadm init phase kubeconfig admin --apiserver-advertise-address <新的ip>
 部署 CNI， 安装 flannel
 
 ```shell
-
 kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
 ```
-
-
 
 ### 问题六 connect to the server: x509: certificate signed by unknown authority
 
@@ -332,10 +324,6 @@ kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documen
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
-
-
-
-
 
 ### Master IP变化
 
@@ -351,10 +339,7 @@ sudo vim /etc/kubernetes/controller-manager.conf
 sudo vim /etc/kubernetes/scheduler.conf 
 sudo vim ./.kube/config
 sudo mv ./.kube/cache/discovery/192.168.100.103_6443/ ./.kube/cache/discovery/192.168.100.107_6443/
-
 ```
-
-
 
 ```shell
 sudo mv /etc/kubernetes/pki/apiserver.key /etc/kubernetes/pki/apiserver.key.old
@@ -373,10 +358,7 @@ sudo cp /etc/kubernetes/pki/front-proxy-client.key.old /etc/kubernetes/pki/front
 
 # 生成证书
 kubeadm init phase certs apiserver  --apiserver-advertise-address <新的ip>
-
 ```
-
-
 
 [改变MasterIP](https://www.cnblogs.com/chaojiyingxiong/p/12106590.html)
 
@@ -408,7 +390,6 @@ service kubelet restart
 # 查看 问题
 journalctl -f -u kubelet
 journalctl -f -u kubelet.service
-
 ```
 
 ## 节点增删
@@ -426,14 +407,10 @@ sudo kubeadm join 192.168.100.100:6443 --token f0ty2j.8n5a7ursabj2x9ky --discove
 kubeadm token create --print-join-command
 ```
 
-
-
 ```shell
 kubectl get nodes -o wide
 kubectl describe node k8s-master
 ```
-
-
 
 ```shell
 # master node 重置
@@ -446,6 +423,4 @@ docker images | grep flannel
 
 # 查看 pod
 kubectl get pods --all-namespaces
-
 ```
-

@@ -210,7 +210,6 @@ vim ca-config.json
   }
 }
 }
-
 ```
 
 编辑ca-csr.json：
@@ -231,8 +230,8 @@ vim ca-csr.json
     "names": [
         {
             "C": "CN",
-			"L" : "SICHUAN",
-			"ST" :  "CHENGDU"
+            "L" : "SICHUAN",
+            "ST" :  "CHENGDU"
         }
     ]
 }
@@ -268,9 +267,9 @@ vim server-csr.json
     },
     "names": [
         {
-          	"C": "CN",
-			"L" : "SICHUAN",
-			"ST" :  "CHENGDU"
+              "C": "CN",
+            "L" : "SICHUAN",
+            "ST" :  "CHENGDU"
         }
     ]
 }
@@ -399,7 +398,6 @@ etcdctl \
 检查etcd集群的健康状态
 
 etcdctl endpoint health --cacert=/etc/etcd/ssl/ca.pem --cert=/etc/etcd/ssl/server.pem --key=/etc/etcd/ssl/server-key.pem --endpoints="https://k8s-m-01:2379,https://k8s-n-01:2379,https://k8s-n-02:2379"
-
 ```
 
 [Listen peer URLs accepts domain names incorrectly · Issue #6336 · etcd-io/etcd · GitHub](https://github.com/etcd-io/etcd/issues/6336) 中表示 必须为IP，所以为了方便，就不使用集群了
@@ -476,9 +474,9 @@ vim server-csr.json
     },
     "names": [
         {
-          	"C": "CN",
-			"L" : "SICHUAN",
-			"ST" :  "CHENGDU"
+              "C": "CN",
+            "L" : "SICHUAN",
+            "ST" :  "CHENGDU"
         }
     ]
 }
@@ -502,4 +500,3 @@ ETCD_INITIAL_CLUSTER_STATE="new"
 ```
 
 etcdctl endpoint health --cacert=/etc/etcd/ssl/ca.pem --cert=/etc/etcd/ssl/server.pem --key=/etc/etcd/ssl/server-key.pem --endpoints="127.0.0.1:2379"
-

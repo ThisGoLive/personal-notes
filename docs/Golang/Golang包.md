@@ -1,4 +1,3 @@
-
 cgo
 
 <https://golang.design/under-the-hood/zh-cn/part3tools/ch11compile/cgo/>
@@ -18,3 +17,5 @@ https://segmentfault.com/a/1190000023442894
 
 go work
 https://blog.csdn.net/szm1234/article/details/126670258
+
+[Ja 指纹](https://github.com/Danny-Dasilva/CycleTLS)

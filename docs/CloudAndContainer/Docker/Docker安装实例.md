@@ -51,7 +51,9 @@ docker run -d -p 5432:5432 --name postgres11  -e POSTGRES_PASSWORD=123456  -v ~/
 
 docker run -d -p 5432:5432 --name postgres12 --restart=always --network local_net  -e POSTGRES_PASSWORD=123456  -v ~/Datas/postgres_data:/var/lib/postgresql/data arm32v7/postgres:12-alpine
 ```
+
 https://github.com/tianon/docker-postgres-upgrade
+
 ```shell
 docker run --rm -v /home/gl/docker-data/Nextcloud/db:/var/lib/postgresql/15/data -v /home/gl/docker-data/Nextcloud/16db:/var/lib/postgresql/16/data tianon/postgres-upgrade:15-to-16
 ```doc

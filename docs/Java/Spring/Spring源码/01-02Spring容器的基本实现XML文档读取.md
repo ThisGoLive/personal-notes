@@ -49,13 +49,13 @@
 
 必须Core
 
-## 2.4 结构 
+## 2.4 结构
 
 ### 2.4.1 结层级构
 
 ### 2.4.2 核心类介绍
 
-最核心的连个类：
+最核心的两个类：
 
 #### DefaultListableBeanFactory
 
@@ -92,15 +92,15 @@ Resource的实现：FileSystemResource、。。。ClassPathResource
 #### 初始化 XmlBeanFactory (在4.3.x 中被标记为过时)
 
 ```java
-	public XmlBeanFactory(Resource resource) throws BeansException {
-		this(resource, null);
-	}
+    public XmlBeanFactory(Resource resource) throws BeansException {
+        this(resource, null);
+    }
 
-	
-	public XmlBeanFactory(Resource resource, BeanFactory parentBeanFactory) throws BeansException {
-		super(parentBeanFactory);
-		this.reader.loadBeanDefinitions(resource);
-	}
+
+    public XmlBeanFactory(Resource resource, BeanFactory parentBeanFactory) throws BeansException {
+        super(parentBeanFactory);
+        this.reader.loadBeanDefinitions(resource);
+    }
 ```
 
 当Spring加载A的bean时，A中B属性若没有初始化，Spring也会对之初始化。但有例外，若B实现了BeanNameAware接口就不会。
@@ -114,72 +114,72 @@ Resource的实现：FileSystemResource、。。。ClassPathResource
 3. 通过构造的InputSource 实例和Resource实例调用doLoadBeanDefinitions
 
 ```java
-
 public int loadBeanDefinitions(Resource resource) throws BeanDefinitionStoreException{
     // 构造 带编码的 Resource
-	return loadBeanDefinitions(new EncodedResource(resource));
+    return loadBeanDefinitions(new EncodedResource(resource));
 }
 
 public int loadBeanDefinitions(EncodedResource encodedResource) throws BeanDefinitionStoreException {
-		Assert.notNull(encodedResource, "EncodedResource must not be null");
-		if (logger.isInfoEnabled()) {
-			logger.info("Loading XML bean definitions from " + encodedResource.getResource());
-		}
+        Assert.notNull(encodedResource, "EncodedResource must not be null");
+        if (logger.isInfoEnabled()) {
+            logger.info("Loading XML bean definitions from " + encodedResource.getResource());
+        }
 
-		Set<EncodedResource> currentResources = this.resourcesCurrentlyBeingLoaded.get();
-		if (currentResources == null) {
-			currentResources = new HashSet<EncodedResource>(4);
-			this.resourcesCurrentlyBeingLoaded.set(currentResources);
-		}
-		if (!currentResources.add(encodedResource)) {
-			throw new BeanDefinitionStoreException(
-					"Detected cyclic loading of " + encodedResource + " - check your import definitions!");
-		}
-		try {
-			InputStream inputStream = encodedResource.getResource().getInputStream();
-			try {
-				InputSource inputSource = new InputSource(inputStream);
-				if (encodedResource.getEncoding() != null) {
-					inputSource.setEncoding(encodedResource.getEncoding());
-				}
+        Set<EncodedResource> currentResources = this.resourcesCurrentlyBeingLoaded.get();
+        if (currentResources == null) {
+            currentResources = new HashSet<EncodedResource>(4);
+            this.resourcesCurrentlyBeingLoaded.set(currentResources);
+        }
+        if (!currentResources.add(encodedResource)) {
+            throw new BeanDefinitionStoreException(
+                    "Detected cyclic loading of " + encodedResource + " - check your import definitions!");
+        }
+        try {
+            InputStream inputStream = encodedResource.getResource().getInputStream();
+            try {
+                InputSource inputSource = new InputSource(inputStream);
+                if (encodedResource.getEncoding() != null) {
+                    inputSource.setEncoding(encodedResource.getEncoding());
+                }
                 // 前面构造好了 带编码的 Resource  现在 进入真正的核心逻辑
-				return doLoadBeanDefinitions(inputSource, encodedResource.getResource());
-			}
-			finally {
-				inputStream.close();
-			}
-		}
-		catch (IOException ex) {
-			throw new BeanDefinitionStoreException(
-					"IOException parsing XML document from " + encodedResource.getResource(), ex);
-		}
-		finally {
-			currentResources.remove(encodedResource);
-			if (currentResources.isEmpty()) {
-				this.resourcesCurrentlyBeingLoaded.remove();
-			}
-		}
-	}
+                return doLoadBeanDefinitions(inputSource, encodedResource.getResource());
+            }
+            finally {
+                inputStream.close();
+            }
+        }
+        catch (IOException ex) {
+            throw new BeanDefinitionStoreException(
+                    "IOException parsing XML document from " + encodedResource.getResource(), ex);
+        }
+        finally {
+            currentResources.remove(encodedResource);
+            if (currentResources.isEmpty()) {
+                this.resourcesCurrentlyBeingLoaded.remove();
+            }
+        }
+    }
 ```
+
 ###### **核心逻辑部分**
 
 ```java
 // 核心逻辑部分
 protected int doLoadBeanDefinitions(InputSource inputSource, Resource resource)
-			throws BeanDefinitionStoreException {
-		try {
+            throws BeanDefinitionStoreException {
+        try {
             // 获取Document
-			Document doc = doLoadDocument(inputSource, resource);
-			return registerBeanDefinitions(doc, resource);
-		}
-		catch (Exception ex) {
-			throw ex;
-		}
-	}
+            Document doc = doLoadDocument(inputSource, resource);
+            return registerBeanDefinitions(doc, resource);
+        }
+        catch (Exception ex) {
+            throw ex;
+        }
+    }
 
 protected Document doLoadDocument(InputSource inputSource, Resource resource) throws Exception {
-		return this.documentLoader.loadDocument(inputSource, getEntityResolver(), this.errorHandler,getValidationModeForResource(resource), isNamespaceAware());
-	}
+        return this.documentLoader.loadDocument(inputSource, getEntityResolver(), this.errorHandler,getValidationModeForResource(resource), isNamespaceAware());
+    }
 ```
 
 1. 获取对XML文件的验证模式。(在getValidationModeForResource(resource) )。
@@ -202,16 +202,16 @@ protected Document doLoadDocument(InputSource inputSource, Resource resource) th
 
 ```java
 protected int getValidationModeForResource(Resource resource) {
-		int validationModeToUse = getValidationMode();
-		if (validationModeToUse != VALIDATION_AUTO) {
-			return validationModeToUse;
-		}
-		int detectedMode = detectValidationMode(resource);
-		if (detectedMode != VALIDATION_AUTO) {
-			return detectedMode;
-		}
-		return VALIDATION_XSD;
-	}
+        int validationModeToUse = getValidationMode();
+        if (validationModeToUse != VALIDATION_AUTO) {
+            return validationModeToUse;
+        }
+        int detectedMode = detectValidationMode(resource);
+        if (detectedMode != VALIDATION_AUTO) {
+            return detectedMode;
+        }
+        return VALIDATION_XSD;
+    }
 ```
 
 通过 `detectValidationMode(resource)`判断是否包含 DOCTYPE 。
@@ -228,22 +228,22 @@ protected int getValidationModeForResource(Resource resource) {
 
 解析inputSource 返回 Document。
 
-### 2.7.1 EntityResolver 
+### 2.7.1 EntityResolver
 
 ```java
 protected EntityResolver getEntityResolver() {
-		if (this.entityResolver == null) {
-			// Determine default EntityResolver to use.
-			ResourceLoader resourceLoader = getResourceLoader();
-			if (resourceLoader != null) {
-				this.entityResolver = new ResourceEntityResolver(resourceLoader);
-			}
-			else {
-				this.entityResolver = new DelegatingEntityResolver(getBeanClassLoader());
-			}
-		}
-		return this.entityResolver;
-	}
+        if (this.entityResolver == null) {
+            // Determine default EntityResolver to use.
+            ResourceLoader resourceLoader = getResourceLoader();
+            if (resourceLoader != null) {
+                this.entityResolver = new ResourceEntityResolver(resourceLoader);
+            }
+            else {
+                this.entityResolver = new DelegatingEntityResolver(getBeanClassLoader());
+            }
+        }
+        return this.entityResolver;
+    }
 ```
 
 SAX首先读取XML文档上的声明，根据声明去找DTD定义，再进行验证。默认上同URI从网上下载。
@@ -257,58 +257,58 @@ SAX首先读取XML文档上的声明，根据声明去找DTD定义，再进行�
 ```java
 public int registerBeanDefinitions(Document doc, Resource resource) throws BeanDefinitionStoreException {
     // 创建 解析 
-	BeanDefinitionDocumentReader documentReader = createBeanDefinitionDocumentReader();
+    BeanDefinitionDocumentReader documentReader = createBeanDefinitionDocumentReader();
     // 4.3.x 这里没看到 设置环境变量 Environment
-    
+
     // 记录之前的 加载个数
-	int countBefore = getRegistry().getBeanDefinitionCount();
+    int countBefore = getRegistry().getBeanDefinitionCount();
     // 加载 和 注册
-	documentReader.registerBeanDefinitions(doc, createReaderContext(resource));
-	// 记录本次加载bean 的个数。
+    documentReader.registerBeanDefinitions(doc, createReaderContext(resource));
+    // 记录本次加载bean 的个数。
     return getRegistry().getBeanDefinitionCount() - countBefore;
-	}
+    }
 ```
 
 BeanDefinitionDocumentReader 实现类
 
-```java 
+```java
 public void registerBeanDefinitions(Document doc, XmlReaderContext readerContext) {
-		this.readerContext = readerContext;
-		logger.debug("Loading bean definitions");
-		Element root = doc.getDocumentElement();
-		doRegisterBeanDefinitions(root);
-	}
+        this.readerContext = readerContext;
+        logger.debug("Loading bean definitions");
+        Element root = doc.getDocumentElement();
+        doRegisterBeanDefinitions(root);
+    }
 
 protected void doRegisterBeanDefinitions(Element root) {
-		BeanDefinitionParserDelegate parent = this.delegate;
-		this.delegate = createDelegate(getReaderContext(), root, parent);
+        BeanDefinitionParserDelegate parent = this.delegate;
+        this.delegate = createDelegate(getReaderContext(), root, parent);
 
     // 处理 profile 属性
-		if (this.delegate.isDefaultNamespace(root)) {
-			String profileSpec = root.getAttribute(PROFILE_ATTRIBUTE);
-			if (StringUtils.hasText(profileSpec)) {
-				String[] specifiedProfiles = StringUtils.tokenizeToStringArray(
-						profileSpec, BeanDefinitionParserDelegate.MULTI_VALUE_ATTRIBUTE_DELIMITERS);
-				if (!getReaderContext().getEnvironment().acceptsProfiles(specifiedProfiles)) {
-					if (logger.isInfoEnabled()) {
-						logger.info("Skipped XML bean definition file due to specified profiles [" + profileSpec +
-								"] not matching: " + getReaderContext().getResource());
-					}
-					return;
-				}
-			}
-		}
-		/* 解析前处理 但是这两个前后方法上空的，目的上为继承 需要再解析bean 做处理而设计的
-		 * 面向对象方法设计中，方法 一类上面向继承 一类上final修饰
-		 */
-		preProcessXml(root);
-    	// 
-		parseBeanDefinitions(root, this.delegate);
-    	// 解析后处理
-		postProcessXml(root);
+        if (this.delegate.isDefaultNamespace(root)) {
+            String profileSpec = root.getAttribute(PROFILE_ATTRIBUTE);
+            if (StringUtils.hasText(profileSpec)) {
+                String[] specifiedProfiles = StringUtils.tokenizeToStringArray(
+                        profileSpec, BeanDefinitionParserDelegate.MULTI_VALUE_ATTRIBUTE_DELIMITERS);
+                if (!getReaderContext().getEnvironment().acceptsProfiles(specifiedProfiles)) {
+                    if (logger.isInfoEnabled()) {
+                        logger.info("Skipped XML bean definition file due to specified profiles [" + profileSpec +
+                                "] not matching: " + getReaderContext().getResource());
+                    }
+                    return;
+                }
+            }
+        }
+        /* 解析前处理 但是这两个前后方法上空的，目的上为继承 需要再解析bean 做处理而设计的
+         * 面向对象方法设计中，方法 一类上面向继承 一类上final修饰
+         */
+        preProcessXml(root);
+        // 
+        parseBeanDefinitions(root, this.delegate);
+        // 解析后处理
+        postProcessXml(root);
 
-		this.delegate = parent;
-	}
+        this.delegate = parent;
+    }
 ```
 
 ### 2.8.1 profile 属性使用
@@ -316,8 +316,6 @@ protected void doRegisterBeanDefinitions(Element root) {
 `String profileSpec = root.getAttribute(PROFILE_ATTRIBUTE);`
 
 使用了Profile之后，我们就可以分别定义3个配置文件，一个用于开发、一个用户测试、一个用户生产，其分别对应于3个Profile。当在实际运行的时候，只需给定一个参数来激活对应的Profile即可，那么容器就会只加载激活后的配置文件，这样就可以大大省去我们修改配置信息而带来的烦恼。
-
- 
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?> 
@@ -327,8 +325,8 @@ protected void doRegisterBeanDefinitions(Element root) {
         <!-- 只扫描开发环境下使用的类 --> 
         <context:component-scan base-package="com.panlingxiao.spring.profile.service.dev" /> 
         <!-- 加载开发使用的配置文件 --> 
-        <util:properties id="config" location="classpath:dev/config.properties"/> 		</beans> 
-    
+        <util:properties id="config" location="classpath:dev/config.properties"/>         </beans> 
+
     <!-- 定义生产使用的profile --> 
     <beans profile="produce"> 
         <!-- 只扫描生产环境下使用的类 --> 
@@ -336,17 +334,14 @@ protected void doRegisterBeanDefinitions(Element root) {
         <!-- 加载生产使用的配置文件 --> 
         <util:properties id="config" location="classpath:produce/config.properties"/> </beans>
 </beans>
-
 ```
-
-
 
 ```xml
     <context-param>
         <param-name>spring.profiles.default</param-name>
         <param-value>development</param-value>
     </context-param>
- 
+
     <context-param>
         <param-name>spring.profiles.active</param-name>
         <param-value>smart</param-value>
@@ -360,36 +355,33 @@ protected void doRegisterBeanDefinitions(Element root) {
 ### 2.8.2 解析 注册 BeanDefinition
 
 ```java
-	protected void parseBeanDefinitions(Element root, BeanDefinitionParserDelegate delegate) {
+    protected void parseBeanDefinitions(Element root, BeanDefinitionParserDelegate delegate) {
         //是否是默认的 命名空间  默认标签
-		if (delegate.isDefaultNamespace(root)) {
-			NodeList nl = root.getChildNodes();
-			for (int i = 0; i < nl.getLength(); i++) {
-				Node node = nl.item(i);
-				if (node instanceof Element) {
-					Element ele = (Element) node;
-					if (delegate.isDefaultNamespace(ele)) {
+        if (delegate.isDefaultNamespace(root)) {
+            NodeList nl = root.getChildNodes();
+            for (int i = 0; i < nl.getLength(); i++) {
+                Node node = nl.item(i);
+                if (node instanceof Element) {
+                    Element ele = (Element) node;
+                    if (delegate.isDefaultNamespace(ele)) {
                         // 解析默认 子标签
-						parseDefaultElement(ele, delegate);
-					}
-					else {
+                        parseDefaultElement(ele, delegate);
+                    }
+                    else {
                         // 解析自定义 子标签
-						delegate.parseCustomElement(ele);
-					}
-				}
-			}
-		}
-		else {
+                        delegate.parseCustomElement(ele);
+                    }
+                }
+            }
+        }
+        else {
             // 解析自定义标签
-			delegate.parseCustomElement(root);
-		}
-	}
+            delegate.parseCustomElement(root);
+        }
+    }
 ```
 
 在 XML 中 有两种类声明：
 
 1. 默认`<bean id = "" class="" />`
 2. 自定义`<tx:annotation-driven / >`
-
-
-
