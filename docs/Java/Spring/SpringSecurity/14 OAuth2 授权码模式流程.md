@@ -54,7 +54,7 @@ auth:8081/login
 
 AuthenticationSuccessHandler 需要实现，重定向到 进行用户授权
 
-auth:8081/oauth2/consent？scope=message.read%20userinfo%20message.write&client_id=e2fa7e64-249b-46f0-ae1d-797610e88615&state=uXHZ8v7FCh1TwO6OAgxucOGhRIDJBE3UUag96pZa9jM%3D
+`auth:8081/oauth2/consent?scope=message.read%20userinfo%20message.write&client_id=e2fa7e64-249b-46f0-ae1d-797610e88615&state=uXHZ8v7FCh1TwO6OAgxucOGhRIDJBE3UUag96pZa9jM%3D`
 
 选择授权内容，提交 post 到 oauth:8081/oauth2/authorize （authorizationEndpoint）OAuth2AuthorizationEndpointFilter 处理重定向回 
 
@@ -66,7 +66,7 @@ WebApp服务器 get http://app:8080/?code=授权码
 
 重定向到 post oauth:8081/oauth2/token 
 
-authorization: Basic ZTJmYTdlNjQtMjQ5Yi00NmYwLWFlMWQtNzk3NjEwZTg4NjE1OnNlY3JldA==
+`authorization: Basic ZTJmYTdlNjQtMjQ5Yi00NmYwLWFlMWQtNzk3NjEwZTg4NjE1OnNlY3JldA==`
 
 请求体： grant_type 授权码模式 code 授权码
 
@@ -84,12 +84,14 @@ webapp 请求 resource:8082/* 并传 authorization：Bearer token 获取对应�
 
 ## 7. 简单来说
 
-客户端 请求 app，先判断登陆状态  再判断令牌，没有的时候
+客户端 请求 app，先判断登陆状态 再判断令牌，没有的时候，重定向到授权中心，尝试获取授权码
 
-转到 授权中心，登陆 授权，返回 授权码 
+授权中心 收到授权码请求，先判断**是否登陆**，再判断**是否已经授权，如果没有需要跳转到授权页面consent**，完成后返回 **授权码** 重定向给 app  注册的回调url 
 
-客户端拿到了 授权码，再请求 授权中心，得到 令牌
+App 通过重定向拿到了 授权码，用授权码 请求 授权中心，得到 令牌 
 
-客户端 再用令牌，去请求 App。
+APP 再用令牌，去请求资源服务器 
 
+资源服务器，接收到请求 通过 jwt 路径，验证令牌，通过返回响应给 App 
 
+App 接收到资源服务器的响应，展现给用户

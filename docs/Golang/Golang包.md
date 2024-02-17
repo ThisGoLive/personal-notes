@@ -19,3 +19,6 @@ go work
 https://blog.csdn.net/szm1234/article/details/126670258
 
 [Ja 指纹](https://github.com/Danny-Dasilva/CycleTLS)
+
+logrus
+https://zhuanlan.zhihu.com/p/105759117
