@@ -1,26 +1,37 @@
-## basic
-+ [01 - 02 Python 数字与运算符](basic/01-02Python数字与运算符.md)
-+ [03 Python 列表与元组](basic/03Python列表与元组.md)
-+ [04 Python 字符串](basic/04Python字符串.md)
-+ [05 Python 字典](basic/05Python字典.md)
-+ [06 Python 流程控制语句](basic/06Python流程控制语句.md)
-+ [07 Python 函数](basic/07Python函数.md)
-+ [08 Python 面向对象编程](basic/08Python面向对象编程.md)
-+ [09 Python 异常](basic/09Python异常.md)
-+ [10 Python 日期与时间](basic/10Python日期与时间.md)
-+ [11 Python 正则表达式](basic/11Python正则表达式.md)
-+ [12 Python 文件操作](basic/12Python文件操作.md)
-+ [13 Python 多线程](basic/13Python多线程.md)
-+ [14 Python 收发电子邮件](basic/14Python收发电子邮件.md)
-+ [15 Python 网络编程](basic/15Python网络编程.md)
-+ [16 Python 操作数据库](basic/16Python操作数据库.md)
-+ [17 Python 爬虫实战](basic/17Python爬虫实战.md)
-## 使用
-+ [Anaconda 使用](Anaconda使用.md)
-+ [Jupyter 介绍](Jupyter介绍.md)
-+ [import|Import 的使用](import.md)
-+ [Python 包管理](Python包管理.md)
-+ [Python 常用库](Python常用库.md)
-+ [Python 常用库2](Python常用库2.md)
-+ [Python 打包EXE](Python打包EXE.md)
-+ [Python GC回收机制](PythonGC回收机制.md)
+# 自动生成目录
+
+<script setup>
+import { useData } from 'vitepress'
+
+const { theme } = useData()
+const sidebar = 'sidebar'
+const root_path = '/Python/'
+
+function filter(items) {
+    if (items.length < 2) {
+        return false
+    }
+    return items.filter(item => item.path.startsWith(root_path)).length > 1
+}
+</script>
+
+<ul>
+    <li v-for = " (item, index) in theme[sidebar][root_path]">
+        <a :href=item.link>{{item.text}}</a>
+        <ol>
+            <li v-if=filter(item.items) v-for = "(item2, index) in item.items">
+                <a :href=item2.path>{{item2.text}}</a>
+            </li>
+        </ol>
+    </li>
+</ul>
+
+
+PyTorch
+
+<https://www.bilibili.com/video/BV1sa4y1C7Fc?p=1>
+
+
+Pandas
+
+https://www.bilibili.com/video/BV1q2421L7XR?p=1

@@ -122,7 +122,11 @@ sudo docker run --detach \
 
 ## git 删除历史文件
 
+https://www.jianshu.com/p/03bf1bc1b543
+
 ```shell
+pip install git-filter-repo
+
 git filter-repo --path-glob pnpm-lock.yaml --invert-paths --force
 git push --all --force
 ```

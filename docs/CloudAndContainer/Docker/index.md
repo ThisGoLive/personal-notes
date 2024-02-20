@@ -1,6 +1,27 @@
-+ [Docker 笔记](Docker笔记.md)
-+ [Docker 进阶](Docker笔记.md)
-+ [docker 使用笔记2](Docker使用笔记2.md)
-+ [Docker 与 Spring Boot](Docker与SpringBoot.md)
-+ [Docker安装实例](Docker安装实例.md)
-+ [Docker Compose](./D)
+# 自动生成目录
+
+<script setup>
+import { useData } from 'vitepress'
+
+const { theme } = useData()
+const sidebar = 'sidebar'
+const root_path = '/CloudAndContainer/Docker/'
+
+function filter(items) {
+    if (items.length < 2) {
+        return false
+    }
+    return items.filter(item => item.path.startsWith(root_path)).length > 1
+}
+</script>
+
+<ul>
+    <li v-for = " (item, index) in theme[sidebar][root_path]">
+        <a :href=item.link>{{item.text}}</a>
+        <ol>
+            <li v-if=filter(item.items) v-for = "(item2, index) in item.items">
+                <a :href=item2.path>{{item2.text}}</a>
+            </li>
+        </ol>
+    </li>
+</ul>

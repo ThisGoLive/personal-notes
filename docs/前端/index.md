@@ -1,22 +1,27 @@
-- [[easyUI]](easyUI.md)
-- [[jQuery]](jQuery.md)
-- [[第一章网页编程HTML]](第一章网页编程 HTML.md)
+# 自动生成目录
 
-## nodejs npm
+<script setup>
+import { useData } from 'vitepress'
 
-- [[NodeJS 及 npm 使用]](NodeJS 及 npm 使用.md)
+const { theme } = useData()
+const sidebar = 'sidebar'
+const root_path = '/前端/'
 
-## Vue
+function filter(items) {
+    if (items.length < 2) {
+        return false
+    }
+    return items.filter(item => item.path.startsWith(root_path)).length > 1
+}
+</script>
 
-- [00 我的第二 Vue](Vue/00%20我的第二Vue.md)
-- [01 Vue 基础](Vue/01%20Vue%20基础.md)
-- [02 Vue 扩展](Vue/02%20Vue%20扩展.md)
-- [03 Vue 组件](Vue/03%20Vue%20组件.md)
-- [04 Vue 生命周期](Vue/04%20Vue%20生命周期.md)
-- [05 Vue 单页应用与 vue-cli](Vue/05%20Vue%20单页应用与vue-cli.md)
-- [Vuex 组件间的数据传值](Vue/Vuex%20组件间的数据传值.md)
-
-## TypeScript
-
-- [ts 基本语法](TypeScript/ts基本语法.md)
-- [03 联合类型与断言](TypeScript/03%20联合类型与断言.md)
+<ul>
+    <li v-for = " (item, index) in theme[sidebar][root_path]">
+        <a :href=item.link>{{item.text}}</a>
+        <ol>
+            <li v-if=filter(item.items) v-for = "(item2, index) in item.items">
+                <a :href=item2.path>{{item2.text}}</a>
+            </li>
+        </ol>
+    </li>
+</ul>

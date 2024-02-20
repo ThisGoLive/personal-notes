@@ -1,8 +1,27 @@
-+ [01 Kubernetes 概念](./01%20Kubernetes%20概念.md)
-+ [02 Kubernetes 环境搭建](02%20Kubernetes%20环境搭建.md)
-+ [03 Kubectl 使用](./03%20Kubectl%20使用.md)
-+ [04 Kubernates 手动安装 base etcd](./04%20Kubernates%20手动安装%20base%20etcd.md)
-+ [05 Kubernayes 手动安装 master](./05%20Kubernayes%20手动安装%20master.md)
-+ [06 Kubernates 手动安装 node](./06%20Kubernates%20手动安装%20node.md)
-+ [07 Kubernetes 组件](./07%20Kubernetes%20组件.md)
-+ [08 Pod 里面的结构](./08%20Pod%20里面的结构.md)
+# 自动生成目录
+
+<script setup>
+import { useData } from 'vitepress'
+
+const { theme } = useData()
+const sidebar = 'sidebar'
+const root_path = '/CloudAndContainer/Kubernetes/'
+
+function filter(items) {
+    if (items.length < 2) {
+        return false
+    }
+    return items.filter(item => item.path.startsWith(root_path)).length > 1
+}
+</script>
+
+<ul>
+    <li v-for = " (item, index) in theme[sidebar][root_path]">
+        <a :href=item.link>{{item.text}}</a>
+        <ol>
+            <li v-if=filter(item.items) v-for = "(item2, index) in item.items">
+                <a :href=item2.path>{{item2.text}}</a>
+            </li>
+        </ol>
+    </li>
+</ul>
