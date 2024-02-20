@@ -1,4 +1,4 @@
-## Java Spring Boot 目录
+# Java Spring Boot 目录
 
 <script setup>
 import { useData } from 'vitepress'

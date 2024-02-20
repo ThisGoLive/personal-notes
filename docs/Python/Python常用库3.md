@@ -31,7 +31,7 @@ playwright 不知道
 
 ## BlueStacks模拟器，使用代理
 
-https://www.jianshu.com/p/b6b58c1272e7
+<https://www.jianshu.com/p/b6b58c1272e7>
 
 <https://tieba.baidu.com/p/7576521528>
 

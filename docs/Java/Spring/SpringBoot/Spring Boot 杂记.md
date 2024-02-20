@@ -5,3 +5,6 @@
 4. 开发语言，Java 以及 Java 衍生的 Groovy
 5. IDE环境 ：Spring Tool Suite、IDEA 需要插件 Spring Initializr、IDEA 社区版 使用 *Spring Assistant* 、Eclipse 需要 Spring Tools 4 插件、Spring Boot CLI 使用命令行、Maven 构建时 直接 引入 **spring-boot-starter-parent**
 
+
+## spring boot 启动执行的四种方法
+<https://blog.csdn.net/ycf921244819/article/details/120907372>

@@ -4,8 +4,9 @@ import nav from "./nav";
 import sidebar from "./sidebar";
 
 const themeConfig: DefaultTheme.Config = {
-//   algolia,
-  siteTitle: "笔记主页Home",
+  // logo: '/images/spring-prosperity.svg',
+  // algolia,
+  siteTitle: "🏠 笔记主页Home",
   // 隐藏
   // siteTitle: false,
   // 页角
@@ -16,12 +17,15 @@ const themeConfig: DefaultTheme.Config = {
       `234`
   },
   lastUpdatedText: "📑 最后更新",
+  // 头顶导航
   nav,
+  // 侧边栏
   sidebar,
   outline: {
     level: [2,6],
     label: '本篇导航'
   },
+  // 头顶跳转
   socialLinks: [
     { icon: "github", link: 'https://vitepress.dev/zh/' }
   ],

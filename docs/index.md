@@ -6,6 +6,9 @@ hero:
   name: "个人开发笔记"
   text: ""
   tagline: 个人开发笔记
+  image: 
+    src: /images/spring-prosperity.svg
+    alt: VitePress
   actions:
     - theme: brand
       text: 文档编写例子
@@ -39,12 +42,22 @@ hero:
       link: /Tools/
 
 features:
-  - title: Java
+  - icon: 
+      src: /images/java.svg
+    title: Java
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Python
+  - icon: 
+      src: /images/python.svg
+    title: Python
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Golang
+  - icon: 
+      src: /images/golang.svg
+    title: Golang
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Linux
-  - title: Web 前端
+  - icon:
+      src: /images/linux.svg
+    title: Linux
+  - icon:
+      src: /images/vue.svg
+    title: Web 前端
 ---

@@ -3,7 +3,9 @@ import themeConfig from "./theme";
 
 // noinspection JSUnusedGlobalSymbols
 export default defineConfig({
-  title: "个人笔记库",
+  title: "✒️ 个人笔记库",
+  // 自定义后缀
+  titleTemplate: "✒️个人笔记库",
   description: "个人笔记库",
   ignoreDeadLinks: true, 
   lang: "zh-CN",

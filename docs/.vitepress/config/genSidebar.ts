@@ -8,6 +8,8 @@ const WHITE_LIST = ['index.md', '.vitepress', 'node_modules', '.idea', '.vscode'
 'img', 'img2', 'img3', 'img4'
 ]
 const NUM_EMOJI = ['1️⃣','2️⃣','3️⃣','4️⃣','5️⃣','6️⃣','7️⃣','8️⃣','9️⃣']
+const FILE_FOLDER = '📂';
+const MEMO = '📝';
 const isDirectory = (path_str): boolean => fs.lstatSync(path_str).isDirectory()
 function getNumEmoji(num: number): string {
     if (NUM_EMOJI.length > num) {
@@ -38,14 +40,14 @@ export const builderSidebarItem = (rootPath: string, directoryName: string, fath
         if (isDirectory('.' + nowPathStr + "/" + itemName)) {
             // 文件夹 找下边的 index.md
             valArray.push({
-                text: itemName,
+                text: FILE_FOLDER + " " + itemName,
                 link: fatherDirectoryName + "/" + directoryName + "/" + itemName + '/index.md',
                 path: fatherDirectoryName + "/" + directoryName + "/" + itemName + '/',
             })
         } else{
             // 文件
             valArray.push({
-                text: itemName,
+                text: MEMO + " " + itemName.substring(0, itemName.length - 3),
                 link: fatherDirectoryName + "/" + directoryName + "/" + itemName,
                 path: fatherDirectoryName + "/" + directoryName + "/" + itemName.substring(0, itemName.lastIndexOf(".")),
             })

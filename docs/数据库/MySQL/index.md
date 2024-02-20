@@ -5,7 +5,7 @@ import { useData } from 'vitepress'
 
 const { theme } = useData()
 const sidebar = 'sidebar'
-const root_path = '/Web/'
+const root_path = '/数据库/MySQL/'
 
 function filter(items) {
     if (items.length < 2) {

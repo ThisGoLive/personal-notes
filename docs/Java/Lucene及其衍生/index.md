@@ -1,13 +1,27 @@
-## Lucene 源码
+## 自动生成目录
 
-+ [00 Lucene 从一个例子开始](00%20Lucene%20从一个例子开始.md)
-+ [01 LockFactory 索引文件锁](01%20LockFactory%20索引文件锁.md)
-+ [02 Drectiry 目录](02%20Drectiry%20目录.md)
-+ [03 IndexWriterConfig 索引写入配置](03%20IndexWriterConfig%20索引写入配置.md)
-+ [04 IndexWriter 构造流程1](04%20IndexWriter%20构造流程1.md)
-+ [05 IndexWriter 构造流程2](05%20IndexWriter%20构造流程2.md)
-+ [06 文档的增删改](06%20文档的增删改.md)
+<script setup>
+import { useData } from 'vitepress'
 
-## ElaticSearch
+const { theme } = useData()
+const sidebar = 'sidebar'
+const root_path = '/Java/Lucene及其衍生/'
 
-+ [[ElasticSearch 概述]](ElasticSearch%20概述.md)
+function filter(items) {
+    if (items.length < 2) {
+        return false
+    }
+    return items.filter(item => item.path.startsWith(root_path)).length > 1
+}
+</script>
+
+<ul>
+    <li v-for = " (item, index) in theme[sidebar][root_path]">
+        <a :href=item.link>{{item.text}}</a>
+        <ol>
+            <li v-if=filter(item.items) v-for = "(item2, index) in item.items">
+                <a :href=item2.path>{{item2.text}}</a>
+            </li>
+        </ol>
+    </li>
+</ul>

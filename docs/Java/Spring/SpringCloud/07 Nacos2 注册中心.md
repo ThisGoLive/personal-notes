@@ -1,5 +1,7 @@
 # 1 注册中心客户端 1.4.X
 
+[Nacos源码（十）总结篇 - 掘金](https://juejin.cn/post/7002843092487241764)
+
 注册中心 需求：
 
 - 服务注册
@@ -67,10 +69,6 @@ public void registerInstance(String serviceName, String groupName, Instance inst
     serverProxy.registerService(groupedServiceName, groupName, instance);
 }
 ```
-
-
-
-
 
 # 2 注册中心客户端 2.X
 
