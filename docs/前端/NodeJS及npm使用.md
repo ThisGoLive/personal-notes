@@ -99,6 +99,9 @@ vue add element
 
 npm install node-sass@latest
 npm install --save element-ui
+
+# 开发
+--save-dev
 ```
 
 也可以 使用 `vue ui` 界面搭建， 不过貌似 不能通过 IE11 打开

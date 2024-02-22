@@ -78,3 +78,8 @@ Help - >Edit Custom VM Options
 ```
 -Duser.name=authorName
 ```
+
+
+## 快捷键
+
+同名选中 多选  alt + j
