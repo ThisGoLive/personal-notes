@@ -3,11 +3,11 @@ import fs from 'fs'
 // 根目录
 const DIR_PATH = path.resolve()
 // 过滤白名单
-const WHITE_LIST = ['index.md', '.vitepress', 'node_modules', '.idea', '.vscode', 
-'.gitgnore', 'gitpush.py', 'package.json', 'pnpm-lock.json', 'READE.md', 'assets',
-'img', 'img2', 'img3', 'img4'
+const WHITE_LIST = ['index.md', '.vitepress', 'node_modules', '.idea', '.vscode',
+    '.gitgnore', 'gitpush.py', 'package.json', 'pnpm-lock.json', 'READE.md', 'assets',
+    'img', 'img2', 'img3', 'img4', 'public'
 ]
-const NUM_EMOJI = ['1️⃣','2️⃣','3️⃣','4️⃣','5️⃣','6️⃣','7️⃣','8️⃣','9️⃣']
+const NUM_EMOJI = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣']
 const FILE_FOLDER = '📂';
 const MEMO = '📝';
 const isDirectory = (path_str): boolean => fs.lstatSync(path_str).isDirectory()
@@ -18,18 +18,18 @@ function getNumEmoji(num: number): string {
     return NUM_EMOJI[NUM_EMOJI.length - 1]
 }
 
-function filterNeedPath (arr1: string[], arr2: string[]) : string[] {
+function filterNeedPath(arr1: string[], arr2: string[]): string[] {
     return Array.from(new Set(arr1.filter((item) => {
         return arr2.indexOf(item) < 0
     })))
 }
 
 // SidebarItem
-export const builderSidebarItem = (rootPath: string, directoryName: string, fatherDirectoryName) : Object[] => {
+export const builderSidebarItem = (rootPath: string, directoryName: string, fatherDirectoryName): Object[] => {
     // 获取pathname
-    let nowPathStr  = rootPath + fatherDirectoryName + "/" + directoryName
+    let nowPathStr = rootPath + fatherDirectoryName + "/" + directoryName
     const dirPath = path.join(DIR_PATH, nowPathStr)
-    
+
     // 读取
     const files = fs.readdirSync(dirPath)
     // 过滤
@@ -44,13 +44,19 @@ export const builderSidebarItem = (rootPath: string, directoryName: string, fath
                 link: fatherDirectoryName + "/" + directoryName + "/" + itemName + '/index.md',
                 path: fatherDirectoryName + "/" + directoryName + "/" + itemName + '/',
             })
-        } else{
-            // 文件
-            valArray.push({
-                text: MEMO + " " + itemName.substring(0, itemName.length - 3),
-                link: fatherDirectoryName + "/" + directoryName + "/" + itemName,
-                path: fatherDirectoryName + "/" + directoryName + "/" + itemName.substring(0, itemName.lastIndexOf(".")),
-            })
+        } else {
+            let fileType = itemName.substring(itemName.length - 2, itemName.length)
+            if (fileType.toLowerCase() === "md") {
+                // 文件
+                valArray.push({
+                    text: MEMO + " " + itemName.substring(0, itemName.length - 3),
+                    link: fatherDirectoryName + "/" + directoryName + "/" + itemName,
+                    path: fatherDirectoryName + "/" + directoryName + "/" + itemName.substring(0, itemName.lastIndexOf(".")),
+                });
+            } else {
+                console.log("文件 " + itemName + " 忽略");
+            }
+
         }
     }
     return valArray
@@ -64,10 +70,10 @@ export const builderSidebarItem = (rootPath: string, directoryName: string, fath
  * @param fatherItemList 上级文件或文件夹所生成的数据
  * @param num 文件夹的层数，用于获取图标
  */
-export const builderSidebarMulti = function (rootPath: string, directoryName: string, fatherItemList: any[], num : number) : Object[] {
-    let nowPathStr  = rootPath + directoryName
+export const builderSidebarMulti = function (rootPath: string, directoryName: string, fatherItemList: any[], num: number): Object[] {
+    let nowPathStr = rootPath + directoryName
     const dirPath = path.join(DIR_PATH, nowPathStr)
-    
+
     // 读取文件名
     const files = fs.readdirSync(dirPath)
 
@@ -78,9 +84,9 @@ export const builderSidebarMulti = function (rootPath: string, directoryName: st
     for (let index in fileNameItems) {
         let fileName = fileNameItems[index]
         if (isDirectory("." + nowPathStr + "/" + fileName)) {
-            
+
             // 本目录下
-            let itemList = fatherItemList.map(num => num ).concat( [{
+            let itemList = fatherItemList.map(num => num).concat([{
                 text: getNumEmoji(num) + fileName + "目录",
                 items: builderSidebarItem(rootPath, fileName, directoryName)
             }])
@@ -103,11 +109,11 @@ export const builderSidebarMulti = function (rootPath: string, directoryName: st
  * @param fatherDirectoryName 父文件夹名称
  * @returns 
  */
-export const builderSidebarItem2 = function (rootPath: string, directoryName: string, fatherDirectoryName: string) : Object[] {
+export const builderSidebarItem2 = function (rootPath: string, directoryName: string, fatherDirectoryName: string): Object[] {
     // 获取pathname
-    let nowPathStr  = rootPath + fatherDirectoryName + "/" + directoryName
+    let nowPathStr = rootPath + fatherDirectoryName + "/" + directoryName
     const dirPath = path.join(DIR_PATH, nowPathStr)
-    
+
     // 读取
     const files = fs.readdirSync(dirPath)
     // 过滤
@@ -121,10 +127,10 @@ export const builderSidebarItem2 = function (rootPath: string, directoryName: st
                 text: itemName,
                 collapsed: true,
                 // link: fatherDirectoryName + "/" + directoryName + "/" + itemName + '/index.md',
-                items: builderSidebarItem2(rootPath, itemName, fatherDirectoryName + "/" + directoryName ),
+                items: builderSidebarItem2(rootPath, itemName, fatherDirectoryName + "/" + directoryName),
 
             })
-        } else{
+        } else {
             // 文件
             valArray.push({
                 text: itemName,
@@ -140,10 +146,10 @@ export const builderSidebarItem2 = function (rootPath: string, directoryName: st
 /**
  * rootPath / /docs/
  */
-export const builderSidebarMulti2 = (rootPath: string, directoryName: string) : Object[] => {
-    let nowPathStr  = rootPath + directoryName
+export const builderSidebarMulti2 = (rootPath: string, directoryName: string): Object[] => {
+    let nowPathStr = rootPath + directoryName
     const dirPath = path.join(DIR_PATH, nowPathStr)
-    
+
     // 读取文件名
     const files = fs.readdirSync(dirPath)
 
