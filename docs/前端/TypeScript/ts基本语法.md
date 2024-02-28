@@ -270,15 +270,15 @@ let s: Stu = new Stu();
 
 const appf = (name:string):ClassDecorator => {
     return (fn) => {
-    // 直接添加属性 函数
-    fn.prptotype.name = name
-    fn.prptotype.getName = functoin () : {
-        return fn.prptotype.name;
+        // 直接添加属性 函数
+        fn.prptotype.name = name
+        fn.prptotype.getName = functoin () : {
+            return fn.prptotype.name;
+        }
     }
 }
 
 @appf("123")
-
 const methodApp = (str:string):MethodDecorator => {
     return (traget: Object, propertyKey: string, decriptor: PropertyDescriptor) => {
         // 直接执行 对应的函数，并且传递参数

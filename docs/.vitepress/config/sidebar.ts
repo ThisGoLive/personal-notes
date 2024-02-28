@@ -1,11 +1,10 @@
 import { DefaultTheme } from "vitepress";
-import { builderSidebarMulti, builderSidebarMulti2 } from './genSidebar';
+import { builderSidebarMulti } from './genSidebar';
 
 /**
  * 侧边栏
  */
-const sidebarConfig:DefaultTheme.Sidebar = builderSidebarMulti('/docs/', '', [], 0);
-// const sidebarConfig:DefaultTheme.Sidebar = builderSidebarMulti2('/docs/', '')
+const sidebarConfig: DefaultTheme.Sidebar = builderSidebarMulti('/docs/', '', [], 0);
 // const sidebarConfig:DefaultTheme.Sidebar = {
     // '/Java/': [{
     //     text: 'Java基础',

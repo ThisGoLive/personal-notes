@@ -60,4 +60,7 @@ features:
   - icon:
       src: /images/vue.svg
     title: Web 前端
+  - icon:
+      src: /images/kotlin-svgrepo-com.svg
+    title: 多端开发 Kotlin
 ---
