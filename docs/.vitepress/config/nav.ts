@@ -10,6 +10,7 @@ const navConfig: DefaultTheme.NavItem[] = [
       { text: "🏃 Golang", link: "/Golang/" },
       { text: "前端", link: "/前端/" },
       { text: "Groovy", link: "/Groovy/" },
+      { text: "Kotlin", link: "/Kotlin/" },
       {
         text: "🌱 新手上路",
         items: [

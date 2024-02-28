@@ -6,9 +6,9 @@
 
 # 实现
 
-+ Serializable 序列化接口
-+ comperable 比较器
-+ CharSequence
+- Serializable 序列化接口
+- comperable 比较器
+- CharSequence
 
 # 静态属性
 
@@ -16,53 +16,53 @@
 
 是 Serializable 是内存 id
 
-当反序列化的时候系统会去检测文件中的serialVersionUID ，
+当反序列化的时候系统会去检测文件中的 serialVersionUID ，
 
-看它是否和当前类的serialVersionUID 一致，如果一致就说明序列化的类的版本和当前类的版本是相同的，这个时候可以成功反序列化，否则就说明当前类
+看它是否和当前类的 serialVersionUID 一致，如果一致就说明序列化的类的版本和当前类的版本是相同的，这个时候可以成功反序列化，否则就说明当前类
 
-和序列化的类相比发生了某些变换，比如成员变量的数量，类型可能发生了改变，这个时候就会抛异常，反序列化失败。    
+和序列化的类相比发生了某些变换，比如成员变量的数量，类型可能发生了改变，这个时候就会抛异常，反序列化失败。
 
 #### serialPersistentFields
 
-是长度为0的ObjectStreamField数组。
+是长度为 0 的 ObjectStreamField 数组。
 
-​    一般会用一个ObjectStreamField数组来声明一个类中的串行化字段 。
+​ 一般会用一个 ObjectStreamField 数组来声明一个类中的串行化字段 。
 
- **串行化和并行化**
+**串行化和并行化**
 
-​     **串行化**也叫做序列化,就是把存在于内存的对象数据转化成可以保存成硬盘文件的形式去存储;
-     **并行化**也叫反序列化,就是把序列化后的硬盘文件加载到内存,重新变成对象数据.
+​ **串行化**也叫做序列化,就是把存在于内存的对象数据转化成可以保存成硬盘文件的形式去存储;
+**并行化**也叫反序列化,就是把序列化后的硬盘文件加载到内存,重新变成对象数据.
 
 就是对
 
 # 私有属性
 
-+ char value[]
-  + 与之前了解的一样。数据存放.
-+ int hash
-  + hash 值 ，默认是0.
+- char value[]
+  - 与之前了解的一样。数据存放.
+- int hash
+  - hash 值 ，默认是 0.
 
 # 构造
 
 #### String():
 
-​    就是创建的 字符串“”的值 赋值给this.value
+​ 就是创建的 字符串“”的值 赋值给 this.value
 
 #### String(String va);
 
-​    va的值 赋值给this.value。并且 hash值也一起赋值了。
+​ va 的值 赋值给 this.value。并且 hash 值也一起赋值了。
 
 #### String(char[] va);
 
-​    调用的 Array.copyOf 将va 复制给 this.value。
+​ 调用的 Array.copyOf 将 va 复制给 this.value。
 
 #### String(char value[], int offset, int count)
 
-​    基本同上 Arrays.copyOfRange 。开始下标 offset 与 长度 count。不过事先判断。
+​ 基本同上 Arrays.copyOfRange 。开始下标 offset 与 长度 count。不过事先判断。
 
 #### String(int[] codePoints, int offset, int count)；
 
-​    通过Character类中静态方法，移位符号，判断codePoints的每一项，是否是**Unicode编码**，即小于65536，或者小于1114112. 再转换为一位或者两位char赋值给value。
+​ 通过 Character 类中静态方法，移位符号，判断 codePoints 的每一项，是否是**Unicode 编码**，即小于 65536，或者小于 1114112. 再转换为一位或者两位 char 赋值给 value。
 
 ```
 <<      :     左移运算符，num << 1,相当于num乘以2
@@ -72,17 +72,17 @@
 >>>    :     无符号右移，忽略符号位，空位都以0补齐
 ```
 
-​    
+​
 
 #### String(byte ascii[], int hibyte, int offset, int count)；
 
-基本就是 byte 转换为 char 。不过 是 hibyte  == 0 时。其他情况, hibyte <<= 8;就没看懂。不看了。
+基本就是 byte 转换为 char 。不过 是 hibyte == 0 时。其他情况, hibyte <<= 8;就没看懂。不看了。
 
-12&5 的值是多少？答：12转成二进制数是1100（前四位省略了），5转成二进制数是0101，则运算后的结果为0100即4 这是两侧为数值时； 
+12&5 的值是多少？答：12 转成二进制数是 1100（前四位省略了），5 转成二进制数是 0101，则运算后的结果为 0100 即 4 这是两侧为数值时；
 
 #### String(byte bytes[], int offset, int length, String charsetName)
 
-还是byte转char ,charsetName为编码集。默认ISO-8859-1
+还是 byte 转 char ,charsetName 为编码集。默认 ISO-8859-1
 
 #### public String(byte bytes[], int offset, int length, Charset charset)
 
@@ -94,7 +94,7 @@
 
 #### **总结：**
 
-构造基本都是char[] 类型。其余都是判断字符集什么。其它基本数据类型，都无法通过构造转成String。还有两个String工具类，直接构造。不过StringBuffer 加了锁。
+构造基本都是 char[] 类型。其余都是判断字符集什么。其它基本数据类型，都无法通过构造转成 String。还有两个 String 工具类，直接构造。不过 StringBuffer 加了锁。
 
 # 其它方法
 
@@ -104,7 +104,7 @@
 
 #### isEmpty()
 
-数组长度是否是0
+数组长度是否是 0
 
 #### charAt(int index)
 
@@ -112,7 +112,7 @@
 
 #### codePointAt(int index)
 
-看不懂，貌似又和Unicode 编码集有关
+看不懂，貌似又和 Unicode 编码集有关
 
 #### byte[] getBytes(String charsetName)
 
@@ -124,9 +124,9 @@
 
 #### equals(Object anObject)
 
-contentEquals(CharSequence cs)   nonSyncContentEquals(AbstractStringBuilder sb) 
+contentEquals(CharSequence cs) nonSyncContentEquals(AbstractStringBuilder sb)
 
-基本是同一个意思，StringBuffer 比较。内部都有char[] 作为存储值
+基本是同一个意思，StringBuffer 比较。内部都有 char[] 作为存储值
 
 #### equalsIgnoreCase(String anotherString)
 
@@ -136,25 +136,25 @@ contentEquals(CharSequence cs)   nonSyncContentEquals(AbstractStringBuilder sb)
 
 比较器 升序 Comparator`<String>` CASE_INSENSITIVE_ORDER 静态 自带 比较器
 
-#### regionMatches(int toffset, String other, int ooffset,,            int len)
+#### regionMatches(int toffset, String other, int ooffset,, int len)
 
-this  从多少  到多少长度与 与 other 从多少  到多少长度 相同 。再加 一个参数boolean 是否 判断字符集
+this 从多少 到多少长度与 与 other 从多少 到多少长度 相同 。再加 一个参数 boolean 是否 判断字符集
 
 #### startsWith(String prefix, int toffset)
 
-this 从toffset开始 是否包含 
+this 从 toffset 开始 是否包含
 
 #### endsWith(String suffix)
 
-this 与 suffix 从后往前 比较 是否包含 
+this 与 suffix 从后往前 比较 是否包含
 
 #### hashCode()
 
-返回hash值。当 hash值为0时计算。
+返回 hash 值。当 hash 值为 0 时计算。
 
 #### indexOf(int ch, int fromIndex)
 
-ch unicon码值 在fromIndex 位开始 算 。第几位出现
+ch unicon 码值 在 fromIndex 位开始 算 。第几位出现
 
 #### lastIndexOf(int ch, int fromIndex)
 
@@ -166,15 +166,15 @@ ch unicon码值 在fromIndex 位开始 算 。第几位出现
 
 #### substring(int beginIndex)
 
-创建新对象 原本的  beginIndex 到最后
+创建新对象 原本的 beginIndex 到最后
 
 ### substring(int beginIndex, int endIndex)
 
-创建新对象 原本的  beginIndex 到 endIndex
+创建新对象 原本的 beginIndex 到 endIndex
 
 #### concat(String str)
 
-字符串 加 str 
+字符串 加 str
 
 #### replace(char oldChar, char newChar)
 
@@ -199,13 +199,13 @@ ch unicon码值 在fromIndex 位开始 算 。第几位出现
  }
 ```
 
-跳出多重循环 
+跳出多重循环
 
 #### trim()
 
 去掉空格
 
-#### valueOf系列
+#### valueOf 系列
 
 基本类 都是转换成 包装类 toString
 
