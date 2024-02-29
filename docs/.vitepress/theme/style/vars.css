@@ -172,7 +172,8 @@
     --vp-z-index-nav: 20;
     --vp-z-index-layout-top: 30;
     --vp-z-index-backdrop: 40;
-    --vp-z-index-sidebar: 50;
+    /* 侧边栏 */
+    --vp-z-index-sidebar: 0;
     --vp-z-index-footer: 60;
   }
   
@@ -198,7 +199,7 @@
    * -------------------------------------------------------------------------- */
   
   :root {
-    --vp-code-line-height: 1.7;
+    --vp-code-line-height: 1.5;
     --vp-code-font-size: 0.875em;
   
     --vp-code-block-color: var(--vp-c-text-dark-1);
@@ -327,6 +328,7 @@
    * -------------------------------------------------------------------------- */
   
   :root {
+    /* 头的高度 */
     --vp-nav-height: 64px;
     --vp-nav-bg-color: var(--vp-c-bg);
     --vp-nav-screen-bg-color: var(--vp-c-bg);
@@ -345,6 +347,7 @@
    * -------------------------------------------------------------------------- */
   
   :root {
+    /* 侧边栏宽度 */
     --vp-sidebar-width: 272px;
     --vp-sidebar-bg-color: var(--vp-c-bg-alt);
   }
