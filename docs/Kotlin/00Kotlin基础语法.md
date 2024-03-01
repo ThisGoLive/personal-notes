@@ -1,4 +1,4 @@
-# Kolint
+# Kotlin
 
 2024年2月28日
 
