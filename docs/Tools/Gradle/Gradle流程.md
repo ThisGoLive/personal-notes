@@ -1,4 +1,5 @@
 # 流程
+
 2024-02-03
 
 ## 1 初始化
@@ -11,6 +12,7 @@ gradle/wrapper/gradle-wrapper.jar
 ## 2 构建开始
 
 根项目下
+
 1. init.gradle 编译执行
 2. buildSrc 编译 交由 classloader
 3. gradle.properties 读取键值对
@@ -38,8 +40,6 @@ include 'app', 'module1'
 4. task{doLast{}}
    1. Project.task()  TaskContainer
    2. Task.doLast() TaskActions
-
-
 
 ## init.gradle.kts 修改代理
 
