@@ -1,20 +1,20 @@
 ## 配置文件
 
-Git	使用一系列配置文件来保存你自定义的行为。	
+Git 使用一系列配置文件来保存你自定义的行为。
 
-它首先会查找	/etc/gitconfig文件，该文件含有系统里每位用户及他们所拥有的仓库的配置值。	如果你传 递		--system	选项给git config	，它就会读写该文件。
+它首先会查找 /etc/gitconfig 文件，该文件含有系统里每位用户及他们所拥有的仓库的配置值。 如果你传 递 --system 选项给 git config ，它就会读写该文件。
 
-接下来Git会查找每个用户的	~/.gitconfig文件（或者	~/.config/git/config文件）。你 可以传递--global选项让	Git	读写该文件。
+接下来 Git 会查找每个用户的 ~/.gitconfig 文件（或者 ~/.config/git/config 文件）。你 可以传递--global 选项让 Git 读写该文件。
 
-最后Git	会查找你正在操作的版本库所对应的	Git	目录下的配置文件（.git/config）。这个 文件中的值只对该版本库有效。
+最后 Git 会查找你正在操作的版本库所对应的 Git 目录下的配置文件（.git/config）。这个 文件中的值只对该版本库有效。
 
-以上三个层次中每层的配置（系统、全局、本地）都会覆盖掉上一层次的配置，所以	.git/config中的值会覆盖掉/etc/gitconfig中所对应的值
+以上三个层次中每层的配置（系统、全局、本地）都会覆盖掉上一层次的配置，所以 .git/config 中的值会覆盖掉/etc/gitconfig 中所对应的值
 
 `全局配置文件`与`局部配置文件`
 
 全局配置文件 ： 一般在用户的目录下。`C:\Users\Administrator\.gitconfig`
 
-局部配置文件 : 项目中    `.git` 目录下的 `config`文件。 `D:\netctoss\NetCTOSS\.git\config`
+局部配置文件 : 项目中 `.git` 目录下的 `config`文件。 `D:\netctoss\NetCTOSS\.git\config`
 
 ## 命令行基本操作
 
@@ -24,7 +24,7 @@ Git	使用一系列配置文件来保存你自定义的行为。
 
 HTTPS : 直接使用，克隆下来后每次提交记录都需要进行 账号密码验证。
 
-需要局部配置 项目中    `.git` 目录下的 `config`文件修改。
+需要局部配置 项目中 `.git` 目录下的 `config`文件修改。
 
 ```shell
 # 对应项目下的 打开控制台
@@ -42,7 +42,7 @@ git config user.name # 显示用户名
 	name = xiaoming678
 	email = 37787710+xiaoming678@users.noreply.github.com
 	pass
-	# 具体 账户 与邮箱 
+	# 具体 账户 与邮箱
 [core]
 	repositoryformatversion = 0
 	filemode = false
@@ -69,13 +69,11 @@ SSH ： 在起初 克隆到本地 之前，就需要配置与添加好 SSH key�
 
 ### 命令行
 
-
-
-### UI操作
+### UI 操作
 
 直观便捷，自动会将各个版本环存，可以手动合并，自动合并
 
-## 搭建 Git仓库
+## 搭建 Git 仓库
 
 ### 首选，使用`docker`容器进行：
 
@@ -94,9 +92,9 @@ docker run -d --name=gitblit -p 8100:8080 -v /srv/gitblit:/opt/gitblit-data jace
 
 使用 gitblit 镜像，在虚拟机挂起后，出现了这个错误：
 
-不能使用构造函数实例化页面公共com.gitblit.wicket.pages.CommitPage(org.apache.wicket.PageParameters)和参数r =“~ guoli1 /测试”h =“223 a925eb0864e642d60299e2aa05996c1a13576”
+不能使用构造函数实例化页面公共 com.gitblit.wicket.pages.CommitPage(org.apache.wicket.PageParameters)和参数 r =“~ guoli1 /测试”h =“223 a925eb0864e642d60299e2aa05996c1a13576”
 
-#### 使用 gitlab搭建
+#### 使用 gitlab 搭建
 
 ```shell
 sudo docker run --detach \
@@ -104,7 +102,7 @@ sudo docker run --detach \
 	--publish 8106:80 --publish 8122:22 \
 	--name gitlab \
 	--restart always \
-	--volume /srv/gitlab/config:/etc/gitlab \ 
+	--volume /srv/gitlab/config:/etc/gitlab \
 	--volume /srv/gitlab/logs:/var/log/gitlab \
 	--volume /srv/gitlab/data:/var/opt/gitlab \
 	gitlab/gitlab-ce:11.8.1-ce.0
@@ -118,7 +116,7 @@ sudo docker run --detach \
 
 搭建好，需要设置账号密码
 
-但对于个人来说，太耗费性能，启动后约用 2.4 G内存。
+但对于个人来说，太耗费性能，启动后约用 2.4 G 内存。
 
 ## git 删除历史文件
 
