@@ -3,6 +3,7 @@ import themeConfig from "./theme";
 
 // noinspection JSUnusedGlobalSymbols
 export default defineConfig({
+  base: "/personal-notes/",
   title: "✒️ 主页",
   // 自定义后缀
   titleTemplate: "✒️个人笔记库",
