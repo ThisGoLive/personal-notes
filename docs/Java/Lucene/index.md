@@ -5,7 +5,7 @@ import { useData } from 'vitepress'
 
 const { theme } = useData()
 const sidebar = 'sidebar'
-const root_path = '/Java/Lucene及其衍生/'
+const root_path = '/Java/Lucene/'
 
 function filter(items) {
     if (items.length < 2) {

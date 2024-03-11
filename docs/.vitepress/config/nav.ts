@@ -23,6 +23,7 @@ const navConfig: DefaultTheme.NavItem[] = [
       { text: "💾	数据库", link: "/数据库/" },
       { text: "🧰 开发工具", link: "/Tools/" },
       { text: "Web 服务器", link: "/Web/" },
+      {text: " 🔎 搜索引擎", link: "/SearchEngine/"},
     ],
   },
   {
