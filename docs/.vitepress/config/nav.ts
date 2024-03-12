@@ -11,7 +11,7 @@ const navConfig: DefaultTheme.NavItem[] = [
       { text: "前端", link: "/前端/" },
       { text: "Groovy", link: "/Groovy/" },
       { text: "Kotlin", link: "/Kotlin/" },
-      { text: "🦀 Rust", link: "https://www.rust-lang.org/zh-CN/" },
+      { text: "🦀 Rust", link: "/Rust/" },
     ],
   },
   {

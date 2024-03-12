@@ -1,9 +1,9 @@
 # 基本镜像安装
 
-> --restart具体参数值详细信息
+> --restart 具体参数值详细信息
 
 - no - 容器退出时，不重启容器
-- on-failure - 只有在非0状态退出时才从新启动容器
+- on-failure - 只有在非 0 状态退出时才从新启动容器
 - always - 无论退出状态是如何，都重启容器
 
 如果创建时未指定 --restart=always ,可通过 update 命令
@@ -44,7 +44,7 @@ docker run -d -p 8033:8081 --restart=always --name nexus3 -v ~/Datas/nexus-data:
 docker logs -f nexus
 ```
 
-## Postgresql  安装
+## Postgresql 安装
 
 ```shell
 docker run -d -p 5432:5432 --name postgres11  -e POSTGRES_PASSWORD=123456  -v ~/Datas/postgresdata:/var/lib/postgresql/data postgres:11
@@ -55,14 +55,15 @@ docker run -d -p 5432:5432 --name postgres12 --restart=always --network local_ne
 https://github.com/tianon/docker-postgres-upgrade
 
 ```shell
-docker run --rm -v /home/gl/docker-data/Nextcloud/db:/var/lib/postgresql/15/data -v /home/gl/docker-data/Nextcloud/16db:/var/lib/postgresql/16/data tianon/postgres-upgrade:15-to-16
-```doc
+docker run --rm -v ~/docker-data/Nextcloud/db:/var/lib/postgresql/15/data -v ~/docker-data/Nextcloud/16db:/var/lib/postgresql/16/data tianon/postgres-upgrade:15-to-16
+```
+
 ## redis安装
 
 ```shell
 docker pull redis:5
 docker run -d -p 6379:6379 --restart=always --name redis-versver -v ~/Datas/RedisData:/data redis:5
-```
+````
 
 ## portainer 安装
 
@@ -89,5 +90,5 @@ docker run -d \
 ram32v7_gitea:1.13
 ```
 
- docker image 多阶段构建
+docker image 多阶段构建
 https://docker-practice.github.io/zh-cn/image/multistage-builds/
