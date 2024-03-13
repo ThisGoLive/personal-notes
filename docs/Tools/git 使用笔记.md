@@ -39,25 +39,25 @@ git config user.name # 显示用户名
 
 ```shell
 [user]
-	name = xiaoming678
-	email = 37787710+xiaoming678@users.noreply.github.com
-	pass
-	# 具体 账户 与邮箱
+    name = xiaoming678
+    email = 37787710+xiaoming678@users.noreply.github.com
+    pass
+    # 具体 账户 与邮箱
 [core]
-	repositoryformatversion = 0
-	filemode = false
-	bare = false
-	logallrefupdates = true
-	symlinks = false
-	ignorecase = true
+    repositoryformatversion = 0
+    filemode = false
+    bare = false
+    logallrefupdates = true
+    symlinks = false
+    ignorecase = true
 [submodule]
-	active = .
+    active = .
 [remote "origin"]
-	url = https://github.com/NetCTOSSteam/NetCTOSS.git
-	fetch = +refs/heads/*:refs/remotes/origin/*
+    url = https://github.com/NetCTOSSteam/NetCTOSS.git
+    fetch = +refs/heads/*:refs/remotes/origin/*
 [branch "feture"]
-	remote = origin
-	merge = refs/heads/feture
+    remote = origin
+    merge = refs/heads/feture
 
 ```
 
@@ -98,14 +98,14 @@ docker run -d --name=gitblit -p 8100:8080 -v /srv/gitblit:/opt/gitblit-data jace
 
 ```shell
 sudo docker run --detach \
-	--hostname gitlab.example.com \
-	--publish 8106:80 --publish 8122:22 \
-	--name gitlab \
-	--restart always \
-	--volume /srv/gitlab/config:/etc/gitlab \
-	--volume /srv/gitlab/logs:/var/log/gitlab \
-	--volume /srv/gitlab/data:/var/opt/gitlab \
-	gitlab/gitlab-ce:11.8.1-ce.0
+    --hostname gitlab.example.com \
+    --publish 8106:80 --publish 8122:22 \
+    --name gitlab \
+    --restart always \
+    --volume /srv/gitlab/config:/etc/gitlab \
+    --volume /srv/gitlab/logs:/var/log/gitlab \
+    --volume /srv/gitlab/data:/var/opt/gitlab \
+    gitlab/gitlab-ce:11.8.1-ce.0
 ```
 
 | Local location       | Container location | Usage                                      |
@@ -127,4 +127,13 @@ pip install git-filter-repo
 
 git filter-repo --path-glob pnpm-lock.yaml --invert-paths --force
 git push --all --force
+```
+
+## git 转存
+
+[git stash](https://www.cnblogs.com/grimm/p/10550438.html)
+
+```shell
+# 
+git stash list 
 ```
