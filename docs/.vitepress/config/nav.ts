@@ -9,6 +9,7 @@ const navConfig: DefaultTheme.NavItem[] = [
       { text: "🐍 Python", link: "/Python/" },
       { text: "🏃 Golang", link: "/Golang/" },
       { text: "前端", link: "/前端/" },
+      { text: "TypeScript", link: "/前端/TypeScript/" },
       { text: "Groovy", link: "/Groovy/" },
       { text: "Kotlin", link: "/Kotlin/" },
       { text: "🦀 Rust", link: "/Rust/" },
