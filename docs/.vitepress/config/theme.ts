@@ -30,9 +30,9 @@ const themeConfig: DefaultTheme.Config = {
     { icon: "github", link: 'https://vitepress.dev/zh/' }
   ],
   // 开启搜索烂尾
-//   search: {
-//     provider: 'local'
-//   }
+  search: {
+    provider: 'local'
+  }
   
 };
 
