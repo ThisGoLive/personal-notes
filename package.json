@@ -1,4 +1,6 @@
 {
+  "name": "personal-notes",
+  "version": "0.0.1",
   "devDependencies": {
     "vitepress": "1.0.0-rc.44"
   },
