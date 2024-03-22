@@ -10,6 +10,8 @@
 
 [Rust 标准库中文版](https://rustwiki.org/zh-CN/std/)
 
+[Rust语言实践](https://practice-zh.course.rs/why-exercise.html)
+
 ## Rust 自动生成目录
 
 <AutoBuilderNavigation></AutoBuilderNavigation>

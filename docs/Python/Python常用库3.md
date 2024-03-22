@@ -13,7 +13,7 @@ init_all = config.init_all()
 metadata.create_all(create_engine(config.get_db_url()))
 ```
 
-## 定时任务框架apscheduler
+## 定时任务框架 apscheduler
 
 <https://zhuanlan.zhihu.com/p/491679794>
 
@@ -29,7 +29,7 @@ metadata.create_all(create_engine(config.get_db_url()))
 
 playwright 不知道
 
-## BlueStacks模拟器，使用代理
+## BlueStacks 模拟器，使用代理
 
 <https://www.jianshu.com/p/b6b58c1272e7>
 
@@ -43,9 +43,14 @@ docker run -d -p 3306:3306 --name mysql-8-0 -e MYSQL_ROOT_PASSWORD=123456 -v /da
 
 https://www.jianshu.com/p/71bc0c8295ed
 
+## C++代码与 Python 无缝集成
 
-## C++代码与Python无缝集成
 https://github.com/pybind/pybind11
 
-## Python 调用JS的四种方式
+## Python 调用 JS 的四种方式
+
 https://www.cnblogs.com/QYGQH/p/16827424.html
+
+## Python 命令行构建
+
+[Python 命令行构建库](https://zhuanlan.zhihu.com/p/587409844)
