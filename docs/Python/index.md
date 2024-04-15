@@ -1,4 +1,11 @@
-# 自动生成目录
+# Python
+
+## Python包资源
+
++ [awesome-python](https://gitee.com/awesome-lib/awesome-python)
++ [awesome-python-cn](https://gitee.com/awesome-lib/awesome-python-cn)
+
+## 自动生成目录
 
 <AutoBuilderNavigation></AutoBuilderNavigation>
 

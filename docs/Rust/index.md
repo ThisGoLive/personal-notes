@@ -12,6 +12,10 @@
 
 [Rust语言实践](https://practice-zh.course.rs/why-exercise.html)
 
+## Rust包资源
+
+[awesome-rust](https://gitee.com/awesome-lib/awesome-rust)
+
 ## Rust 自动生成目录
 
 <AutoBuilderNavigation></AutoBuilderNavigation>

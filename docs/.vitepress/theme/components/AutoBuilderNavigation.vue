@@ -18,21 +18,21 @@ import { ref } from 'vue';
 import { useData, defineConfig } from 'vitepress';
 
 const { site, theme, page } = useData();
-const INDEX_NAME = '/index.md'
-const rootPath = ref('/' + page.value.filePath.substring(0, page.value.filePath.indexOf(INDEX_NAME)) + '/')
+const INDEX_NAME = '/index.md';
+const rootPath = ref('/' + page.value.filePath.substring(0, page.value.filePath.indexOf(INDEX_NAME)) + '/');
 
 function filter(items) {
     if (items.length < 2) {
-        return false
+        return false;
     }
-    return items.filter(item => item.path.startsWith(rootPath.value)).length > 1
+    return items.filter(item => item.path.startsWith(rootPath.value)).length > 1;
 }
 /**
  * 从 site 中获取i配置的 base 路径，进行拼接跳转地址
  */
 function getJumpUrl(path: String) {
-    var base = site.value.base
-    return base.substring(0, base.length - 1) + path
+    var base = site.value.base;
+    return base.substring(0, base.length - 1) + path;
 }
 </script>
 <style lang="">
