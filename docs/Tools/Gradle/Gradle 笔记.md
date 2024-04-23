@@ -52,7 +52,7 @@ gradle task名称
 
 USER_HOME/.gradle/init.gradle
 
-```json
+```groovy
 allprojects {
     repositories {
         def REPOSITORY_URL = 'http://maven.aliyun.com/nexus/content/groups/public/'
@@ -71,6 +71,45 @@ allprojects {
     }
 }
 ```
+
+init.gradle.kts
+<https://gist.github.com/bennyhuo/af7c43cc4831661193605e124f539942>
+
+```kts
+fun RepositoryHandler.enableMirror() {
+    all {
+        if (this is MavenArtifactRepository) {
+            val originalUrl = this.url.toString().removeSuffix("/")
+            urlMappings[originalUrl]?.let {
+                logger.lifecycle("Repository[$url] is mirrored to $it")
+                this.setUrl(it)
+            }
+        }
+    }
+}
+
+val urlMappings = mapOf(
+    "https://repo.maven.apache.org/maven2" to "https://mirrors.tencent.com/nexus/repository/maven-public/",
+    "https://dl.google.com/dl/android/maven2" to "https://mirrors.tencent.com/nexus/repository/maven-public/",
+    "https://plugins.gradle.org/m2" to "https://mirrors.tencent.com/nexus/repository/gradle-plugins/"
+)
+
+gradle.allprojects {
+    buildscript {
+        repositories.enableMirror()
+    }
+    repositories.enableMirror()
+}
+
+gradle.beforeSettings { 
+    pluginManagement.repositories.enableMirror()
+    dependencyResolutionManagement.repositories.enableMirror()
+}
+```
+
+<https://gist.github.com/Jacknic/61b2b576f66993149cc57c504c7ed609>
+
+<<< ./init.gradle.kts
 
 ## 3 插件
 
