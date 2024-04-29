@@ -224,11 +224,14 @@
     --vp-code-copy-code-hover-bg: rgba(255, 255, 255, 0.05);
     --vp-code-copy-code-active-text: var(--vp-c-text-dark-2);
   
+        /* 代码组 tab 分割线颜色 */
     --vp-code-tab-divider: var(--vp-code-block-divider-color);
+    /* 代码组 未激活 tab */
     --vp-code-tab-text-color: var(--vp-c-text-dark-2);
     --vp-code-tab-bg: var(--vp-code-block-bg);
     --vp-code-tab-hover-text-color: var(--vp-c-text-dark-1);
-    --vp-code-tab-active-text-color: var(--vp-c-text-dark-1);
+    /* 代码组 激活 tab */
+    --vp-code-tab-active-text-color: var(--vp-c-green);
     --vp-code-tab-active-bar-color: var(--vp-c-brand);
   }
   

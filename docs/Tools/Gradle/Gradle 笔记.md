@@ -73,9 +73,13 @@ allprojects {
 ```
 
 init.gradle.kts
+
 <https://gist.github.com/bennyhuo/af7c43cc4831661193605e124f539942>
 
-```kts
+<https://gist.github.com/Jacknic/61b2b576f66993149cc57c504c7ed609>
+::: code-group
+
+```kts [init.gradle.kts by >= 6.8]
 fun RepositoryHandler.enableMirror() {
     all {
         if (this is MavenArtifactRepository) {
@@ -107,9 +111,8 @@ gradle.beforeSettings {
 }
 ```
 
-<https://gist.github.com/Jacknic/61b2b576f66993149cc57c504c7ed609>
-
-<<< ./init.gradle.kts
+<<< ./init.gradle.kts [init.gradle.kts all version]
+:::
 
 ## 3 插件
 
