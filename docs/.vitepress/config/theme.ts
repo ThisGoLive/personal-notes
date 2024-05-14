@@ -27,7 +27,7 @@ const themeConfig: DefaultTheme.Config = {
   },
   // 头顶跳转
   socialLinks: [
-    { icon: "github", link: 'https://vitepress.dev/zh/' }
+    { icon: "github", link: 'https://thisgolive.github.io/personal-notes/' }
   ],
   // 开启搜索烂尾
   search: {

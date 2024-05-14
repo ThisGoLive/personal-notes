@@ -4,11 +4,12 @@ Chinese 中文
 
 JSON Tools 格式化JSON  alt m 缩减  ctl alt m 格式化
 
-Document This 
+Document This
 
 设置： "docthis.includeAuthorTag": true,//出现@Author "docthis.includeDescriptionTag": true,//出现@Description "docthis.authorName": "shenzekun",//作者名字 快捷键： 按两次Ctrl+alt+d
 
 ```
+// https://www.cnblogs.com/pta00/p/16285862.html
 Bracket Pair Colorizer 2 颜色识别匹配括号
 ```
 

@@ -10,6 +10,10 @@
 
 [Go语言高级编程 Github](https://github.com/chai2010/advanced-go-programming-book)
 
+## Go包资源
+
+[awesome-go](https://gitee.com/awesome-lib/awesome-go)
+
 ## 自动生成目录
 
 <AutoBuilderNavigation></AutoBuilderNavigation>

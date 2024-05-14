@@ -43,6 +43,16 @@ const navConfig: DefaultTheme.NavItem[] = [
       },
     ],
   },
+  {
+    text: "📚	书籍网站",
+    items: [
+      { text: "书格", link: "https://new.shuge.org/" },
+      { text: "古诗文网", link: "https://www.gushiwen.cn/" },
+      { text: "读书网", link: "https://doosho.com/" },
+      { text: "读书网 Github", link: "https://github.com/dooshu/shu" },
+      { text: "资源下载", link: "https://www.emex.top:8083/" },
+    ],
+  },
 ];
 
 export default navConfig;

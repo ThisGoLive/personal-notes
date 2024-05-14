@@ -63,4 +63,8 @@ features:
   - icon:
       src: /images/kotlin-svgrepo-com.svg
     title: 多端开发 Kotlin
+  - icon:
+      src: /images/rustacean-orig-noshadow.svg
+    title: Rust
+    details: Rust Lang
 ---
