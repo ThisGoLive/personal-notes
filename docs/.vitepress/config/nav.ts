@@ -48,9 +48,11 @@ const navConfig: DefaultTheme.NavItem[] = [
     items: [
       { text: "书格", link: "https://new.shuge.org/" },
       { text: "古诗文网", link: "https://www.gushiwen.cn/" },
-      { text: "读书网", link: "https://doosho.com/" },
+      { text: "读书网", link: "http://154.211.15.59:33255/" },
       { text: "读书网 Github", link: "https://github.com/dooshu/shu" },
       { text: "资源下载", link: "https://www.emex.top:8083/" },
+      { text: "14个免费电子书网站", link: "https://zhuanlan.zhihu.com/p/310396918"},
+      { text: "Z-Library", link: "https://zhuanlan.zhihu.com/p/676590811"},
     ],
   },
 ];
