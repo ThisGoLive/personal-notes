@@ -1,24 +1,24 @@
 # spring JPA
 
-spring data 下了一个框架   由很多的子框架
+spring data 下了一个框架 由很多的子框架
 
-（与数据有关的）持久层框架规范   完成了 对Hibernate 的进一步封装  （就是Hibernate）
+（与数据有关的）持久层框架规范 完成了 对 Hibernate 的进一步封装 （就是 Hibernate）
 
 ## 导包 spring data jpa
 
-+ 引入此包  会自动引入spring 包   
-+ 再导Hibernate 的包
-+ 数据源 连接池
-+ mysql jdbc 包
-+ 测试  junit 和 spring-test
+- 引入此包 会自动引入 spring 包
+- 再导 Hibernate 的包
+- 数据源 连接池
+- mysql jdbc 包
+- 测试 junit 和 spring-test
 
-**Repository**   持久层
+**Repository** 持久层
 
 ## 配置
 
-1-3基本同起前面  
+1-3 基本同起前面
 
-4.配置session工厂时  是在之基础上完成了对dao接口的实现  ：
+4.配置 session 工厂时 是在之基础上完成了对 dao 接口的实现 ：
 
 ```xml
 <!-- 4、配置localEntityManagerFactoryBean 在sessionFactory的基础上，并且完成了对Dao接口的实现 -->
@@ -56,7 +56,7 @@ class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 </bean>
 ```
 
-6、配置spring容器管理事务的两种方案：
+6、配置 spring 容器管理事务的两种方案：
 
 ```xml
 <!-- spring容器提供了2种事务管理手段，1种：编程式事务管理方法，2种：声明式事务管理方法（常用） -->
@@ -109,64 +109,64 @@ class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 
 #### base package
 
-//主要完成自动扫描 扫描满足jpa规范的dao接口 
+//主要完成自动扫描 扫描满足 jpa 规范的 dao 接口
 
 //
 
-**Repository**   持久层 继承 JpaRepository<k,v>
+**Repository** 持久层 继承 JpaRepository<k,v>
 
-延迟加载  web.xml中配置  OpenEntityManagerInViewFilter 过滤器：  同 OpenSessionManagerInViewFilter
+延迟加载 web.xml 中配置 OpenEntityManagerInViewFilter 过滤器： 同 OpenSessionManagerInViewFilter
 
-持久层用 getOne(int id )  等同于 Hibernate 中的load   对象加载是延迟加载
+持久层用 getOne(int id ) 等同于 Hibernate 中的 load 对象加载是延迟加载
 
 #### 增删改
 
-持久层 会自动封装 session   直接调用方法
+持久层 会自动封装 session 直接调用方法
 
 #### 查询
 
-基本的 有  可以直接调用方法
+基本的 有 可以直接调用方法
 
-复杂的 可以通过 固定方法名字规范  后台自动拼接   jpql
+复杂的 可以通过 固定方法名字规范 后台自动拼接 jpql
 
 #### 分页
 
-      PageAble pageAble = new PageRequest（int page，int size）     
+      PageAble pageAble = new PageRequest（int page，int size）
 
-page 重0开始  第一页    size 每页多少个
+page 重 0 开始 第一页 size 每页多少个
 
     new  sort（Direction.ASC,"bean 中所按哪个字段进行排序"）   加入pageAble 的构造中
     new PageRequest（int page，int size ，Direction.ASC，String...）       多个字段进行排序
 
 #### 自定义方法名(自定义查询语句)
 
-持久层接口  该方法 用@Query（value=“ jpql语句”） 注解
+持久层接口 该方法 用@Query（value=“ jpql 语句”） 注解
 
     @Query(value="From Userbean as u where (u.age between ?1 and ?2) and ")
 
-也可以  new 对象   来进行按需查询
+也可以 new 对象 来进行按需查询
 
     @Query(value="select new Map（u.xx as xxx,）From Userbean as u where (u.age between ?1 and ?2) and ")
 
-多表联查  加fetch只查询主对象  不加 会查询两个表的 
+多表联查 加 fetch 只查询主对象 不加 会查询两个表的
 
     @Query(value="From Userbean as u Left join fetch u.sets set where (u.age between ?1 and ?2) and ")
 
-总之基本类似  hql 的语法  参数 写法不同
+总之基本类似 hql 的语法 参数 写法不同
 
-**用此注解时 参数不能传对象** 
+**用此注解时 参数不能传对象**
 
-#### 修改  注解
+#### 修改 注解
 
-@Modifiying   只用与 会对数据库造成影响的地方  比如      和@Query 共用 非查询时
+@Modifiying 只用与 会对数据库造成影响的地方 比如 和@Query 共用 非查询时
 
-Query注解中 value属性 可以直接书写sql 语句  需要配合nativeQuery=“true”
+Query 注解中 value 属性 可以直接书写 sql 语句 需要配合 nativeQuery=“true”
 
     @Query（value=“sql”，nati veQuery=“true”）
 
 #### 按需查询
 
-使用criteria 完成多条件 灵活查询
+使用 criteria 完成多条件 灵活查询
 
 ```java
 public Page<UserBean> findUserBeanByParams(Map<String, Object> params, Pageable pageable) {
@@ -202,3 +202,5 @@ public Page<UserBean> findUserBeanByParams(Map<String, Object> params, Pageable 
     }, pageable);
 }
 ```
+
+[jpa 多数据源](https://www.jb51.net/program/3206008cx.htm)

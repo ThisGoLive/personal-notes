@@ -21,14 +21,20 @@ const { site, theme, page } = useData();
 const INDEX_NAME = '/index.md';
 const rootPath = ref('/' + page.value.filePath.substring(0, page.value.filePath.indexOf(INDEX_NAME)) + '/');
 
-function filter(items) {
+/**
+ * 
+ * @param items SidebarItem 但是 path 字段是没有的
+ */
+function filter(items: any[]) {
     if (items.length < 2) {
         return false;
     }
     return items.filter(item => item.path.startsWith(rootPath.value)).length > 1;
 }
+
 /**
- * 从 site 中获取i配置的 base 路径，进行拼接跳转地址
+ * 从 site 中获取配置的 base 路径，进行拼接跳转地址
+ * @param path 
  */
 function getJumpUrl(path: String) {
     var base = site.value.base;

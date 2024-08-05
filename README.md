@@ -3,3 +3,5 @@
 迁移到 vitepress
 
 pnpm run docs:dev
+
+git push github master

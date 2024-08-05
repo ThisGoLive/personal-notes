@@ -1,6 +1,6 @@
 ## 挂起
 
-Vmware 虚拟机的挂起功能：如果 Ubuntu 使用 docker服务，挂起后，再打开，此时的 docker 服务虽然开启、容器也已启动，但是 外部是不能进行使用 容器对应的服务。需要重新启动 docker 服务，重启 容器服务。
+Vmware 虚拟机的挂起功能：如果 Ubuntu 使用 docker 服务，挂起后，再打开，此时的 docker 服务虽然开启、容器也已启动，但是 外部是不能进行使用 容器对应的服务。需要重新启动 docker 服务，重启 容器服务。
 
 ## 初始化
 
@@ -14,10 +14,11 @@ sudo systemctl restart docker
 
 ```json
 {
-        "registry-mirrors": [
-                "https://hub-mirror.c.163.com",
-                "https://registry.docker-cn.com"
-        ]
+  "registry-mirrors": [
+    "https://docker.m.daocloud.io",
+    "https://hub-mirror.c.163.com",
+    "https://registry.docker-cn.com"
+  ]
 }
 ```
 
@@ -52,7 +53,7 @@ sudo service docker start
 
 > Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?.
 
-怀疑是我 删除了 docker.pid 导致的。后面重装docker 也没有解决问题。
+怀疑是我 删除了 docker.pid 导致的。后面重装 docker 也没有解决问题。
 
 ## 容器导出与导入
 
@@ -85,28 +86,28 @@ docker network inspect
 docker    network    create    -d    bridge    my-net # 构建容器 间的网络
 ```
 
-# 开启docker-ce 2375端口
+# 开启 docker-ce 2375 端口
 
 找到 ExecStart，在最后面添加 -H tcp://0.0.0.0:2375
 
 ### ubuntu
 
-1. 临时开启 ，通过dockerd启动docker 
-   
+1. 临时开启 ，通过 dockerd 启动 docker
+
    ```bash
     sudo dockerd -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock &
    ```
 
 2. 永久配置 可能有问题
-   
+
    ```bash
    vim /lib/systemd/system/docker.service
    # ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:2375 -H -fd:// --containerd=/run/containerd/containerd.sock
    ```
-   
+
    centos
-   
-   /usr/lib/systemd/system/docker.service 
+
+   /usr/lib/systemd/system/docker.service
 
 ```shell
 systemctl daemon-reload
@@ -126,13 +127,13 @@ https://www.jianshu.com/p/c32c9f24b941
 
 ```bash
 sudo systemctl restrt systemd-logind
-[root@localhost ~]# docker ps -a 
+[root@localhost ~]# docker ps -a
 Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
 ```
 
 https://www.freesion.com/article/3515711389/
 
-容器中的 network 如果设置为 host，那么是使用的 宿主机器的ip 端口
+容器中的 network 如果设置为 host，那么是使用的 宿主机器的 ip 端口
 
 ```yml
 services:
@@ -142,7 +143,7 @@ services:
     ports:
       - 5432:5432
     environment:
-      POSTGRES_PASSWORD: 'postgres'
+      POSTGRES_PASSWORD: "postgres"
     volumes:
       - database_data:/var/lib/postgresql/data
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
@@ -158,7 +159,7 @@ services:
 --platform linux/amd64
 ```
 
-2 编译问题或者说build 镜像
+2 编译问题或者说 build 镜像
 
 `docker buildx` BuildKit
 https://yeasy.gitbook.io/docker_practice/buildx/multi-arch-images

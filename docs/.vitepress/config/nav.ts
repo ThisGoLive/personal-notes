@@ -24,7 +24,7 @@ const navConfig: DefaultTheme.NavItem[] = [
       { text: "💾	数据库", link: "/数据库/" },
       { text: "🧰 开发工具", link: "/Tools/" },
       { text: "Web 服务器", link: "/Web/" },
-      {text: " 🔎 搜索引擎", link: "/SearchEngine/"},
+      { text: " 🔎 搜索引擎", link: "/SearchEngine/" },
     ],
   },
   {
@@ -48,9 +48,12 @@ const navConfig: DefaultTheme.NavItem[] = [
     items: [
       { text: "书格", link: "https://new.shuge.org/" },
       { text: "古诗文网", link: "https://www.gushiwen.cn/" },
-      { text: "读书网", link: "https://doosho.com/" },
+      { text: "读书网", link: "http://154.211.15.59:33255/" },
       { text: "读书网 Github", link: "https://github.com/dooshu/shu" },
+      { text: "金瓶梅", link: "http://www.jinpm.cn/" },
       { text: "资源下载", link: "https://www.emex.top:8083/" },
+      { text: "14个免费电子书网站", link: "https://zhuanlan.zhihu.com/p/310396918" },
+      { text: "Z-Library", link: "https://zhuanlan.zhihu.com/p/676590811" },
     ],
   },
 ];

@@ -1,4 +1,4 @@
-# Docker Image的构建阶段保护敏感信息
+# Docker Image 的构建阶段保护敏感信息
 
 2024-02-20
 
@@ -34,7 +34,7 @@ copy --from=builder /xxx /xxx
 
 ```
 
-## 3. 挂载secret
+## 3. 挂载 secret
 
 ```dockerfile
 FROM  --mount-type=secret,id=my_secret git clone httpsL//$(cat /run/serets/my_secret)@github.com/xxx
